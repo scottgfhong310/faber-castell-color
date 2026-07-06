@@ -8,7 +8,7 @@ I18n.register('zh-Hant', {
   'search.empty': '找不到符合的顏色',
   'count.showing': '顯示 {n} / {total} 色',
 
-  'tool.sort': '排序：色號 / 色相 / 明度',
+  'tool.sort': '排序：色號 / 色相 / 明度 / 色系',
   'tool.css': '檢視 / 複製整份 CSS',
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',
@@ -17,7 +17,18 @@ I18n.register('zh-Hant', {
   'sort.code': '色號',
   'sort.hue': '色相',
   'sort.lightness': '明度',
+  'sort.family': '色系分群',
   'toast.sort': '排序：{m}',
+
+  'family.red': '紅',
+  'family.orange': '橙',
+  'family.yellow': '黃',
+  'family.green': '綠',
+  'family.cyan': '青',
+  'family.blue': '藍',
+  'family.purple': '紫',
+  'family.magenta': '洋紅',
+  'family.neutral': '中性 / 灰階',
 
   'detail.approx': '近似',
   'detail.lightfastness': '耐光度',

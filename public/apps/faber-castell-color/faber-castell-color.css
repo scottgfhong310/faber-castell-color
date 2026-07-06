@@ -69,10 +69,24 @@ main { min-height: 100vh; }
 .count { font-size: .82rem; color: var(--muted); white-space: nowrap; }
 
 /* ===== 色票網格 ===== */
+.fc-list { display: block; }        /* #grid 外層：容納單一 .fc-grid 或多個色系分群 */
 .fc-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
   gap: 10px;
+}
+
+/* ===== 色系分群 + sticky 標頭（family 排序模式） ===== */
+.fc-group + .fc-group { margin-top: 10px; }
+.fc-group-head {
+  position: sticky; top: 0; z-index: 5;
+  margin: 0 0 10px; padding: 8px 2px;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  font-size: .95rem; font-weight: 500; color: var(--text);
+}
+.fc-group-n {
+  font-size: .78rem; font-weight: 400; color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .fc-cell {
   border: 1px solid var(--border); border-radius: 12px; overflow: hidden;

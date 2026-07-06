@@ -8,7 +8,7 @@ I18n.register('en', {
   'search.empty': 'No matching colours',
   'count.showing': 'Showing {n} of {total}',
 
-  'tool.sort': 'Sort: code / hue / lightness',
+  'tool.sort': 'Sort: code / hue / lightness / family',
   'tool.css': 'View / copy full CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
@@ -17,7 +17,18 @@ I18n.register('en', {
   'sort.code': 'code',
   'sort.hue': 'hue',
   'sort.lightness': 'lightness',
+  'sort.family': 'colour family',
   'toast.sort': 'Sorted by {m}',
+
+  'family.red': 'Red',
+  'family.orange': 'Orange',
+  'family.yellow': 'Yellow',
+  'family.green': 'Green',
+  'family.cyan': 'Cyan',
+  'family.blue': 'Blue',
+  'family.purple': 'Purple',
+  'family.magenta': 'Magenta',
+  'family.neutral': 'Neutral / grey',
 
   'detail.approx': 'approx.',
   'detail.lightfastness': 'Lightfastness',

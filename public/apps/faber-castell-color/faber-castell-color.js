@@ -36,8 +36,25 @@
     '</div>';
   }
 
+  function groupedHtml(list) {
+    var groups = [], cur = null;
+    list.forEach(function (c) {
+      var fam = Lib.colorFamily(c);
+      if (!cur || cur.fam !== fam) { cur = { fam: fam, items: [] }; groups.push(cur); }
+      cur.items.push(c);
+    });
+    return groups.map(function (g) {
+      var label = window.I18n ? I18n.t('family.' + g.fam) : g.fam;
+      return '<section class="fc-group">' +
+        '<h2 class="fc-group-head">' + esc(label) + ' <span class="fc-group-n">' + g.items.length + '</span></h2>' +
+        '<div class="fc-grid">' + g.items.map(cellHtml).join('') + '</div></section>';
+    }).join('');
+  }
+
   function render(list) {
-    $grid.html(list.map(cellHtml).join(''));
+    $grid.html(sortMode === 'family'
+      ? groupedHtml(list)
+      : '<div class="fc-grid">' + list.map(cellHtml).join('') + '</div>');
     $noResult.toggle(list.length === 0);
     $count.text(window.I18n ? I18n.t('count.showing', { n: list.length, total: COLORS.length })
                             : list.length + ' / ' + COLORS.length);

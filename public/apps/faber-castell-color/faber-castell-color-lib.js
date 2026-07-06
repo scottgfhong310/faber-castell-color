@@ -15,9 +15,10 @@
  *   }
  *
  * Public API：
- *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness']）
+ *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness','family']）· FAMILY_ORDER
  *   filter(colors, query) → Color[]              依色號或色名過濾（不改輸入、不分大小寫）
- *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度
+ *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群
+ *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（s<0.17 → neutral）
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   hexToRgb(hex) → {r,g,b} | null
  *   relLuminance(r,g,b) → 0..1                    sRGB 相對亮度（WCAG）
@@ -90,7 +91,26 @@
     return { h: h, s: s, l: l };
   }
 
-  var SORT_MODES = ['code', 'hue', 'lightness'];
+  // 色系分群（沿色相環）；'neutral'＝黑/白/灰。移植自 color-palette-lib 的 hueFamily/FAMILY_ORDER。
+  var FAMILY_ORDER = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'magenta', 'neutral'];
+  function hueFamily(hue) {
+    var h = ((hue % 360) + 360) % 360;
+    if (h >= 345 || h < 15) return 'red';
+    if (h < 45) return 'orange';
+    if (h < 70) return 'yellow';
+    if (h < 165) return 'green';
+    if (h < 195) return 'cyan';
+    if (h < 255) return 'blue';
+    if (h < 290) return 'purple';
+    return 'magenta';
+  }
+  // 某色屬哪個色系：飽和度 <0.17（黑/白/灰、近白金屬）→ 'neutral'，否則依色相分。
+  function colorFamily(color) {
+    var x = rgbToHsl(color.r, color.g, color.b);
+    return x.s < 0.17 ? 'neutral' : hueFamily(x.h);
+  }
+
+  var SORT_MODES = ['code', 'hue', 'lightness', 'family'];
 
   // 依 mode 排序（純函式、不改輸入）：
   //   'code'      — 依色號（廠商原始順序）
@@ -109,6 +129,15 @@
       chroma.sort(function (a, b) { return (a.h - b.h) || (b.l - a.l); });
       achr.sort(function (a, b) { return b.l - a.l; });
       return chroma.concat(achr).map(function (d) { return d.c; });
+    }
+    if (mode === 'family') {
+      // 依 FAMILY_ORDER 分群排列；群內彩色依色相→明度，neutral 群依明度亮→暗。
+      var fi = {}; FAMILY_ORDER.forEach(function (f, i) { fi[f] = i; });
+      var d2 = arr.map(function (c) { var x = rgbToHsl(c.r, c.g, c.b); return { c: c, fam: colorFamily(c), h: x.h, l: x.l }; });
+      return d2.sort(function (a, b) {
+        return (fi[a.fam] - fi[b.fam]) ||
+               (a.fam === 'neutral' ? (b.l - a.l) : ((a.h - b.h) || (b.l - a.l)));
+      }).map(function (d) { return d.c; });
     }
     return arr.sort(function (a, b) { return (parseInt(a.code, 10) || 0) - (parseInt(b.code, 10) || 0); });
   }
@@ -158,8 +187,10 @@
   window.FaberCastellCssLib = {
     FOLDER: FOLDER,
     SORT_MODES: SORT_MODES,
+    FAMILY_ORDER: FAMILY_ORDER,
     filter: filter,
     sortColors: sortColors,
+    colorFamily: colorFamily,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
     relLuminance: relLuminance,
