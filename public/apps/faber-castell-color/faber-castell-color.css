@@ -86,6 +86,13 @@ main { min-height: 100vh; }
 }
 .fc-swatch .code { font-size: .82rem; font-weight: 600; }
 .fc-swatch .badge { font-size: .72rem; opacity: .85; }   /* 金屬近似標記 ≈ */
+
+/* 色塊上的號碼/標記：前景固定用 pickTextColor（依色塊自身相對亮度算）的值，
+ * 與主題無關。用 color:inherit 從 .fc-swatch 的 inline 前景繼承，並以較高特異度
+ * 蓋過 materialize-dark.css 對裸 <span> 設的 color:var(--mz-text)
+ * ——否則號碼會跟著 dark/light 主題跑、在淺色塊上看不見。 */
+.fc-swatch .code, .fc-swatch .badge,
+.detail-head .d-code, .detail-head .d-approx { color: inherit; }
 .fc-meta { padding: 7px 10px 9px; }
 .fc-meta .name { font-size: .8rem; color: var(--text); line-height: 1.25;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
