@@ -63,7 +63,20 @@ light/dark；色塊上的**文字**黑白由 `pickTextColor`（WCAG 相對亮度
 
 ## 6. lib ↔ 控制器邊界（§4.1）
 
-- **lib（`FaberCastellCssLib`）純邏輯**：`filter` / `hexToRgb` / `relLuminance` / `pickTextColor` /
-  `copyValue` / `buildCss`——「離開這個畫面仍成立」的都在這，零依賴、不碰 DOM。
-- **控制器（`faber-castell-color.js`）碰 DOM**：渲染網格、Materialize Modal、`navigator.clipboard`
-  （含 `execCommand` 回退）、Blob 下載、toast、i18n 重繪、主題/語言切換。
+- **lib（`FaberCastellCssLib`）純邏輯**：`filter` / `sortColors` / `colorFamily` / `hexToRgb` / `rgbToHsl` /
+  `relLuminance` / `pickTextColor` / `copyValue` / `buildCss`——「離開這個畫面仍成立」的都在這，零依賴、不碰 DOM。
+- **控制器（`faber-castell-color.js`）碰 DOM**：渲染網格與色系分群 sticky 標頭、排序側鍵、Materialize Modal、
+  `navigator.clipboard`（含 `execCommand` 回退）、Blob 下載、toast、i18n 重繪、主題/語言切換。
+
+## 7. 排序與「金屬即中性」
+
+排序側鍵（`#setting-sort`）循環四模式、預設色號、存 `localStorage('faber-castell-color-sort')`：
+`code`（廠商順序）→ `hue`（色相光譜）→ `lightness`（明度）→ `family`（9 色系分群 + sticky 標頭）。
+
+- **無彩度統一判準 `isAchromatic(color)`**：`hue` 與 `family` 兩模式共用同一條界線——**金屬色**（`note` 含
+  metallic）**或** HSL 飽和度 `s < 0.17`。彩色排色相／進對應色系，無彩度殿後／歸 `neutral` 群、依明度排。
+- **為什麼是 0.17**：量測後 12 個灰系（warm/cold grey）飽和度最高 0.158，最低的「muted 真色」
+  （olive 173、chromium 174、nougat 178）≥0.19，中間有乾淨間隙。取 0.17 讓所有灰歸中性，又不會誤抓帶灰的棕/橄欖色。
+- **金屬即中性**：6 個金屬色（250/251/252、290/292/294）是近白漸層色票，HSL 在近白處會把微小色差**放大成高飽和度**
+  （如 gold `#fffdf4` 算出 s≈1.0），若只看飽和度會被誤分進黃/藍/洋紅。故 `isAchromatic` **明確把金屬色一律當中性**，
+  讓它們在色相與分群兩種瀏覽下都跟灰系待在一起（與 §2 「金屬色無單一真值、標近似」一致）。
