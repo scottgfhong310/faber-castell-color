@@ -18,7 +18,7 @@
  *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness','family']）· FAMILY_ORDER
  *   filter(colors, query) → Color[]              依色號或色名過濾（不改輸入、不分大小寫）
  *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群
- *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（s<0.17 → neutral）
+ *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（金屬色或 s<0.17 → neutral）
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   hexToRgb(hex) → {r,g,b} | null
  *   relLuminance(r,g,b) → 0..1                    sRGB 相對亮度（WCAG）
@@ -104,10 +104,14 @@
     if (h < 290) return 'purple';
     return 'magenta';
   }
-  // 某色屬哪個色系：飽和度 <0.17（黑/白/灰、近白金屬）→ 'neutral'，否則依色相分。
+  // 是否視為無彩度：金屬色（漸層/近似）一律算中性；否則看飽和度 <0.17（黑/白/灰）。
+  // 「金屬即中性」——近白金屬（gold/silver/copper…）在 HSL 近白處飽和度會被放大而誤判有彩度，故明確歸中性。
+  function isAchromatic(color) {
+    return isMetallic(color) || rgbToHsl(color.r, color.g, color.b).s < 0.17;
+  }
+  // 某色屬哪個色系：無彩度 → 'neutral'，否則依色相分。
   function colorFamily(color) {
-    var x = rgbToHsl(color.r, color.g, color.b);
-    return x.s < 0.17 ? 'neutral' : hueFamily(x.h);
+    return isAchromatic(color) ? 'neutral' : hueFamily(rgbToHsl(color.r, color.g, color.b).h);
   }
 
   var SORT_MODES = ['code', 'hue', 'lightness', 'family'];
@@ -122,10 +126,10 @@
       return arr.sort(function (a, b) { return relLuminance(b.r, b.g, b.b) - relLuminance(a.r, a.g, a.b); });
     }
     if (mode === 'hue') {
-      // s < 0.17：黑/白/灰（含帶微暖冷調的 warm/cold grey，飽和度 ≤0.16）與近白金屬 → 視為無彩度、殿後
-      var dec = arr.map(function (c) { var x = rgbToHsl(c.r, c.g, c.b); return { c: c, h: x.h, s: x.s, l: x.l }; });
-      var chroma = dec.filter(function (d) { return d.s >= 0.17; });
-      var achr = dec.filter(function (d) { return d.s < 0.17; });
+      // 無彩度（黑/白/灰、含微暖冷調 grey；金屬色一律歸此）→ 殿後、依明度亮→暗
+      var dec = arr.map(function (c) { var x = rgbToHsl(c.r, c.g, c.b); return { c: c, h: x.h, l: x.l, achr: isAchromatic(c) }; });
+      var chroma = dec.filter(function (d) { return !d.achr; });
+      var achr = dec.filter(function (d) { return d.achr; });
       chroma.sort(function (a, b) { return (a.h - b.h) || (b.l - a.l); });
       achr.sort(function (a, b) { return b.l - a.l; });
       return chroma.concat(achr).map(function (d) { return d.c; });
