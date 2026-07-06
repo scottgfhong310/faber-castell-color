@@ -15,9 +15,9 @@
  *   }
  *
  * Public API：
- *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness','family']）· FAMILY_ORDER
+ *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness','family','hex']）· FAMILY_ORDER
  *   filter(colors, query) → Color[]              依色號或色名過濾（不改輸入、不分大小寫）
- *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群
+ *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群 / hex 原始值
  *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（金屬色或 s<0.17 → neutral）
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   hexToRgb(hex) → {r,g,b} | null
@@ -114,7 +114,7 @@
     return isAchromatic(color) ? 'neutral' : hueFamily(rgbToHsl(color.r, color.g, color.b).h);
   }
 
-  var SORT_MODES = ['code', 'hue', 'lightness', 'family'];
+  var SORT_MODES = ['code', 'hue', 'lightness', 'family', 'hex'];
 
   // 依 mode 排序（純函式、不改輸入）：
   //   'code'      — 依色號（廠商原始順序）
@@ -133,6 +133,11 @@
       chroma.sort(function (a, b) { return (a.h - b.h) || (b.l - a.l); });
       achr.sort(function (a, b) { return b.l - a.l; });
       return chroma.concat(achr).map(function (d) { return d.c; });
+    }
+    if (mode === 'hex') {
+      // 原始 RGB 值 / 字典序：固定 6 位小寫 #rrggbb 的字串序 == 0xRRGGBB 數值序（R 主導 → G → B）。
+      // 非感知式排序、確定可重現，但視覺不連貫（詳見 DESIGN.md §7）。
+      return arr.sort(function (a, b) { return a.hex < b.hex ? -1 : a.hex > b.hex ? 1 : 0; });
     }
     if (mode === 'family') {
       // 依 FAMILY_ORDER 分群排列；群內彩色依色相→明度，neutral 群依明度亮→暗。

@@ -70,8 +70,12 @@ light/dark；色塊上的**文字**黑白由 `pickTextColor`（WCAG 相對亮度
 
 ## 7. 排序與「金屬即中性」
 
-排序側鍵（`#setting-sort`）循環四模式、預設色號、存 `localStorage('faber-castell-color-sort')`：
-`code`（廠商順序）→ `hue`（色相光譜）→ `lightness`（明度）→ `family`（9 色系分群 + sticky 標頭）。
+排序側鍵（`#setting-sort`）循環五模式、預設色號、存 `localStorage('faber-castell-color-sort')`：
+`code`（廠商順序）→ `hue`（色相光譜）→ `lightness`（明度）→ `family`（9 色系分群 + sticky 標頭）→ `hex`（原始值）。
+
+- **`hex` 模式屬「原始值 / 字典序」排序，非感知式**：固定 6 位小寫 `#rrggbb` 的字串序等同 `0xRRGGBB` 數值序，
+  即 **R 主導 → G → B** 的巢狀排序。確定、可重現，但視覺不連貫（高紅色綁一起、相似色可能被拉遠），
+  與 `hue`/`lightness`/`family` 的感知式排序刻意並列作對照。
 
 - **無彩度統一判準 `isAchromatic(color)`**：`hue` 與 `family` 兩模式共用同一條界線——**金屬色**（`note` 含
   metallic）**或** HSL 飽和度 `s < 0.17`。彩色排色相／進對應色系，無彩度殿後／歸 `neutral` 群、依明度排。

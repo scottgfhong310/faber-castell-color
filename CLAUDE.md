@@ -34,7 +34,7 @@ npm install && node app.js              # → http://localhost:3000/apps/faber-c
 - **唯讀參考、無後端 API**：141 色資料是靜態 `data/fc-colors.js`（`window.FC_COLORS`），
   由 `Faber-Castell/*.csv` 產生（見 DESIGN.md §資料）；不需上傳/編輯，故 `app.js` 極簡。
 - **可嵌入 lib** `faber-castell-color-lib.js`（`window.FaberCastellCssLib`）：`filter` / `sortColors`
-  （`code`/`hue`/`lightness`/`family`，無彩度殿後）/ `colorFamily`＋`FAMILY_ORDER`（9 色系分群）/
+  （`code`/`hue`/`lightness`/`family`/`hex`，無彩度殿後）/ `colorFamily`＋`FAMILY_ORDER`（9 色系分群）/
   `hexToRgb` / `rgbToHsl` / `pickTextColor`（WCAG 對比選黑白字）/ `copyValue` /
   **`buildCss`（產生整份 `:root`＋utility）**，**純邏輯不碰 DOM**；`faber-castell-color.js` 才是碰 DOM 的
   控制器（渲染、排序側鍵、色系分群 sticky 標頭、Modal、clipboard、toast）。

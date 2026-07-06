@@ -8,7 +8,7 @@ I18n.register('ja', {
   'search.empty': '該当する色がありません',
   'count.showing': '{n} / {total} 色を表示',
 
-  'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系',
+  'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系 / hex',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
@@ -18,6 +18,7 @@ I18n.register('ja', {
   'sort.hue': '色相',
   'sort.lightness': '明度',
   'sort.family': '色系グループ',
+  'sort.hex': 'hex 値',
   'toast.sort': '並び替え：{m}',
 
   'family.red': '赤',

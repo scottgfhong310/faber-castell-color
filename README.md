@@ -15,7 +15,7 @@ cross-validated) — screen approximations, **not** official Faber-Castell RGB/H
 
 - **141-colour swatch grid** — real Faber-Castell colours; code text auto-picks black/white for contrast.
 - **Search** — filter instantly by colour code or name.
-- **Sort** — a side-tool cycles the swatch order between colour code / hue spectrum / lightness / colour-family groups (nine wheel families with sticky group headers; greys tail the order); persisted.
+- **Sort** — a side-tool cycles the swatch order between colour code / hue spectrum / lightness / colour-family groups (nine wheel families with sticky group headers; greys tail the order) / raw hex value; persisted.
 - **Copy in four formats** — `var(--fc-264)`, `#008b71`, `rgb(0, 139, 113)`, `.fc-bg-264`.
 - **Detail view** — per-colour lightfastness (★ per product line) and set-assortment membership (pp. 1–3 + Goldfaber).
 - **CSS export** — view / copy / download `faber_castell_colors.css` (141 `--fc-NNN` vars + `.fc-color-NNN` / `.fc-bg-NNN`).
