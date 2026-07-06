@@ -10,8 +10,10 @@
   var COLORS = window.FC_COLORS || [];
   var META = window.FC_META || {};
   var LS_THEME = 'faber-castell-color-theme';
+  var LS_SORT = 'faber-castell-color-sort';
 
   var $grid, $noResult, $count, $search, detailModal, cssModal, current = null;
+  var sortMode = 'code';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -42,7 +44,15 @@
   }
 
   function applyFilter() {
-    render(Lib.filter(COLORS, $search.val()));
+    render(Lib.filter(Lib.sortColors(COLORS, sortMode), $search.val()));
+  }
+
+  function cycleSort() {
+    var modes = Lib.SORT_MODES;
+    sortMode = modes[(modes.indexOf(sortMode) + 1) % modes.length];
+    try { localStorage.setItem(LS_SORT, sortMode); } catch (e) { }
+    applyFilter();
+    M.toast({ html: I18n.t('toast.sort', { m: I18n.t('sort.' + sortMode) }), classes: 'teal' });
   }
 
   // ---- 明細 Modal ----------------------------------------------------------
@@ -164,11 +174,14 @@
     detailModal = M.Modal.init(document.getElementById('detail-modal'), { dismissible: true });
     cssModal = M.Modal.init(document.getElementById('css-modal'), { dismissible: true });
 
+    try { var sv = localStorage.getItem(LS_SORT); if (sv && Lib.SORT_MODES.indexOf(sv) !== -1) sortMode = sv; } catch (e) { }
+
     if (window.I18n) { I18n.apply(document); }
     applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
-    render(COLORS);
+    applyFilter();
 
     $search.on('input', applyFilter);
+    $('#setting-sort').on('click', cycleSort);
     $grid.on('click', '.fc-cell', function () { openDetail($(this).data('code') + ''); });
     $('#detail-copy').on('click', '.copy-btn', function () {
       if (current) flashCopied($(this), Lib.copyValue(current, $(this).data('fmt')));

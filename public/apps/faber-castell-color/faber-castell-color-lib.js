@@ -15,8 +15,10 @@
  *   }
  *
  * Public API：
- *   FaberCastellCssLib.FOLDER
+ *   FaberCastellCssLib.FOLDER · SORT_MODES（['code','hue','lightness']）
  *   filter(colors, query) → Color[]              依色號或色名過濾（不改輸入、不分大小寫）
+ *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度
+ *   rgbToHsl(r,g,b) → {h,s,l}
  *   hexToRgb(hex) → {r,g,b} | null
  *   relLuminance(r,g,b) → 0..1                    sRGB 相對亮度（WCAG）
  *   pickTextColor(color) → '#000000' | '#ffffff' 色塊上文字該用黑或白（對比取勝者）
@@ -71,6 +73,46 @@
     return /metallic/i.test(color.note || '');
   }
 
+  // sRGB → HSL（h:0..360, s/l:0..1）——移植自 color-palette-lib.rgbToHsl
+  function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, h = 0, s = 0;
+    if (mx !== mn) {
+      var d = mx - mn;
+      s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+      switch (mx) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        default: h = (r - g) / d + 4;
+      }
+      h *= 60;
+    }
+    return { h: h, s: s, l: l };
+  }
+
+  var SORT_MODES = ['code', 'hue', 'lightness'];
+
+  // 依 mode 排序（純函式、不改輸入）：
+  //   'code'      — 依色號（廠商原始順序）
+  //   'hue'       — 依色相排成光譜；無彩度（s<0.12：黑/白/灰/近白金屬）殿後、依明度亮→暗
+  //   'lightness' — 依相對亮度亮→暗
+  function sortColors(colors, mode) {
+    var arr = colors.slice();
+    if (mode === 'lightness') {
+      return arr.sort(function (a, b) { return relLuminance(b.r, b.g, b.b) - relLuminance(a.r, a.g, a.b); });
+    }
+    if (mode === 'hue') {
+      // s < 0.17：黑/白/灰（含帶微暖冷調的 warm/cold grey，飽和度 ≤0.16）與近白金屬 → 視為無彩度、殿後
+      var dec = arr.map(function (c) { var x = rgbToHsl(c.r, c.g, c.b); return { c: c, h: x.h, s: x.s, l: x.l }; });
+      var chroma = dec.filter(function (d) { return d.s >= 0.17; });
+      var achr = dec.filter(function (d) { return d.s < 0.17; });
+      chroma.sort(function (a, b) { return (a.h - b.h) || (b.l - a.l); });
+      achr.sort(function (a, b) { return b.l - a.l; });
+      return chroma.concat(achr).map(function (d) { return d.c; });
+    }
+    return arr.sort(function (a, b) { return (parseInt(a.code, 10) || 0) - (parseInt(b.code, 10) || 0); });
+  }
+
   function formatRgb(color) {
     return 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')';
   }
@@ -115,8 +157,11 @@
 
   window.FaberCastellCssLib = {
     FOLDER: FOLDER,
+    SORT_MODES: SORT_MODES,
     filter: filter,
+    sortColors: sortColors,
     hexToRgb: hexToRgb,
+    rgbToHsl: rgbToHsl,
     relLuminance: relLuminance,
     pickTextColor: pickTextColor,
     isMetallic: isMetallic,

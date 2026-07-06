@@ -15,6 +15,7 @@ cross-validated) — screen approximations, **not** official Faber-Castell RGB/H
 
 - **141-colour swatch grid** — real Faber-Castell colours; code text auto-picks black/white for contrast.
 - **Search** — filter instantly by colour code or name.
+- **Sort** — a side-tool cycles the swatch order between colour code / hue spectrum / lightness (greys & near-white metallics tail the hue order); persisted.
 - **Copy in four formats** — `var(--fc-264)`, `#008b71`, `rgb(0, 139, 113)`, `.fc-bg-264`.
 - **Detail view** — per-colour lightfastness (★ per product line) and set-assortment membership (pp. 1–3 + Goldfaber).
 - **CSS export** — view / copy / download `faber_castell_colors.css` (141 `--fc-NNN` vars + `.fc-color-NNN` / `.fc-bg-NNN`).
@@ -49,7 +50,9 @@ Pure logic, no DOM — embeddable anywhere:
 | Method | Purpose |
 |---|---|
 | `filter(colors, query)` | filter by code or name (case-insensitive, does not mutate) |
+| `sortColors(colors, mode)` | sort by `'code'` / `'hue'` / `'lightness'` (does not mutate) |
 | `hexToRgb(hex)` | `'#008b71'` → `{r,g,b}` |
+| `rgbToHsl(r,g,b)` | `'#008b71'` → `{h,s,l}` |
 | `pickTextColor(color)` | `'#000000'` / `'#ffffff'` — higher-contrast text for a swatch (WCAG) |
 | `copyValue(color, fmt)` | `fmt`: `'var'` / `'hex'` / `'rgb'` / `'class'` → copy string |
 | `buildCss(colors)` | full CSS text (`:root` vars + utility classes) |

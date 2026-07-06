@@ -8,10 +8,16 @@ I18n.register('ja', {
   'search.empty': '該当する色がありません',
   'count.showing': '{n} / {total} 色を表示',
 
+  'tool.sort': '並び替え：番号 / 色相 / 明度',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
   'tool.lang': '言語',
+
+  'sort.code': '番号',
+  'sort.hue': '色相',
+  'sort.lightness': '明度',
+  'toast.sort': '並び替え：{m}',
 
   'detail.approx': '近似',
   'detail.lightfastness': '耐光性',

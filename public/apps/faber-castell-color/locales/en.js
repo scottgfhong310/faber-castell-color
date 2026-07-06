@@ -8,10 +8,16 @@ I18n.register('en', {
   'search.empty': 'No matching colours',
   'count.showing': 'Showing {n} of {total}',
 
+  'tool.sort': 'Sort: code / hue / lightness',
   'tool.css': 'View / copy full CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
   'tool.lang': 'Language',
+
+  'sort.code': 'code',
+  'sort.hue': 'hue',
+  'sort.lightness': 'lightness',
+  'toast.sort': 'Sorted by {m}',
 
   'detail.approx': 'approx.',
   'detail.lightfastness': 'Lightfastness',
