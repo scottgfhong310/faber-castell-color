@@ -1,0 +1,150 @@
+/* faber-castell-color — 本頁樣式 + 主題 token（§5.1）
+ * Materialize 元件深色交給 materialize-dark.css；此檔只管非 Materialize 的自訂元素。
+ * 注意：色票（.fc-swatch）保留 Faber-Castell 真實顏色，不隨主題重著色（比照 §4.7「內容本身即設計」）。
+ */
+
+/* ===== 主題 token（light / dark，預設 dark） ===== */
+:root, [data-theme="dark"] {
+  --bg:#0f1115; --surface:#161a22; --surface-2:#1b2030;
+  --text:#e8eaf0; --muted:#a8b0c0; --border:rgba(255,255,255,.12);
+  --accent:#90caf9; --card-bg:#0f1115;
+  --tool-bg:#1b2030; --tool-fg:#e8eaf0;
+  --overlay:rgba(10,14,22,.84); --drop-border:#3a4252;
+}
+[data-theme="light"] {
+  --bg:#f6f8fa; --surface:#fff; --surface-2:#eef1f5;
+  --text:#1f2328; --muted:#57606a; --border:rgba(0,0,0,.12);
+  --accent:#0969da; --card-bg:#fff;
+  --tool-bg:#fff; --tool-fg:#1f2328;
+  --overlay:rgba(240,243,247,.86); --drop-border:#c4ccd6;
+}
+
+/* 讓 Materialize 元件（modal / btn-flat / input…）跟隨 app 的 --accent（而非 teal） */
+html.dark-mode, html.light-mode {
+  --mz-primary: var(--accent);
+  --mz-focus: var(--accent);
+  --mz-surface: var(--surface);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+  min-height: 100vh;
+}
+
+main { min-height: 100vh; }
+
+.app-container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 0 72px;
+}
+
+/* ===== 頂部：標題 + 搜尋 + 計數 ===== */
+.topbar {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.topbar h1 {
+  font-size: 1.28rem; font-weight: 500; margin: 0; color: var(--text);
+}
+.topbar .sub { font-size: .82rem; color: var(--muted); margin-top: 2px; }
+.search-wrap {
+  margin-left: auto; display: flex; align-items: center; gap: 8px;
+  position: relative;
+}
+.search-wrap i.material-icons { color: var(--muted); font-size: 20px; }
+#search {
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 10px;
+  height: 38px; padding: 0 12px; width: 240px; font-size: .9rem;
+  outline: none; transition: border-color .15s;
+}
+#search:focus { border-color: var(--accent); }
+.count { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+
+/* ===== 色票網格 ===== */
+.fc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 10px;
+}
+.fc-cell {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  background: var(--card-bg); cursor: pointer;
+  transition: transform .1s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.fc-cell:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.22); border-color: var(--accent); }
+.fc-swatch {
+  height: 66px; display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 6px 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.fc-swatch .code { font-size: .82rem; font-weight: 600; }
+.fc-swatch .badge { font-size: .72rem; opacity: .85; }   /* 金屬近似標記 ≈ */
+.fc-meta { padding: 7px 10px 9px; }
+.fc-meta .name { font-size: .8rem; color: var(--text); line-height: 1.25;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fc-meta .hex { font-size: .72rem; color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.no-result { text-align: center; color: var(--muted); padding: 48px 0; }
+
+/* ===== 明細 Modal ===== */
+.detail-modal { border-radius: 14px; max-width: 560px; }
+.detail-modal .modal-content { padding: 0; }
+.detail-head {
+  height: 120px; display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 14px 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.detail-head .d-code { font-size: 1.3rem; font-weight: 600; }
+.detail-head .d-approx { font-size: .78rem; opacity: .9; }
+.detail-body { padding: 16px 20px 6px; }
+.detail-body .d-name { font-size: 1.05rem; font-weight: 500; color: var(--text); }
+.detail-body .d-note { font-size: .76rem; color: var(--muted); margin: 2px 0 12px; }
+
+/* 複製鈕列 */
+.copy-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--border); border-radius: 9px;
+  background: var(--surface); color: var(--text);
+  padding: 7px 11px; font-size: .82rem; cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.copy-btn:hover { border-color: var(--accent); }
+.copy-btn.copied { border-color: #37b26b; color: #37b26b; }
+.copy-btn .material-icons { font-size: 16px; }
+
+/* 明細裡的區塊（耐光度 / 套組） */
+.d-section { margin: 12px 0; }
+.d-section h6 { font-size: .82rem; color: var(--muted); font-weight: 500; margin: 0 0 6px; text-transform: none; }
+.lf-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.lf-table td { padding: 3px 0; border-bottom: 1px solid var(--border); }
+.lf-table td.lf-val { text-align: right; color: var(--accent); font-family: ui-monospace, monospace; letter-spacing: 1px; }
+.set-line { font-size: .82rem; margin: 3px 0; color: var(--text); }
+.set-line .line-name { color: var(--muted); }
+.set-line .sizes { font-family: ui-monospace, monospace; }
+.d-empty { font-size: .8rem; color: var(--muted); }
+
+/* ===== CSS 匯出 Modal ===== */
+.css-modal { border-radius: 14px; max-width: 720px; }
+.css-modal .modal-content h5 { font-size: 1.05rem; font-weight: 500; }
+.css-modal pre {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; max-height: 46vh; overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem;
+  line-height: 1.5; color: var(--text); white-space: pre;
+}
+.css-modal .css-sub { font-size: .8rem; color: var(--muted); margin: 4px 0 10px; }
+
+@media (max-width: 600px) {
+  #search { width: 150px; }
+  .topbar { gap: 10px; }
+}

@@ -1,0 +1,739 @@
+colour_code,colour_name,product_line,set_size_ct,included
+101,white,Polychromos colour pencils,12,1
+101,white,Polychromos colour pencils,24,1
+101,white,Polychromos colour pencils,36,1
+101,white,Polychromos colour pencils,60,1
+101,white,Polychromos colour pencils,72,1
+101,white,Polychromos Pastels,12,1
+101,white,Polychromos Pastels,24,1
+101,white,Polychromos Pastels,36,1
+101,white,Polychromos Pastels,60,1
+101,white,Albrecht Durer watercolour pencils,12,1
+101,white,Albrecht Durer watercolour pencils,24,1
+101,white,Albrecht Durer watercolour pencils,36,1
+101,white,Albrecht Durer watercolour pencils,60,1
+101,white,Albrecht Durer watercolour pencils,72,1
+101,white,Albrecht Durer Magnus,12,1
+101,white,Albrecht Durer Magnus,24,1
+101,white,Albrecht Durer Magnus,30,1
+101,white,Pitt Pastel pencils,12,1
+101,white,Pitt Pastel pencils,24,1
+101,white,Pitt Pastel pencils,36,1
+101,white,Pitt Pastel pencils,60,1
+102,cream,Polychromos colour pencils,36,1
+102,cream,Polychromos colour pencils,60,1
+102,cream,Polychromos colour pencils,72,1
+102,cream,Albrecht Durer watercolour pencils,36,1
+102,cream,Albrecht Durer watercolour pencils,60,1
+102,cream,Albrecht Durer watercolour pencils,72,1
+102,cream,Albrecht Durer Magnus,30,1
+102,cream,Pitt Pastel pencils,24,1
+102,cream,Pitt Pastel pencils,36,1
+102,cream,Pitt Pastel pencils,60,1
+103,ivory,Polychromos Pastels,60,1
+103,ivory,Pitt Pastel pencils,36,1
+103,ivory,Pitt Pastel pencils,60,1
+104,light yellow glaze,Polychromos colour pencils,24,1
+104,light yellow glaze,Polychromos colour pencils,36,1
+104,light yellow glaze,Polychromos colour pencils,60,1
+104,light yellow glaze,Polychromos colour pencils,72,1
+104,light yellow glaze,Polychromos Pastels,24,1
+104,light yellow glaze,Polychromos Pastels,36,1
+104,light yellow glaze,Polychromos Pastels,60,1
+104,light yellow glaze,Albrecht Durer watercolour pencils,24,1
+104,light yellow glaze,Albrecht Durer watercolour pencils,36,1
+104,light yellow glaze,Albrecht Durer watercolour pencils,60,1
+104,light yellow glaze,Albrecht Durer watercolour pencils,72,1
+104,light yellow glaze,Albrecht Durer Magnus,24,1
+104,light yellow glaze,Albrecht Durer Magnus,30,1
+104,light yellow glaze,Pitt Pastel pencils,60,1
+105,light cadmium yellow,Polychromos colour pencils,60,1
+105,light cadmium yellow,Polychromos colour pencils,72,1
+105,light cadmium yellow,Albrecht Durer watercolour pencils,60,1
+105,light cadmium yellow,Albrecht Durer watercolour pencils,72,1
+106,light chrome yellow,Pitt Pastel pencils,12,1
+106,light chrome yellow,Pitt Pastel pencils,24,1
+106,light chrome yellow,Pitt Pastel pencils,36,1
+106,light chrome yellow,Pitt Pastel pencils,60,1
+107,cadmium yellow,Polychromos colour pencils,12,1
+107,cadmium yellow,Polychromos colour pencils,24,1
+107,cadmium yellow,Polychromos colour pencils,36,1
+107,cadmium yellow,Polychromos colour pencils,60,1
+107,cadmium yellow,Polychromos colour pencils,72,1
+107,cadmium yellow,Polychromos Pastels,12,1
+107,cadmium yellow,Polychromos Pastels,24,1
+107,cadmium yellow,Polychromos Pastels,36,1
+107,cadmium yellow,Polychromos Pastels,60,1
+107,cadmium yellow,Albrecht Durer watercolour pencils,12,1
+107,cadmium yellow,Albrecht Durer watercolour pencils,24,1
+107,cadmium yellow,Albrecht Durer watercolour pencils,36,1
+107,cadmium yellow,Albrecht Durer watercolour pencils,60,1
+107,cadmium yellow,Albrecht Durer watercolour pencils,72,1
+107,cadmium yellow,Albrecht Durer Magnus,12,1
+107,cadmium yellow,Albrecht Durer Magnus,24,1
+107,cadmium yellow,Albrecht Durer Magnus,30,1
+108,dark cadmium yellow,Polychromos colour pencils,60,1
+108,dark cadmium yellow,Polychromos colour pencils,72,1
+108,dark cadmium yellow,Polychromos Pastels,60,1
+108,dark cadmium yellow,Albrecht Durer watercolour pencils,60,1
+108,dark cadmium yellow,Albrecht Durer watercolour pencils,72,1
+109,dark chrome yellow,Polychromos colour pencils,24,1
+109,dark chrome yellow,Polychromos colour pencils,36,1
+109,dark chrome yellow,Polychromos colour pencils,60,1
+109,dark chrome yellow,Polychromos colour pencils,72,1
+109,dark chrome yellow,Polychromos Pastels,36,1
+109,dark chrome yellow,Polychromos Pastels,60,1
+109,dark chrome yellow,Albrecht Durer watercolour pencils,24,1
+109,dark chrome yellow,Albrecht Durer watercolour pencils,36,1
+109,dark chrome yellow,Albrecht Durer watercolour pencils,60,1
+109,dark chrome yellow,Albrecht Durer watercolour pencils,72,1
+109,dark chrome yellow,Albrecht Durer Magnus,24,1
+109,dark chrome yellow,Albrecht Durer Magnus,30,1
+109,dark chrome yellow,Pitt Pastel pencils,12,1
+109,dark chrome yellow,Pitt Pastel pencils,24,1
+109,dark chrome yellow,Pitt Pastel pencils,36,1
+109,dark chrome yellow,Pitt Pastel pencils,60,1
+110,phthalo blue,Polychromos colour pencils,12,1
+110,phthalo blue,Polychromos colour pencils,24,1
+110,phthalo blue,Polychromos colour pencils,36,1
+110,phthalo blue,Polychromos colour pencils,60,1
+110,phthalo blue,Polychromos colour pencils,72,1
+110,phthalo blue,Polychromos Pastels,24,1
+110,phthalo blue,Polychromos Pastels,36,1
+110,phthalo blue,Polychromos Pastels,60,1
+110,phthalo blue,Albrecht Durer watercolour pencils,12,1
+110,phthalo blue,Albrecht Durer watercolour pencils,24,1
+110,phthalo blue,Albrecht Durer watercolour pencils,36,1
+110,phthalo blue,Albrecht Durer watercolour pencils,60,1
+110,phthalo blue,Albrecht Durer watercolour pencils,72,1
+110,phthalo blue,Albrecht Durer Magnus,12,1
+110,phthalo blue,Albrecht Durer Magnus,24,1
+110,phthalo blue,Albrecht Durer Magnus,30,1
+111,cadmium orange,Polychromos colour pencils,36,1
+111,cadmium orange,Polychromos colour pencils,60,1
+111,cadmium orange,Polychromos colour pencils,72,1
+111,cadmium orange,Albrecht Durer watercolour pencils,36,1
+111,cadmium orange,Albrecht Durer watercolour pencils,60,1
+111,cadmium orange,Albrecht Durer watercolour pencils,72,1
+112,leaf green,Polychromos colour pencils,36,1
+112,leaf green,Polychromos colour pencils,60,1
+112,leaf green,Polychromos colour pencils,72,1
+112,leaf green,Albrecht Durer watercolour pencils,36,1
+112,leaf green,Albrecht Durer watercolour pencils,60,1
+112,leaf green,Albrecht Durer watercolour pencils,72,1
+112,leaf green,Albrecht Durer Magnus,30,1
+113,orange glaze,Pitt Pastel pencils,24,1
+113,orange glaze,Pitt Pastel pencils,36,1
+113,orange glaze,Pitt Pastel pencils,60,1
+115,dark cadmium orange,Polychromos colour pencils,12,1
+115,dark cadmium orange,Polychromos colour pencils,24,1
+115,dark cadmium orange,Polychromos colour pencils,36,1
+115,dark cadmium orange,Polychromos colour pencils,60,1
+115,dark cadmium orange,Polychromos colour pencils,72,1
+115,dark cadmium orange,Polychromos Pastels,12,1
+115,dark cadmium orange,Polychromos Pastels,24,1
+115,dark cadmium orange,Polychromos Pastels,36,1
+115,dark cadmium orange,Polychromos Pastels,60,1
+115,dark cadmium orange,Albrecht Durer watercolour pencils,12,1
+115,dark cadmium orange,Albrecht Durer watercolour pencils,24,1
+115,dark cadmium orange,Albrecht Durer watercolour pencils,36,1
+115,dark cadmium orange,Albrecht Durer watercolour pencils,60,1
+115,dark cadmium orange,Albrecht Durer watercolour pencils,72,1
+115,dark cadmium orange,Albrecht Durer Magnus,12,1
+115,dark cadmium orange,Albrecht Durer Magnus,24,1
+115,dark cadmium orange,Albrecht Durer Magnus,30,1
+118,scarlet red,Polychromos colour pencils,72,1
+118,scarlet red,Polychromos Pastels,60,1
+118,scarlet red,Albrecht Durer watercolour pencils,72,1
+118,scarlet red,Pitt Pastel pencils,12,1
+118,scarlet red,Pitt Pastel pencils,24,1
+118,scarlet red,Pitt Pastel pencils,36,1
+118,scarlet red,Pitt Pastel pencils,60,1
+119,light magenta,Polychromos colour pencils,72,1
+119,light magenta,Albrecht Durer watercolour pencils,72,1
+120,ultramarine,Polychromos colour pencils,24,1
+120,ultramarine,Polychromos colour pencils,36,1
+120,ultramarine,Polychromos colour pencils,60,1
+120,ultramarine,Polychromos colour pencils,72,1
+120,ultramarine,Polychromos Pastels,12,1
+120,ultramarine,Polychromos Pastels,24,1
+120,ultramarine,Polychromos Pastels,36,1
+120,ultramarine,Polychromos Pastels,60,1
+120,ultramarine,Albrecht Durer watercolour pencils,24,1
+120,ultramarine,Albrecht Durer watercolour pencils,36,1
+120,ultramarine,Albrecht Durer watercolour pencils,60,1
+120,ultramarine,Albrecht Durer watercolour pencils,72,1
+120,ultramarine,Albrecht Durer Magnus,24,1
+120,ultramarine,Albrecht Durer Magnus,30,1
+121,pale geranium lake,Polychromos colour pencils,24,1
+121,pale geranium lake,Polychromos colour pencils,36,1
+121,pale geranium lake,Polychromos colour pencils,60,1
+121,pale geranium lake,Polychromos colour pencils,72,1
+121,pale geranium lake,Polychromos Pastels,60,1
+121,pale geranium lake,Albrecht Durer watercolour pencils,24,1
+121,pale geranium lake,Albrecht Durer watercolour pencils,36,1
+121,pale geranium lake,Albrecht Durer watercolour pencils,60,1
+121,pale geranium lake,Albrecht Durer watercolour pencils,72,1
+121,pale geranium lake,Albrecht Durer Magnus,24,1
+121,pale geranium lake,Albrecht Durer Magnus,30,1
+123,fuchsia,Polychromos Pastels,24,1
+123,fuchsia,Polychromos Pastels,36,1
+123,fuchsia,Polychromos Pastels,60,1
+124,rose carmine,Polychromos colour pencils,36,1
+124,rose carmine,Polychromos colour pencils,60,1
+124,rose carmine,Polychromos colour pencils,72,1
+124,rose carmine,Albrecht Durer watercolour pencils,36,1
+124,rose carmine,Albrecht Durer watercolour pencils,60,1
+124,rose carmine,Albrecht Durer watercolour pencils,72,1
+124,rose carmine,Pitt Pastel pencils,36,1
+124,rose carmine,Pitt Pastel pencils,60,1
+125,middle purple pink,Polychromos colour pencils,36,1
+125,middle purple pink,Polychromos colour pencils,60,1
+125,middle purple pink,Polychromos colour pencils,72,1
+125,middle purple pink,Polychromos Pastels,36,1
+125,middle purple pink,Polychromos Pastels,60,1
+125,middle purple pink,Albrecht Durer watercolour pencils,36,1
+125,middle purple pink,Albrecht Durer watercolour pencils,60,1
+125,middle purple pink,Albrecht Durer watercolour pencils,72,1
+125,middle purple pink,Albrecht Durer Magnus,30,1
+126,permanent carmine,Albrecht Durer watercolour pencils,72,1
+126,permanent carmine,Polychromos colour pencils,60,1
+126,permanent carmine,Polychromos colour pencils,72,1
+126,permanent carmine,Albrecht Durer watercolour pencils,60,1
+127,pink carmine,Pitt Pastel pencils,12,1
+127,pink carmine,Pitt Pastel pencils,24,1
+127,pink carmine,Pitt Pastel pencils,36,1
+127,pink carmine,Pitt Pastel pencils,60,1
+129,pink madder lake,Polychromos colour pencils,60,1
+129,pink madder lake,Polychromos colour pencils,72,1
+129,pink madder lake,Polychromos Pastels,60,1
+129,pink madder lake,Albrecht Durer watercolour pencils,60,1
+129,pink madder lake,Albrecht Durer watercolour pencils,72,1
+130,salmon,Polychromos Pastels,60,1
+131,coral,Polychromos colour pencils,60,1
+131,coral,Polychromos colour pencils,72,1
+131,coral,Polychromos Pastels,36,1
+131,coral,Polychromos Pastels,60,1
+131,coral,Albrecht Durer watercolour pencils,60,1
+131,coral,Albrecht Durer watercolour pencils,72,1
+131,coral,Pitt Pastel pencils,36,1
+131,coral,Pitt Pastel pencils,60,1
+132,beige red,Polychromos colour pencils,72,1
+132,beige red,Polychromos Pastels,12,1
+132,beige red,Polychromos Pastels,24,1
+132,beige red,Polychromos Pastels,36,1
+132,beige red,Polychromos Pastels,60,1
+132,beige red,Albrecht Durer watercolour pencils,72,1
+132,beige red,Pitt Pastel pencils,24,1
+132,beige red,Pitt Pastel pencils,36,1
+132,beige red,Pitt Pastel pencils,60,1
+133,magenta,Polychromos colour pencils,12,1
+133,magenta,Polychromos colour pencils,24,1
+133,magenta,Polychromos colour pencils,36,1
+133,magenta,Polychromos colour pencils,60,1
+133,magenta,Polychromos colour pencils,72,1
+133,magenta,Polychromos Pastels,60,1
+133,magenta,Albrecht Durer watercolour pencils,12,1
+133,magenta,Albrecht Durer watercolour pencils,24,1
+133,magenta,Albrecht Durer watercolour pencils,36,1
+133,magenta,Albrecht Durer watercolour pencils,60,1
+133,magenta,Albrecht Durer watercolour pencils,72,1
+133,magenta,Albrecht Durer Magnus,12,1
+133,magenta,Albrecht Durer Magnus,24,1
+133,magenta,Albrecht Durer Magnus,30,1
+134,crimson,Polychromos colour pencils,72,1
+134,crimson,Polychromos Pastels,60,1
+134,crimson,Albrecht Durer watercolour pencils,72,1
+136,purple violet,Polychromos colour pencils,60,1
+136,purple violet,Polychromos colour pencils,72,1
+136,purple violet,Albrecht Durer watercolour pencils,60,1
+136,purple violet,Albrecht Durer watercolour pencils,72,1
+137,blue violet,Polychromos Pastels,12,1
+137,blue violet,Polychromos Pastels,24,1
+137,blue violet,Polychromos Pastels,36,1
+137,blue violet,Polychromos Pastels,60,1
+138,violet,Pitt Pastel pencils,12,1
+138,violet,Pitt Pastel pencils,24,1
+138,violet,Pitt Pastel pencils,36,1
+138,violet,Pitt Pastel pencils,60,1
+140,light ultramarin,Polychromos colour pencils,12,1
+140,light ultramarin,Polychromos colour pencils,24,1
+140,light ultramarin,Polychromos colour pencils,36,1
+140,light ultramarin,Polychromos colour pencils,60,1
+140,light ultramarin,Polychromos colour pencils,72,1
+140,light ultramarin,Polychromos Pastels,60,1
+140,light ultramarin,Albrecht Durer watercolour pencils,12,1
+140,light ultramarin,Albrecht Durer watercolour pencils,24,1
+140,light ultramarin,Albrecht Durer watercolour pencils,36,1
+140,light ultramarin,Albrecht Durer watercolour pencils,60,1
+140,light ultramarin,Albrecht Durer watercolour pencils,72,1
+140,light ultramarin,Albrecht Durer Magnus,12,1
+140,light ultramarin,Albrecht Durer Magnus,24,1
+140,light ultramarin,Albrecht Durer Magnus,30,1
+140,light ultramarin,Pitt Pastel pencils,12,1
+140,light ultramarin,Pitt Pastel pencils,24,1
+140,light ultramarin,Pitt Pastel pencils,36,1
+140,light ultramarin,Pitt Pastel pencils,60,1
+141,Delft blue,Polychromos colour pencils,60,1
+141,Delft blue,Polychromos colour pencils,72,1
+141,Delft blue,Polychromos Pastels,60,1
+141,Delft blue,Albrecht Durer watercolour pencils,60,1
+141,Delft blue,Albrecht Durer watercolour pencils,72,1
+142,madder,Polychromos colour pencils,60,1
+142,madder,Polychromos colour pencils,72,1
+142,madder,Albrecht Durer watercolour pencils,60,1
+142,madder,Albrecht Durer watercolour pencils,72,1
+143,cobalt blue,Polychromos colour pencils,72,1
+143,cobalt blue,Albrecht Durer watercolour pencils,72,1
+143,cobalt blue,Pitt Pastel pencils,24,1
+143,cobalt blue,Pitt Pastel pencils,36,1
+143,cobalt blue,Pitt Pastel pencils,60,1
+145,light phthalo blue,Polychromos colour pencils,72,1
+145,light phthalo blue,Polychromos Pastels,60,1
+145,light phthalo blue,Albrecht Durer watercolour pencils,72,1
+146,sky blue,Polychromos colour pencils,72,1
+146,sky blue,Albrecht Durer watercolour pencils,72,1
+149,bluish turquoise,Polychromos colour pencils,60,1
+149,bluish turquoise,Polychromos colour pencils,72,1
+149,bluish turquoise,Polychromos Pastels,36,1
+149,bluish turquoise,Polychromos Pastels,60,1
+149,bluish turquoise,Albrecht Durer watercolour pencils,60,1
+149,bluish turquoise,Albrecht Durer watercolour pencils,72,1
+149,bluish turquoise,Pitt Pastel pencils,24,1
+149,bluish turquoise,Pitt Pastel pencils,36,1
+149,bluish turquoise,Pitt Pastel pencils,60,1
+151,helioblue reddish,Polychromos colour pencils,24,1
+151,helioblue reddish,Polychromos colour pencils,36,1
+151,helioblue reddish,Polychromos colour pencils,60,1
+151,helioblue reddish,Polychromos colour pencils,72,1
+151,helioblue reddish,Polychromos Pastels,60,1
+151,helioblue reddish,Albrecht Durer watercolour pencils,24,1
+151,helioblue reddish,Albrecht Durer watercolour pencils,36,1
+151,helioblue reddish,Albrecht Durer watercolour pencils,60,1
+151,helioblue reddish,Albrecht Durer watercolour pencils,72,1
+151,helioblue reddish,Albrecht Durer Magnus,24,1
+151,helioblue reddish,Albrecht Durer Magnus,30,1
+151,helioblue reddish,Pitt Pastel pencils,12,1
+151,helioblue reddish,Pitt Pastel pencils,24,1
+151,helioblue reddish,Pitt Pastel pencils,36,1
+151,helioblue reddish,Pitt Pastel pencils,60,1
+153,cobalt turquoise,Polychromos colour pencils,36,1
+153,cobalt turquoise,Polychromos colour pencils,60,1
+153,cobalt turquoise,Polychromos colour pencils,72,1
+153,cobalt turquoise,Polychromos Pastels,12,1
+153,cobalt turquoise,Polychromos Pastels,24,1
+153,cobalt turquoise,Polychromos Pastels,36,1
+153,cobalt turquoise,Polychromos Pastels,60,1
+153,cobalt turquoise,Albrecht Durer watercolour pencils,36,1
+153,cobalt turquoise,Albrecht Durer watercolour pencils,60,1
+153,cobalt turquoise,Albrecht Durer watercolour pencils,72,1
+153,cobalt turquoise,Pitt Pastel pencils,60,1
+154,light cobalt turquoise,Polychromos colour pencils,72,1
+154,light cobalt turquoise,Polychromos Pastels,60,1
+154,light cobalt turquoise,Albrecht Durer watercolour pencils,72,1
+155,helio turquoise,Pitt Pastel pencils,60,1
+156,cobalt green,Polychromos colour pencils,36,1
+156,cobalt green,Polychromos colour pencils,60,1
+156,cobalt green,Polychromos colour pencils,72,1
+156,cobalt green,Polychromos Pastels,36,1
+156,cobalt green,Polychromos Pastels,60,1
+156,cobalt green,Albrecht Durer watercolour pencils,36,1
+156,cobalt green,Albrecht Durer watercolour pencils,60,1
+156,cobalt green,Albrecht Durer watercolour pencils,72,1
+156,cobalt green,Albrecht Durer Magnus,30,1
+156,cobalt green,Pitt Pastel pencils,36,1
+156,cobalt green,Pitt Pastel pencils,60,1
+157,dark indigo,Polychromos colour pencils,36,1
+157,dark indigo,Polychromos colour pencils,60,1
+157,dark indigo,Polychromos colour pencils,72,1
+157,dark indigo,Polychromos Pastels,24,1
+157,dark indigo,Polychromos Pastels,36,1
+157,dark indigo,Polychromos Pastels,60,1
+157,dark indigo,Albrecht Durer watercolour pencils,36,1
+157,dark indigo,Albrecht Durer watercolour pencils,60,1
+157,dark indigo,Albrecht Durer watercolour pencils,72,1
+157,dark indigo,Albrecht Durer Magnus,30,1
+157,dark indigo,Pitt Pastel pencils,36,1
+157,dark indigo,Pitt Pastel pencils,60,1
+158,deep cobalt green,Polychromos colour pencils,60,1
+158,deep cobalt green,Polychromos colour pencils,72,1
+158,deep cobalt green,Polychromos Pastels,60,1
+158,deep cobalt green,Albrecht Durer watercolour pencils,60,1
+158,deep cobalt green,Albrecht Durer watercolour pencils,72,1
+159,Hooker´s green,Polychromos Pastels,36,1
+159,Hooker´s green,Polychromos Pastels,60,1
+159,Hooker´s green,Pitt Pastel pencils,24,1
+159,Hooker´s green,Pitt Pastel pencils,36,1
+159,Hooker´s green,Pitt Pastel pencils,60,1
+160,manganese violet,Polychromos Pastels,24,1
+160,manganese violet,Polychromos Pastels,36,1
+160,manganese violet,Polychromos Pastels,60,1
+160,manganese violet,Pitt Pastel pencils,60,1
+161,phthalo green,Polychromos colour pencils,72,1
+161,phthalo green,Albrecht Durer watercolour pencils,72,1
+163,emerald green,Polychromos colour pencils,12,1
+163,emerald green,Polychromos colour pencils,24,1
+163,emerald green,Polychromos colour pencils,36,1
+163,emerald green,Polychromos colour pencils,60,1
+163,emerald green,Polychromos colour pencils,72,1
+163,emerald green,Polychromos Pastels,60,1
+163,emerald green,Albrecht Durer watercolour pencils,12,1
+163,emerald green,Albrecht Durer watercolour pencils,24,1
+163,emerald green,Albrecht Durer watercolour pencils,36,1
+163,emerald green,Albrecht Durer watercolour pencils,60,1
+163,emerald green,Albrecht Durer watercolour pencils,72,1
+163,emerald green,Albrecht Durer Magnus,12,1
+163,emerald green,Albrecht Durer Magnus,24,1
+163,emerald green,Albrecht Durer Magnus,30,1
+165,juniper green,Polychromos colour pencils,60,1
+165,juniper green,Polychromos colour pencils,72,1
+165,juniper green,Albrecht Durer watercolour pencils,60,1
+165,juniper green,Albrecht Durer watercolour pencils,72,1
+165,juniper green,Pitt Pastel pencils,36,1
+165,juniper green,Pitt Pastel pencils,60,1
+166,grass green,Polychromos Pastels,60,1
+167,permanent green olive,Polychromos Pastels,24,1
+167,permanent green olive,Polychromos Pastels,36,1
+167,permanent green olive,Polychromos Pastels,60,1
+167,permanent green olive,Pitt Pastel pencils,12,1
+167,permanent green olive,Pitt Pastel pencils,24,1
+167,permanent green olive,Pitt Pastel pencils,36,1
+167,permanent green olive,Pitt Pastel pencils,60,1
+168,earth green yellowish,Polychromos colour pencils,24,1
+168,earth green yellowish,Polychromos colour pencils,36,1
+168,earth green yellowish,Polychromos colour pencils,60,1
+168,earth green yellowish,Polychromos colour pencils,72,1
+168,earth green yellowish,Polychromos Pastels,24,1
+168,earth green yellowish,Polychromos Pastels,36,1
+168,earth green yellowish,Polychromos Pastels,60,1
+168,earth green yellowish,Albrecht Durer watercolour pencils,24,1
+168,earth green yellowish,Albrecht Durer watercolour pencils,36,1
+168,earth green yellowish,Albrecht Durer watercolour pencils,60,1
+168,earth green yellowish,Albrecht Durer watercolour pencils,72,1
+168,earth green yellowish,Albrecht Durer Magnus,24,1
+168,earth green yellowish,Albrecht Durer Magnus,30,1
+168,earth green yellowish,Pitt Pastel pencils,12,1
+168,earth green yellowish,Pitt Pastel pencils,24,1
+168,earth green yellowish,Pitt Pastel pencils,36,1
+168,earth green yellowish,Pitt Pastel pencils,60,1
+169,caput mortuum,Polychromos Pastels,60,1
+169,caput mortuum,Pitt Pastel pencils,60,1
+170,may green,Pitt Pastel pencils,60,1
+171,light green,Polychromos colour pencils,12,1
+171,light green,Polychromos colour pencils,24,1
+171,light green,Polychromos colour pencils,36,1
+171,light green,Polychromos colour pencils,60,1
+171,light green,Polychromos colour pencils,72,1
+171,light green,Polychromos Pastels,60,1
+171,light green,Albrecht Durer watercolour pencils,12,1
+171,light green,Albrecht Durer watercolour pencils,24,1
+171,light green,Albrecht Durer watercolour pencils,36,1
+171,light green,Albrecht Durer watercolour pencils,60,1
+171,light green,Albrecht Durer watercolour pencils,72,1
+171,light green,Albrecht Durer Magnus,12,1
+171,light green,Albrecht Durer Magnus,24,1
+171,light green,Albrecht Durer Magnus,30,1
+172,earth green,Polychromos colour pencils,72,1
+172,earth green,Albrecht Durer watercolour pencils,72,1
+172,earth green,Pitt Pastel pencils,36,1
+172,earth green,Pitt Pastel pencils,60,1
+173,olive green yellowish,Polychromos colour pencils,60,1
+173,olive green yellowish,Polychromos colour pencils,72,1
+173,olive green yellowish,Albrecht Durer watercolour pencils,60,1
+173,olive green yellowish,Albrecht Durer watercolour pencils,72,1
+173,olive green yellowish,Pitt Pastel pencils,24,1
+173,olive green yellowish,Pitt Pastel pencils,36,1
+173,olive green yellowish,Pitt Pastel pencils,60,1
+174,chromium green opaque,Polychromos colour pencils,60,1
+174,chromium green opaque,Polychromos colour pencils,72,1
+174,chromium green opaque,Polychromos Pastels,60,1
+174,chromium green opaque,Albrecht Durer watercolour pencils,60,1
+174,chromium green opaque,Albrecht Durer watercolour pencils,72,1
+174,chromium green opaque,Pitt Pastel pencils,60,1
+175,dark sepia,Pitt Pastel pencils,60,1
+176,VanDyckbrown,Polychromos colour pencils,60,1
+176,VanDyckbrown,Polychromos colour pencils,72,1
+176,VanDyckbrown,Albrecht Durer watercolour pencils,60,1
+176,VanDyckbrown,Albrecht Durer watercolour pencils,72,1
+176,VanDyckbrown,Pitt Pastel pencils,60,1
+177,walnut brown,Polychromos colour pencils,12,1
+177,walnut brown,Polychromos colour pencils,24,1
+177,walnut brown,Polychromos colour pencils,36,1
+177,walnut brown,Polychromos colour pencils,60,1
+177,walnut brown,Polychromos colour pencils,72,1
+177,walnut brown,Polychromos Pastels,24,1
+177,walnut brown,Polychromos Pastels,36,1
+177,walnut brown,Polychromos Pastels,60,1
+177,walnut brown,Albrecht Durer watercolour pencils,12,1
+177,walnut brown,Albrecht Durer watercolour pencils,24,1
+177,walnut brown,Albrecht Durer watercolour pencils,36,1
+177,walnut brown,Albrecht Durer watercolour pencils,60,1
+177,walnut brown,Albrecht Durer watercolour pencils,72,1
+177,walnut brown,Albrecht Durer Magnus,12,1
+177,walnut brown,Albrecht Durer Magnus,24,1
+177,walnut brown,Albrecht Durer Magnus,30,1
+177,walnut brown,Pitt Pastel pencils,24,1
+177,walnut brown,Pitt Pastel pencils,36,1
+177,walnut brown,Pitt Pastel pencils,60,1
+179,bistre,Pitt Pastel pencils,36,1
+179,bistre,Pitt Pastel pencils,60,1
+180,raw umber,Polychromos colour pencils,24,1
+180,raw umber,Polychromos colour pencils,36,1
+180,raw umber,Polychromos colour pencils,60,1
+180,raw umber,Polychromos colour pencils,72,1
+180,raw umber,Polychromos Pastels,36,1
+180,raw umber,Polychromos Pastels,60,1
+180,raw umber,Albrecht Durer watercolour pencils,24,1
+180,raw umber,Albrecht Durer watercolour pencils,36,1
+180,raw umber,Albrecht Durer watercolour pencils,60,1
+180,raw umber,Albrecht Durer watercolour pencils,72,1
+180,raw umber,Albrecht Durer Magnus,24,1
+180,raw umber,Albrecht Durer Magnus,30,1
+180,raw umber,Pitt Pastel pencils,60,1
+181,Payne´s grey,Pitt Pastel pencils,60,1
+182,brown ochre,Pitt Pastel pencils,60,1
+183,light yellow ochre,Pitt Pastel pencils,24,1
+183,light yellow ochre,Pitt Pastel pencils,36,1
+183,light yellow ochre,Pitt Pastel pencils,60,1
+184,dark Naples ochre,Polychromos colour pencils,36,1
+184,dark Naples ochre,Polychromos colour pencils,60,1
+184,dark Naples ochre,Polychromos colour pencils,72,1
+184,dark Naples ochre,Albrecht Durer watercolour pencils,36,1
+184,dark Naples ochre,Albrecht Durer watercolour pencils,60,1
+184,dark Naples ochre,Albrecht Durer watercolour pencils,72,1
+184,dark Naples ochre,Pitt Pastel pencils,60,1
+185,Naples yellow,Polychromos colour pencils,60,1
+185,Naples yellow,Polychromos colour pencils,72,1
+185,Naples yellow,Albrecht Durer watercolour pencils,60,1
+185,Naples yellow,Albrecht Durer watercolour pencils,72,1
+185,Naples yellow,Pitt Pastel pencils,60,1
+186,terracotta,Pitt Pastel pencils,60,1
+187,burnt ochre,Albrecht Durer watercolour pencils,12,1
+187,burnt ochre,Albrecht Durer watercolour pencils,24,1
+187,burnt ochre,Albrecht Durer watercolour pencils,36,1
+187,burnt ochre,Albrecht Durer watercolour pencils,60,1
+187,burnt ochre,Albrecht Durer watercolour pencils,72,1
+187,burnt ochre,Albrecht Durer Magnus,12,1
+187,burnt ochre,Albrecht Durer Magnus,24,1
+187,burnt ochre,Albrecht Durer Magnus,30,1
+187,burnt ochre,Pitt Pastel pencils,36,1
+187,burnt ochre,Pitt Pastel pencils,60,1
+187,burnt ochre,Polychromos colour pencils,12,1
+187,burnt ochre,Polychromos colour pencils,24,1
+187,burnt ochre,Polychromos colour pencils,36,1
+187,burnt ochre,Polychromos colour pencils,60,1
+187,burnt ochre,Polychromos colour pencils,72,1
+188,sanguine,Polychromos colour pencils,60,1
+188,sanguine,Polychromos colour pencils,72,1
+188,sanguine,Albrecht Durer watercolour pencils,60,1
+188,sanguine,Albrecht Durer watercolour pencils,72,1
+188,sanguine,Pitt Pastel pencils,36,1
+188,sanguine,Pitt Pastel pencils,60,1
+189,cinnamon,Polychromos colour pencils,72,1
+189,cinnamon,Albrecht Durer watercolour pencils,72,1
+189,cinnamon,Pitt Pastel pencils,60,1
+190,Venetian red,Polychromos colour pencils,24,1
+190,Venetian red,Polychromos colour pencils,36,1
+190,Venetian red,Polychromos colour pencils,60,1
+190,Venetian red,Polychromos colour pencils,72,1
+190,Venetian red,Polychromos Pastels,60,1
+190,Venetian red,Albrecht Durer watercolour pencils,24,1
+190,Venetian red,Albrecht Durer watercolour pencils,36,1
+190,Venetian red,Albrecht Durer watercolour pencils,60,1
+190,Venetian red,Albrecht Durer watercolour pencils,72,1
+190,Venetian red,Albrecht Durer Magnus,24,1
+190,Venetian red,Albrecht Durer Magnus,30,1
+190,Venetian red,Pitt Pastel pencils,60,1
+191,Pompeian red,Polychromos colour pencils,36,1
+191,Pompeian red,Polychromos colour pencils,60,1
+191,Pompeian red,Polychromos colour pencils,72,1
+191,Pompeian red,Albrecht Durer watercolour pencils,36,1
+191,Pompeian red,Albrecht Durer watercolour pencils,60,1
+191,Pompeian red,Albrecht Durer watercolour pencils,72,1
+191,Pompeian red,Pitt Pastel pencils,60,1
+192,India red,Polychromos Pastels,36,1
+192,India red,Polychromos Pastels,60,1
+192,India red,Pitt Pastel pencils,36,1
+192,India red,Pitt Pastel pencils,60,1
+193,burnt carmine,Pitt Pastel pencils,60,1
+194,red violet,Polychromos colour pencils,60,1
+194,red violet,Polychromos colour pencils,72,1
+194,red violet,Albrecht Durer watercolour pencils,60,1
+194,red violet,Albrecht Durer watercolour pencils,72,1
+194,red violet,Pitt Pastel pencils,36,1
+194,red violet,Pitt Pastel pencils,60,1
+199,black,Polychromos colour pencils,12,1
+199,black,Polychromos colour pencils,24,1
+199,black,Polychromos colour pencils,36,1
+199,black,Polychromos colour pencils,60,1
+199,black,Polychromos colour pencils,72,1
+199,black,Polychromos Pastels,12,1
+199,black,Polychromos Pastels,24,1
+199,black,Polychromos Pastels,36,1
+199,black,Polychromos Pastels,60,1
+199,black,Albrecht Durer watercolour pencils,12,1
+199,black,Albrecht Durer watercolour pencils,24,1
+199,black,Albrecht Durer watercolour pencils,36,1
+199,black,Albrecht Durer watercolour pencils,60,1
+199,black,Albrecht Durer watercolour pencils,72,1
+199,black,Albrecht Durer Magnus,12,1
+199,black,Albrecht Durer Magnus,24,1
+199,black,Albrecht Durer Magnus,30,1
+199,black,Pitt Pastel pencils,12,1
+199,black,Pitt Pastel pencils,24,1
+199,black,Pitt Pastel pencils,36,1
+199,black,Pitt Pastel pencils,60,1
+205,cadmium yellow lemon,Polychromos colour pencils,60,1
+205,cadmium yellow lemon,Polychromos colour pencils,72,1
+205,cadmium yellow lemon,Albrecht Durer watercolour pencils,60,1
+205,cadmium yellow lemon,Albrecht Durer watercolour pencils,72,1
+217,middle cadmium red,Polychromos colour pencils,36,1
+217,middle cadmium red,Polychromos colour pencils,60,1
+217,middle cadmium red,Polychromos colour pencils,72,1
+217,middle cadmium red,Albrecht Durer watercolour pencils,36,1
+217,middle cadmium red,Albrecht Durer watercolour pencils,60,1
+217,middle cadmium red,Albrecht Durer watercolour pencils,72,1
+219,deep scarlet red,Polychromos colour pencils,12,1
+219,deep scarlet red,Polychromos colour pencils,24,1
+219,deep scarlet red,Polychromos colour pencils,36,1
+219,deep scarlet red,Polychromos colour pencils,60,1
+219,deep scarlet red,Polychromos colour pencils,72,1
+219,deep scarlet red,Polychromos Pastels,12,1
+219,deep scarlet red,Polychromos Pastels,24,1
+219,deep scarlet red,Polychromos Pastels,36,1
+219,deep scarlet red,Polychromos Pastels,60,1
+219,deep scarlet red,Albrecht Durer watercolour pencils,12,1
+219,deep scarlet red,Albrecht Durer watercolour pencils,24,1
+219,deep scarlet red,Albrecht Durer watercolour pencils,36,1
+219,deep scarlet red,Albrecht Durer watercolour pencils,60,1
+219,deep scarlet red,Albrecht Durer watercolour pencils,72,1
+219,deep scarlet red,Albrecht Durer Magnus,12,1
+219,deep scarlet red,Albrecht Durer Magnus,24,1
+219,deep scarlet red,Albrecht Durer Magnus,30,1
+225,dark red,Polychromos colour pencils,24,1
+225,dark red,Polychromos colour pencils,36,1
+225,dark red,Polychromos colour pencils,60,1
+225,dark red,Polychromos colour pencils,72,1
+225,dark red,Polychromos Pastels,36,1
+225,dark red,Polychromos Pastels,60,1
+225,dark red,Albrecht Durer watercolour pencils,24,1
+225,dark red,Albrecht Durer watercolour pencils,36,1
+225,dark red,Albrecht Durer watercolour pencils,60,1
+225,dark red,Albrecht Durer watercolour pencils,72,1
+225,dark red,Albrecht Durer Magnus,24,1
+225,dark red,Albrecht Durer Magnus,30,1
+225,dark red,Pitt Pastel pencils,60,1
+226,alizarin crimson,Polychromos Pastels,24,1
+226,alizarin crimson,Polychromos Pastels,36,1
+226,alizarin crimson,Polychromos Pastels,60,1
+226,alizarin crimson,Pitt Pastel pencils,24,1
+226,alizarin crimson,Pitt Pastel pencils,36,1
+226,alizarin crimson,Pitt Pastel pencils,60,1
+230,cold grey I,Pitt Pastel pencils,60,1
+231,cold grey II,Polychromos colour pencils,60,1
+231,cold grey II,Polychromos colour pencils,72,1
+231,cold grey II,Albrecht Durer watercolour pencils,60,1
+231,cold grey II,Albrecht Durer watercolour pencils,72,1
+233,cold grey IV,Polychromos colour pencils,60,1
+233,cold grey IV,Polychromos colour pencils,72,1
+233,cold grey IV,Polychromos Pastels,24,1
+233,cold grey IV,Polychromos Pastels,36,1
+233,cold grey IV,Polychromos Pastels,60,1
+233,cold grey IV,Albrecht Durer watercolour pencils,60,1
+233,cold grey IV,Albrecht Durer watercolour pencils,72,1
+233,cold grey IV,Pitt Pastel pencils,24,1
+233,cold grey IV,Pitt Pastel pencils,36,1
+233,cold grey IV,Pitt Pastel pencils,60,1
+234,cold grey V,Polychromos Pastels,60,1
+246,Prussian blue,Polychromos colour pencils,60,1
+246,Prussian blue,Polychromos colour pencils,72,1
+246,Prussian blue,Polychromos Pastels,60,1
+246,Prussian blue,Albrecht Durer watercolour pencils,60,1
+246,Prussian blue,Albrecht Durer watercolour pencils,72,1
+247,indanthrene blue,Polychromos colour pencils,60,1
+247,indanthrene blue,Polychromos colour pencils,72,1
+247,indanthrene blue,Polychromos Pastels,24,1
+247,indanthrene blue,Polychromos Pastels,36,1
+247,indanthrene blue,Polychromos Pastels,60,1
+247,indanthrene blue,Albrecht Durer watercolour pencils,60,1
+247,indanthrene blue,Albrecht Durer watercolour pencils,72,1
+249,mauve,Polychromos colour pencils,36,1
+249,mauve,Polychromos colour pencils,60,1
+249,mauve,Polychromos colour pencils,72,1
+249,mauve,Albrecht Durer watercolour pencils,36,1
+249,mauve,Albrecht Durer watercolour pencils,60,1
+249,mauve,Albrecht Durer watercolour pencils,72,1
+249,mauve,Albrecht Durer Magnus,30,1
+250,gold,Polychromos Pastels,36,1
+250,gold,Polychromos Pastels,60,1
+251,silver,Polychromos Pastels,36,1
+251,silver,Polychromos Pastels,60,1
+252,copper,Polychromos Pastels,60,1
+263,caput mortuum violet,Polychromos Pastels,36,1
+263,caput mortuum violet,Polychromos Pastels,60,1
+264,dark phthalo green,Polychromos colour pencils,24,1
+264,dark phthalo green,Polychromos colour pencils,36,1
+264,dark phthalo green,Polychromos colour pencils,60,1
+264,dark phthalo green,Polychromos colour pencils,72,1
+264,dark phthalo green,Polychromos Pastels,12,1
+264,dark phthalo green,Polychromos Pastels,24,1
+264,dark phthalo green,Polychromos Pastels,36,1
+264,dark phthalo green,Polychromos Pastels,60,1
+264,dark phthalo green,Albrecht Durer watercolour pencils,24,1
+264,dark phthalo green,Albrecht Durer watercolour pencils,36,1
+264,dark phthalo green,Albrecht Durer watercolour pencils,60,1
+264,dark phthalo green,Albrecht Durer watercolour pencils,72,1
+264,dark phthalo green,Albrecht Durer Magnus,24,1
+264,dark phthalo green,Albrecht Durer Magnus,30,1
+266,permanent green,Polychromos Pastels,12,1
+266,permanent green,Polychromos Pastels,24,1
+266,permanent green,Polychromos Pastels,36,1
+266,permanent green,Polychromos Pastels,60,1
+267,pine green,Polychromos colour pencils,60,1
+267,pine green,Polychromos colour pencils,72,1
+267,pine green,Albrecht Durer watercolour pencils,60,1
+267,pine green,Albrecht Durer watercolour pencils,72,1
+267,pine green,Pitt Pastel pencils,60,1
+268,green gold,Polychromos colour pencils,72,1
+268,green gold,Albrecht Durer watercolour pencils,72,1
+270,warm grey I,Pitt Pastel pencils,60,1
+271,warm grey II,Polychromos colour pencils,24,1
+271,warm grey II,Polychromos colour pencils,36,1
+271,warm grey II,Polychromos colour pencils,60,1
+271,warm grey II,Polychromos colour pencils,72,1
+271,warm grey II,Albrecht Durer watercolour pencils,24,1
+271,warm grey II,Albrecht Durer watercolour pencils,36,1
+271,warm grey II,Albrecht Durer watercolour pencils,60,1
+271,warm grey II,Albrecht Durer watercolour pencils,72,1
+271,warm grey II,Albrecht Durer Magnus,24,1
+271,warm grey II,Albrecht Durer Magnus,30,1
+272,warm grey III,Polychromos Pastels,24,1
+272,warm grey III,Polychromos Pastels,36,1
+272,warm grey III,Polychromos Pastels,60,1
+273,warm grey IV,Pitt Pastel pencils,24,1
+273,warm grey IV,Pitt Pastel pencils,36,1
+273,warm grey IV,Pitt Pastel pencils,60,1
+274,warm grey V,Polychromos colour pencils,24,1
+274,warm grey V,Polychromos colour pencils,36,1
+274,warm grey V,Polychromos colour pencils,60,1
+274,warm grey V,Polychromos colour pencils,72,1
+274,warm grey V,Albrecht Durer watercolour pencils,24,1
+274,warm grey V,Albrecht Durer watercolour pencils,36,1
+274,warm grey V,Albrecht Durer watercolour pencils,60,1
+274,warm grey V,Albrecht Durer watercolour pencils,72,1
+274,warm grey V,Albrecht Durer Magnus,24,1
+274,warm grey V,Albrecht Durer Magnus,30,1
+280,burnt umber,Polychromos Pastels,60,1
+280,burnt umber,Pitt Pastel pencils,60,1
+283,burnt siena,Polychromos colour pencils,60,1
+283,burnt siena,Polychromos colour pencils,72,1
+283,burnt siena,Polychromos Pastels,12,1
+283,burnt siena,Polychromos Pastels,24,1
+283,burnt siena,Polychromos Pastels,36,1
+283,burnt siena,Polychromos Pastels,60,1
+283,burnt siena,Albrecht Durer watercolour pencils,60,1
+283,burnt siena,Albrecht Durer watercolour pencils,72,1
+283,burnt siena,Pitt Pastel pencils,12,1
+283,burnt siena,Pitt Pastel pencils,24,1
+283,burnt siena,Pitt Pastel pencils,36,1
+283,burnt siena,Pitt Pastel pencils,60,1

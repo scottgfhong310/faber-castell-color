@@ -1,0 +1,289 @@
+colour_code,colour_name,product_line,set_size_ct,included
+101,white,Goldfaber,12,1
+101,white,Goldfaber,36,1
+101,white,Goldfaber,24,1
+101,white,Goldfaber Aqua,12,1
+101,white,Goldfaber Aqua,24,1
+101,white,Goldfaber Aqua,36,1
+101,white,Goldfaber Aqua,48,1
+101,white,Gift Set Art & Graphic,36,1
+101,white,Goldfaber,48,1
+104,light yellow glaze,Goldfaber,36,1
+104,light yellow glaze,Goldfaber,48,1
+104,light yellow glaze,Goldfaber Aqua,36,1
+104,light yellow glaze,Goldfaber Aqua,48,1
+105,light cadmium yellow,Goldfaber,24,1
+105,light cadmium yellow,Goldfaber,36,1
+105,light cadmium yellow,Goldfaber,48,1
+105,light cadmium yellow,Goldfaber Aqua,24,1
+105,light cadmium yellow,Goldfaber Aqua,36,1
+105,light cadmium yellow,Goldfaber Aqua,48,1
+107,cadmium yellow,Goldfaber,12,1
+107,cadmium yellow,Goldfaber,24,1
+107,cadmium yellow,Goldfaber,36,1
+107,cadmium yellow,Goldfaber,48,1
+107,cadmium yellow,Goldfaber Aqua,12,1
+107,cadmium yellow,Goldfaber Aqua,24,1
+107,cadmium yellow,Goldfaber Aqua,36,1
+107,cadmium yellow,Goldfaber Aqua,48,1
+107,cadmium yellow,Gift Set Art & Graphic,36,1
+108,dark cadmium yellow,Goldfaber,48,1
+108,dark cadmium yellow,Goldfaber Aqua,48,1
+108,dark cadmium yellow,Gift Set Art & Graphic,36,1
+109,dark chrome yellow,Goldfaber,24,1
+109,dark chrome yellow,Goldfaber,36,1
+109,dark chrome yellow,Goldfaber,48,1
+109,dark chrome yellow,Goldfaber Aqua,24,1
+109,dark chrome yellow,Goldfaber Aqua,36,1
+109,dark chrome yellow,Goldfaber Aqua,48,1
+115,dark cadmium orange,Goldfaber,12,1
+115,dark cadmium orange,Goldfaber,24,1
+115,dark cadmium orange,Goldfaber,36,1
+115,dark cadmium orange,Goldfaber,48,1
+115,dark cadmium orange,Goldfaber Aqua,12,1
+115,dark cadmium orange,Goldfaber Aqua,24,1
+115,dark cadmium orange,Goldfaber Aqua,36,1
+115,dark cadmium orange,Goldfaber Aqua,48,1
+115,dark cadmium orange,Gift Set Art & Graphic,36,1
+118,scarlet red,Goldfaber,36,1
+118,scarlet red,Goldfaber,48,1
+118,scarlet red,Goldfaber Aqua,36,1
+118,scarlet red,Goldfaber Aqua,48,1
+118,scarlet red,Gift Set Art & Graphic,36,1
+119,light magenta,Goldfaber,48,1
+119,light magenta,Goldfaber Aqua,48,1
+120,ultramarine,Goldfaber,12,1
+120,ultramarine,Goldfaber,24,1
+120,ultramarine,Goldfaber,36,1
+120,ultramarine,Goldfaber,48,1
+120,ultramarine,Goldfaber Aqua,12,1
+120,ultramarine,Goldfaber Aqua,24,1
+120,ultramarine,Goldfaber Aqua,36,1
+120,ultramarine,Goldfaber Aqua,48,1
+120,ultramarine,Gift Set Art & Graphic,36,1
+121,pale geranium lake,Goldfaber,12,1
+121,pale geranium lake,Goldfaber,24,1
+121,pale geranium lake,Goldfaber,36,1
+121,pale geranium lake,Goldfaber,48,1
+121,pale geranium lake,Goldfaber Aqua,12,1
+121,pale geranium lake,Goldfaber Aqua,24,1
+121,pale geranium lake,Goldfaber Aqua,36,1
+121,pale geranium lake,Goldfaber Aqua,48,1
+123,fuchsia,Goldfaber,48,1
+123,fuchsia,Goldfaber Aqua,48,1
+123,fuchsia,Gift Set Art & Graphic,36,1
+125,middle purple pink,Goldfaber,12,1
+125,middle purple pink,Goldfaber,24,1
+125,middle purple pink,Goldfaber,36,1
+125,middle purple pink,Goldfaber,48,1
+125,middle purple pink,Goldfaber Aqua,12,1
+125,middle purple pink,Goldfaber Aqua,24,1
+125,middle purple pink,Goldfaber Aqua,36,1
+125,middle purple pink,Goldfaber Aqua,48,1
+125,middle purple pink,Gift Set Art & Graphic,36,1
+126,permanent carmine,Goldfaber,24,1
+126,permanent carmine,Goldfaber,36,1
+126,permanent carmine,Goldfaber,48,1
+126,permanent carmine,Goldfaber Aqua,24,1
+126,permanent carmine,Goldfaber Aqua,36,1
+126,permanent carmine,Goldfaber Aqua,48,1
+126,permanent carmine,Gift Set Art & Graphic,36,1
+130,salmon,Goldfaber,36,1
+130,salmon,Goldfaber,48,1
+130,salmon,Goldfaber Aqua,36,1
+130,salmon,Goldfaber Aqua,48,1
+131,coral,Goldfaber,24,1
+131,coral,Goldfaber,36,1
+131,coral,Goldfaber,48,1
+131,coral,Goldfaber Aqua,24,1
+131,coral,Goldfaber Aqua,36,1
+131,coral,Goldfaber Aqua,48,1
+132,beige red,Goldfaber,48,1
+132,beige red,Goldfaber Aqua,48,1
+133,magenta,Goldfaber,36,1
+133,magenta,Goldfaber,48,1
+133,magenta,Goldfaber Aqua,36,1
+133,magenta,Goldfaber Aqua,48,1
+134,crimson,Goldfaber,48,1
+134,crimson,Goldfaber Aqua,48,1
+134,crimson,Gift Set Art & Graphic,36,1
+136,purple violet,Goldfaber,24,1
+136,purple violet,Goldfaber,36,1
+136,purple violet,Goldfaber,48,1
+136,purple violet,Goldfaber Aqua,24,1
+136,purple violet,Goldfaber Aqua,36,1
+136,purple violet,Goldfaber Aqua,48,1
+137,blue violet,Goldfaber,36,1
+137,blue violet,Goldfaber,48,1
+137,blue violet,Goldfaber Aqua,36,1
+137,blue violet,Goldfaber Aqua,48,1
+140,light ultramarin,Goldfaber,36,1
+140,light ultramarin,Goldfaber,48,1
+140,light ultramarin,Goldfaber Aqua,36,1
+140,light ultramarin,Goldfaber Aqua,48,1
+140,light ultramarin,Gift Set Art & Graphic,36,1
+143,cobalt blue,Goldfaber,24,1
+143,cobalt blue,Goldfaber,36,1
+143,cobalt blue,Goldfaber,48,1
+143,cobalt blue,Goldfaber Aqua,24,1
+143,cobalt blue,Goldfaber Aqua,36,1
+143,cobalt blue,Goldfaber Aqua,48,1
+147,light blue,Goldfaber,12,1
+147,light blue,Goldfaber,24,1
+147,light blue,Goldfaber,36,1
+147,light blue,Goldfaber,48,1
+147,light blue,Goldfaber Aqua,12,1
+147,light blue,Goldfaber Aqua,24,1
+147,light blue,Goldfaber Aqua,36,1
+147,light blue,Goldfaber Aqua,48,1
+147,light blue,Gift Set Art & Graphic,36,1
+149,bluish turquoise,Goldfaber,48,1
+149,bluish turquoise,Goldfaber Aqua,48,1
+151,helioblue reddish,Goldfaber,36,1
+151,helioblue reddish,Goldfaber,48,1
+151,helioblue reddish,Goldfaber Aqua,36,1
+151,helioblue reddish,Goldfaber Aqua,48,1
+151,helioblue reddish,Gift Set Art & Graphic,36,1
+153,cobalt turquoise,Goldfaber,36,1
+153,cobalt turquoise,Goldfaber,48,1
+153,cobalt turquoise,Goldfaber Aqua,36,1
+153,cobalt turquoise,Goldfaber Aqua,48,1
+153,cobalt turquoise,Gift Set Art & Graphic,36,1
+154,light cobalt turquoise,Goldfaber,48,1
+154,light cobalt turquoise,Goldfaber Aqua,48,1
+156,cobalt green,Goldfaber,24,1
+156,cobalt green,Goldfaber,36,1
+156,cobalt green,Goldfaber,48,1
+156,cobalt green,Goldfaber Aqua,24,1
+156,cobalt green,Goldfaber Aqua,36,1
+156,cobalt green,Goldfaber Aqua,48,1
+156,cobalt green,Gift Set Art & Graphic,36,1
+158,deep cobalt green,Goldfaber,48,1
+158,deep cobalt green,Goldfaber Aqua,48,1
+161,phthalo green,Goldfaber,24,1
+161,phthalo green,Goldfaber,36,1
+161,phthalo green,Goldfaber,48,1
+161,phthalo green,Goldfaber Aqua,24,1
+161,phthalo green,Goldfaber Aqua,36,1
+161,phthalo green,Goldfaber Aqua,48,1
+162,light phthalo green,Goldfaber,48,1
+162,light phthalo green,Goldfaber Aqua,48,1
+163,emerald green,Goldfaber,12,1
+163,emerald green,Goldfaber,24,1
+163,emerald green,Goldfaber,36,1
+163,emerald green,Goldfaber,48,1
+163,emerald green,Goldfaber Aqua,12,1
+163,emerald green,Goldfaber Aqua,24,1
+163,emerald green,Goldfaber Aqua,36,1
+163,emerald green,Goldfaber Aqua,48,1
+166,grass green,Goldfaber,12,1
+166,grass green,Goldfaber,24,1
+166,grass green,Goldfaber,36,1
+166,grass green,Goldfaber,48,1
+166,grass green,Goldfaber Aqua,12,1
+166,grass green,Goldfaber Aqua,24,1
+166,grass green,Goldfaber Aqua,36,1
+166,grass green,Goldfaber Aqua,48,1
+166,grass green,Gift Set Art & Graphic,36,1
+167,permanent green olive,Goldfaber,24,1
+167,permanent green olive,Goldfaber,36,1
+167,permanent green olive,Goldfaber,48,1
+167,permanent green olive,Goldfaber Aqua,24,1
+167,permanent green olive,Goldfaber Aqua,36,1
+167,permanent green olive,Goldfaber Aqua,48,1
+167,permanent green olive,Gift Set Art & Graphic,36,1
+170,may green,Goldfaber,36,1
+170,may green,Goldfaber,48,1
+170,may green,Goldfaber Aqua,36,1
+170,may green,Goldfaber Aqua,48,1
+170,may green,Gift Set Art & Graphic,36,1
+173,olive green yellowish,Goldfaber,36,1
+173,olive green yellowish,Goldfaber,48,1
+173,olive green yellowish,Goldfaber Aqua,36,1
+173,olive green yellowish,Goldfaber Aqua,48,1
+173,olive green yellowish,Gift Set Art & Graphic,36,1
+176,VanDyckbrown,Goldfaber,12,1
+176,VanDyckbrown,Goldfaber,24,1
+176,VanDyckbrown,Goldfaber,36,1
+176,VanDyckbrown,Goldfaber,48,1
+176,VanDyckbrown,Goldfaber Aqua,12,1
+176,VanDyckbrown,Goldfaber Aqua,24,1
+176,VanDyckbrown,Goldfaber Aqua,36,1
+176,VanDyckbrown,Goldfaber Aqua,48,1
+176,VanDyckbrown,Gift Set Art & Graphic,36,1
+183,light yellow ochre,Goldfaber,48,1
+183,light yellow ochre,Goldfaber Aqua,48,1
+187,burnt ochre,Goldfaber,12,1
+187,burnt ochre,Goldfaber,24,1
+187,burnt ochre,Goldfaber,36,1
+187,burnt ochre,Goldfaber,48,1
+187,burnt ochre,Goldfaber Aqua,12,1
+187,burnt ochre,Goldfaber Aqua,24,1
+187,burnt ochre,Goldfaber Aqua,36,1
+187,burnt ochre,Goldfaber Aqua,48,1
+187,burnt ochre,Gift Set Art & Graphic,36,1
+192,India red,Goldfaber,24,1
+192,India red,Goldfaber,36,1
+192,India red,Goldfaber,48,1
+192,India red,Goldfaber Aqua,24,1
+192,India red,Goldfaber Aqua,36,1
+192,India red,Goldfaber Aqua,48,1
+199,black,Goldfaber,12,1
+199,black,Goldfaber,24,1
+199,black,Goldfaber,36,1
+199,black,Goldfaber,48,1
+199,black,Goldfaber Aqua,12,1
+199,black,Goldfaber Aqua,24,1
+199,black,Goldfaber Aqua,36,1
+199,black,Goldfaber Aqua,48,1
+199,black,Gift Set Art & Graphic,36,1
+233,cold grey IV,Goldfaber,24,1
+233,cold grey IV,Goldfaber,36,1
+233,cold grey IV,Goldfaber,48,1
+233,cold grey IV,Goldfaber Aqua,24,1
+233,cold grey IV,Goldfaber Aqua,36,1
+233,cold grey IV,Goldfaber Aqua,48,1
+233,cold grey IV,Gift Set Art & Graphic,36,1
+250,gold,Goldfaber,36,1
+250,gold,Goldfaber,48,1
+250,gold,Goldfaber Aqua,36,1
+250,gold,Goldfaber Aqua,48,1
+251,silver,Goldfaber,36,1
+251,silver,Goldfaber,48,1
+251,silver,Goldfaber Aqua,36,1
+251,silver,Goldfaber Aqua,48,1
+266,permanent green,Goldfaber,48,1
+266,permanent green,Goldfaber Aqua,48,1
+273,warm grey IV,Goldfaber,24,1
+273,warm grey IV,Goldfaber,36,1
+273,warm grey IV,Goldfaber,48,1
+273,warm grey IV,Goldfaber Aqua,24,1
+273,warm grey IV,Goldfaber Aqua,36,1
+273,warm grey IV,Goldfaber Aqua,48,1
+273,warm grey IV,Gift Set Art & Graphic,36,1
+283,burnt siena,Goldfaber,48,1
+283,burnt siena,Goldfaber Aqua,48,1
+406,pastel chrome yellow,Pastel Gift,12,1
+406,pastel chrome yellow,Gift Set Art & Graphic,36,1
+409,pastel orange,Pastel Gift,12,1
+409,pastel orange,Gift Set Art & Graphic,36,1
+418,pastel scarlet red,Pastel Gift,12,1
+418,pastel scarlet red,Gift Set Art & Graphic,36,1
+419,pastel magenta,Pastel Gift,12,1
+419,pastel magenta,Gift Set Art & Graphic,36,1
+442,pastel madder,Pastel Gift,12,1
+442,pastel madder,Gift Set Art & Graphic,36,1
+445,pastel phthalo blue,Pastel Gift,12,1
+445,pastel phthalo blue,Gift Set Art & Graphic,36,1
+446,pastel sky blue,Pastel Gift,12,1
+446,pastel sky blue,Gift Set Art & Graphic,36,1
+461,pastel phthalo green,Pastel Gift,12,1
+461,pastel phthalo green,Gift Set Art & Graphic,36,1
+466,pastel permanent green,Pastel Gift,12,1
+466,pastel permanent green,Gift Set Art & Graphic,36,1
+470,pastel may green,Pastel Gift,12,1
+470,pastel may green,Gift Set Art & Graphic,36,1
+475,pastel sepia,Pastel Gift,12,1
+475,pastel sepia,Gift Set Art & Graphic,36,1
+480,pastel umber,Pastel Gift,12,1
+480,pastel umber,Gift Set Art & Graphic,36,1

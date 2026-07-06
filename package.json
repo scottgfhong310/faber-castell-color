@@ -1,0 +1,24 @@
+{
+  "name": "faber-castell-color",
+  "version": "1.0.0",
+  "description": "Faber-Castell 色號 → CSS（hex / var / rgb / utility class）對照的單頁參考 WebApp：141 色色票網格、搜尋、一鍵複製、整份 .css 匯出，支援 light/dark 與三語。",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "faber-castell",
+    "color",
+    "colour",
+    "css",
+    "palette",
+    "reference",
+    "express",
+    "materialize"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  }
+}

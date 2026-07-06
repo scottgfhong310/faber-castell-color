@@ -1,0 +1,142 @@
+color_code,colour_name,hex,R,G,B,css_variable,source_page,note
+101,white,#ffffff,255,255,255,--fc-101,1,cross-validated (independent extraction + pixel)
+102,cream,#fff1bc,255,241,188,--fc-102,1,cross-validated (independent extraction + pixel)
+103,ivory,#fff5dd,255,245,221,--fc-103,1,cross-validated (independent extraction + pixel)
+104,light yellow glaze,#f9ec66,249,236,102,--fc-104,1,cross-validated (independent extraction + pixel)
+105,light cadmium yellow,#ffe52e,255,229,46,--fc-105,1,cross-validated (independent extraction + pixel)
+106,light chrome yellow,#ffde38,255,222,56,--fc-106,1,cross-validated (independent extraction + pixel)
+107,cadmium yellow,#ffd518,255,213,24,--fc-107,1,cross-validated (independent extraction + pixel)
+108,dark cadmium yellow,#fcc300,252,195,0,--fc-108,1,cross-validated (independent extraction + pixel)
+109,dark chrome yellow,#f7a71f,247,167,31,--fc-109,1,cross-validated (independent extraction + pixel)
+110,phthalo blue,#0078be,0,120,190,--fc-110,1,cross-validated (independent extraction + pixel)
+111,cadmium orange,#f18b0f,241,139,15,--fc-111,1,cross-validated (independent extraction + pixel)
+112,leaf green,#4eaf4d,78,175,77,--fc-112,1,cross-validated (independent extraction + pixel)
+113,orange glaze,#ef7b28,239,123,40,--fc-113,1,cross-validated (independent extraction + pixel)
+114,pale pink,#fef3ec,254,243,236,--fc-114,5,pixel-sampled
+115,dark cadmium orange,#ed7225,237,114,37,--fc-115,1,cross-validated (independent extraction + pixel)
+116,apricot,#fee6c8,254,230,200,--fc-116,5,pixel-sampled
+117,light cadmium red,#e94939,233,73,57,--fc-117,1,cross-validated (independent extraction + pixel)
+118,scarlet red,#e2413b,226,65,59,--fc-118,1,cross-validated (independent extraction + pixel)
+119,light magenta,#dc89b9,220,137,185,--fc-119,1,cross-validated (independent extraction + pixel)
+120,ultramarine,#5368af,83,104,175,--fc-120,1,cross-validated (independent extraction + pixel)
+121,pale geranium lake,#e73945,231,57,69,--fc-121,1,cross-validated (independent extraction + pixel)
+123,fuchsia,#e8427f,232,66,127,--fc-123,1,cross-validated (independent extraction + pixel)
+124,rose carmine,#e4536b,228,83,107,--fc-124,1,cross-validated (independent extraction + pixel)
+125,middle purple pink,#c63982,198,57,130,--fc-125,1,cross-validated (independent extraction + pixel)
+126,permanent carmine,#d42842,212,40,66,--fc-126,1,cross-validated (independent extraction + pixel)
+127,pink carmine,#e3486e,227,72,110,--fc-127,1,cross-validated (independent extraction + pixel)
+128,light purple pink,#ec6895,236,104,149,--fc-128,1,cross-validated (independent extraction + pixel)
+129,pink madder lake,#ef89b2,239,137,178,--fc-129,1,cross-validated (independent extraction + pixel)
+130,salmon,#f39b96,243,155,150,--fc-130,1,cross-validated (independent extraction + pixel)
+131,coral,#f39f9e,243,159,158,--fc-131,1,cross-validated (independent extraction + pixel)
+132,beige red,#f9c7a6,249,199,166,--fc-132,1,cross-validated (independent extraction + pixel)
+133,magenta,#9a5169,154,81,105,--fc-133,1,cross-validated (independent extraction + pixel)
+134,crimson,#a74593,167,69,147,--fc-134,1,cross-validated (independent extraction + pixel)
+135,light red violet,#b1649c,177,100,156,--fc-135,1,cross-validated (independent extraction + pixel)
+136,purple violet,#79539a,121,83,154,--fc-136,1,cross-validated (independent extraction + pixel)
+137,blue violet,#5d4a95,93,74,149,--fc-137,1,cross-validated (independent extraction + pixel)
+138,violet,#9169aa,145,105,170,--fc-138,1,cross-validated (independent extraction + pixel)
+140,light ultramarin,#6e9dd4,110,157,212,--fc-140,1,cross-validated (independent extraction + pixel)
+141,Delft blue,#4b4493,75,68,147,--fc-141,1,cross-validated (independent extraction + pixel)
+142,madder,#cc3756,204,55,86,--fc-142,1,cross-validated (independent extraction + pixel)
+143,cobalt blue,#0061ac,0,97,172,--fc-143,1,cross-validated (independent extraction + pixel)
+144,cobalt blue greenish,#1d65af,29,101,175,--fc-144,1,cross-validated (independent extraction + pixel)
+145,light phthalo blue,#52ace1,82,172,225,--fc-145,2,cross-validated (independent extraction + pixel)
+146,sky blue,#94b8e2,148,184,226,--fc-146,2,cross-validated (independent extraction + pixel)
+147,light blue,#82cff5,130,207,245,--fc-147,7,pixel-sampled
+148,ice blue,#cce8f3,204,232,243,--fc-148,5,pixel-sampled
+149,bluish turquoise,#0073a2,0,115,162,--fc-149,2,cross-validated (independent extraction + pixel)
+151,helioblue reddish,#226ab3,34,106,179,--fc-151,2,cross-validated (independent extraction + pixel)
+152,middle phthalo blue,#3f9cd6,63,156,214,--fc-152,2,cross-validated (independent extraction + pixel)
+153,cobalt turquoise,#007ea3,0,126,163,--fc-153,2,cross-validated (independent extraction + pixel)
+154,light cobalt turquoise,#78c9dc,120,201,220,--fc-154,2,cross-validated (independent extraction + pixel)
+155,helio turquoise,#007d92,0,125,146,--fc-155,2,cross-validated (independent extraction + pixel)
+156,cobalt green,#00b2bb,0,178,187,--fc-156,2,cross-validated (independent extraction + pixel)
+157,dark indigo,#454f5f,69,79,95,--fc-157,2,cross-validated (independent extraction + pixel)
+158,deep cobalt green,#08675c,8,103,92,--fc-158,2,cross-validated (independent extraction + pixel)
+159,Hooker´s green,#007561,0,117,97,--fc-159,2,cross-validated (independent extraction + pixel)
+160,manganese violet,#a266a7,162,102,167,--fc-160,2,cross-validated (independent extraction + pixel)
+161,phthalo green,#00a386,0,163,134,--fc-161,2,cross-validated (independent extraction + pixel)
+162,light phthalo green,#44b286,68,178,134,--fc-162,2,cross-validated (independent extraction + pixel)
+163,emerald green,#00a367,0,163,103,--fc-163,2,cross-validated (independent extraction + pixel)
+165,juniper green,#4a6b4b,74,107,75,--fc-165,2,cross-validated (independent extraction + pixel)
+166,grass green,#7ebb4e,126,187,78,--fc-166,2,cross-validated (independent extraction + pixel)
+167,permanent green olive,#527b49,82,123,73,--fc-167,2,cross-validated (independent extraction + pixel)
+168,earth green yellowish,#8ea54c,142,165,76,--fc-168,2,cross-validated (independent extraction + pixel)
+169,caput mortuum,#a26059,162,96,89,--fc-169,2,cross-validated (independent extraction + pixel)
+170,may green,#a9bb47,169,187,71,--fc-170,2,cross-validated (independent extraction + pixel)
+171,light green,#abcf7d,171,207,125,--fc-171,2,cross-validated (independent extraction + pixel)
+172,earth green,#7d9170,125,145,112,--fc-172,2,cross-validated (independent extraction + pixel)
+173,olive green yellowish,#656244,101,98,68,--fc-173,2,cross-validated (independent extraction + pixel)
+174,chromium green opaque,#6f764d,111,118,77,--fc-174,2,cross-validated (independent extraction + pixel)
+175,dark sepia,#4f4d4a,79,77,74,--fc-175,2,cross-validated (independent extraction + pixel)
+176,Van-Dyck-brown,#755c54,117,92,84,--fc-176,2,cross-validated (independent extraction + pixel)
+177,walnut brown,#675449,103,84,73,--fc-177,2,cross-validated (independent extraction + pixel)
+178,nougat,#9e8470,158,132,112,--fc-178,2,cross-validated (independent extraction + pixel)
+179,bistre,#87674e,135,103,78,--fc-179,2,cross-validated (independent extraction + pixel)
+180,raw umber,#a37a48,163,122,72,--fc-180,2,cross-validated (independent extraction + pixel)
+181,Payne´s grey,#505358,80,83,88,--fc-181,2,cross-validated (independent extraction + pixel)
+182,brown ochre,#ca985b,202,152,91,--fc-182,2,cross-validated (independent extraction + pixel)
+183,light yellow ochre,#f3bf57,243,191,87,--fc-183,2,cross-validated (independent extraction + pixel)
+184,dark Naples ochre,#f5c553,245,197,83,--fc-184,2,cross-validated (independent extraction + pixel)
+185,Naples yellow,#fad351,250,211,81,--fc-185,2,cross-validated (independent extraction + pixel)
+186,terracotta,#ea8d52,234,141,82,--fc-186,2,cross-validated (independent extraction + pixel)
+187,burnt ochre,#db995d,219,153,93,--fc-187,2,cross-validated (independent extraction + pixel)
+188,sanguine,#d7704f,215,112,79,--fc-188,2,cross-validated (independent extraction + pixel)
+189,cinnamon,#e7ae97,231,174,151,--fc-189,3,cross-validated (independent extraction + pixel)
+190,Venetian red,#dd7d75,221,125,117,--fc-190,3,cross-validated (independent extraction + pixel)
+191,Pompeian red,#e57b84,229,123,132,--fc-191,3,cross-validated (independent extraction + pixel)
+192,India red,#984849,152,72,73,--fc-192,3,cross-validated (independent extraction + pixel)
+193,burnt carmine,#b05164,176,81,100,--fc-193,3,cross-validated (independent extraction + pixel)
+194,red violet,#90496c,144,73,108,--fc-194,3,cross-validated (independent extraction + pixel)
+199,black,#000000,0,0,0,--fc-199,3,cross-validated (independent extraction + pixel)
+205,cadmium yellow lemon,#f1e857,241,232,87,--fc-205,3,cross-validated (independent extraction + pixel)
+217,middle cadmium red,#be4049,190,64,73,--fc-217,3,cross-validated (independent extraction + pixel)
+219,deep scarlet red,#e33e56,227,62,86,--fc-219,3,cross-validated (independent extraction + pixel)
+220,light indigo,#e3e7ef,227,231,239,--fc-220,5,pixel-sampled
+223,deep red,#de2437,222,36,55,--fc-223,3,cross-validated (independent extraction + pixel)
+225,dark red,#aa2e4f,170,46,79,--fc-225,3,cross-validated (independent extraction + pixel)
+226,alizarin crimson,#da2855,218,40,85,--fc-226,3,cross-validated (independent extraction + pixel)
+230,cold grey I,#d3d8df,211,216,223,--fc-230,3,cross-validated (independent extraction + pixel)
+231,cold grey II,#c8ccd3,200,204,211,--fc-231,3,cross-validated (independent extraction + pixel)
+232,cold grey III,#b7b9bf,183,185,191,--fc-232,3,cross-validated (independent extraction + pixel)
+233,cold grey IV,#989b9e,152,155,158,--fc-233,3,cross-validated (independent extraction + pixel)
+234,cold grey V,#77787c,119,120,124,--fc-234,3,cross-validated (independent extraction + pixel)
+235,cold grey VI,#5f5c5b,95,92,91,--fc-235,3,cross-validated (independent extraction + pixel)
+239,lilac,#ecd6ea,236,214,234,--fc-239,5,pixel-sampled
+246,Prussian blue,#126295,18,98,149,--fc-246,3,cross-validated (independent extraction + pixel)
+247,indanthrene blue,#475a96,71,90,150,--fc-247,3,cross-validated (independent extraction + pixel)
+249,mauve,#655199,101,81,153,--fc-249,3,cross-validated (independent extraction + pixel)
+250,gold,#fffdf4,255,253,244,--fc-250,3,"metallic – approximate (gradient swatch, no single true hex)"
+251,silver,#f2f9fe,242,249,254,--fc-251,3,"metallic – approximate (gradient swatch, no single true hex)"
+252,copper,#fdf2f8,253,242,248,--fc-252,3,"metallic – approximate (gradient swatch, no single true hex)"
+263,caput mortuum violet,#8b5152,139,81,82,--fc-263,3,pixel-sampled
+264,dark phthalo green,#008b71,0,139,113,--fc-264,3,pixel-sampled
+266,permanent green,#2d863c,45,134,60,--fc-266,3,pixel-sampled
+267,pine green,#385f48,56,95,72,--fc-267,3,pixel-sampled
+268,green gold,#d09a2e,208,154,46,--fc-268,3,pixel-sampled
+270,warm grey I,#e0d8d5,224,216,213,--fc-270,3,cross-validated (independent extraction + pixel)
+271,warm grey II,#d0c8c5,208,200,197,--fc-271,3,cross-validated (independent extraction + pixel)
+272,warm grey III,#b2aca6,178,172,166,--fc-272,3,cross-validated (independent extraction + pixel)
+273,warm grey IV,#858485,133,132,133,--fc-273,3,cross-validated (independent extraction + pixel)
+274,warm grey V,#6d6664,109,102,100,--fc-274,3,cross-validated (independent extraction + pixel)
+275,warm grey VI,#615a5b,97,90,91,--fc-275,3,cross-validated (independent extraction + pixel)
+276,chrome oxide green fiery,#008f78,0,143,120,--fc-276,3,pixel-sampled
+278,chrome oxide green,#53654c,83,101,76,--fc-278,3,pixel-sampled
+280,burnt umber,#725b47,114,91,71,--fc-280,3,pixel-sampled
+283,burnt siena,#935f47,147,95,71,--fc-283,3,pixel-sampled
+290,ruby metallic,#dfd1db,223,209,219,--fc-290,6,"metallic – approximate (gradient swatch, no single true hex)"
+292,blue metallic,#d6e0e4,214,224,228,--fc-292,6,"metallic – approximate (gradient swatch, no single true hex)"
+294,green metallic,#d9e1de,217,225,222,--fc-294,6,"metallic – approximate (gradient swatch, no single true hex)"
+406,pastel chrome yellow,#f2e899,242,232,153,--fc-406,7,pixel-sampled
+409,pastel orange,#fad76f,250,215,111,--fc-409,7,pixel-sampled
+418,pastel scarlet red,#ef8157,239,129,87,--fc-418,7,pixel-sampled
+419,pastel magenta,#e9badd,233,186,221,--fc-419,7,pixel-sampled
+442,pastel madder,#e16495,225,100,149,--fc-442,7,pixel-sampled
+445,pastel phthalo blue,#5cbbed,92,187,237,--fc-445,7,pixel-sampled
+446,pastel sky blue,#a7d9ff,167,217,255,--fc-446,7,pixel-sampled
+461,pastel phthalo green,#7bccbb,123,204,187,--fc-461,7,pixel-sampled
+466,pastel permanent green,#a7d66b,167,214,107,--fc-466,7,pixel-sampled
+470,pastel may green,#d3e869,211,232,105,--fc-470,7,pixel-sampled
+475,pastel sepia,#9c9a93,156,154,147,--fc-475,7,pixel-sampled
+480,pastel umber,#b88a6d,184,138,109,--fc-480,7,pixel-sampled
