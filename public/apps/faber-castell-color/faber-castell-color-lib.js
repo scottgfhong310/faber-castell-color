@@ -20,6 +20,8 @@
  *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群 / hex 原始值
  *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（金屬色或 s<0.17 → neutral）
  *   rgbToHsl(r,g,b) → {h,s,l}
+ *   rgbToLab(r,g,b) → [L,a,b] · deltaE(labA,labB) → ΔE76 · deltaEBand(dE) → 'very'|'close'|'noticeable'|'far'
+ *   nearestFC({r,g,b}, {n,colors}) → [{code,name,hex,deltaE,band}]  最接近的 FC 色（排除金屬、依 ΔE 升冪）
  *   hexToRgb(hex) → {r,g,b} | null
  *   relLuminance(r,g,b) → 0..1                    sRGB 相對亮度（WCAG）
  *   pickTextColor(color) → '#000000' | '#ffffff' 色塊上文字該用黑或白（對比取勝者）
@@ -89,6 +91,50 @@
       h *= 60;
     }
     return { h: h, s: s, l: l };
+  }
+
+  // ---- 最接近 FC 色匹配（CIELAB ΔE76，純函式） ---------------------------
+  // sRGB → CIELAB（D65）。
+  function rgbToLab(r, g, b) {
+    function lin(c) { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+    var R = lin(r), G = lin(g), B = lin(b);
+    var X = (R * 0.4124 + G * 0.3576 + B * 0.1805) / 0.95047;
+    var Y = (R * 0.2126 + G * 0.7152 + B * 0.0722);
+    var Z = (R * 0.0193 + G * 0.1192 + B * 0.9505) / 1.08883;
+    function f(t) { return t > 0.008856 ? Math.cbrt(t) : (7.787 * t + 16 / 116); }
+    var fx = f(X), fy = f(Y), fz = f(Z);
+    return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)];
+  }
+  // ΔE*76（Lab 歐氏距離）
+  function deltaE(labA, labB) {
+    var dl = labA[0] - labB[0], da = labA[1] - labB[1], db = labA[2] - labB[2];
+    return Math.sqrt(dl * dl + da * da + db * db);
+  }
+  // ΔE 品質級距（供 UI 著色 / i18n）：very ≤2 / close ≤5 / noticeable ≤10 / far
+  function deltaEBand(dE) {
+    return dE <= 2 ? 'very' : dE <= 5 ? 'close' : dE <= 10 ? 'noticeable' : 'far';
+  }
+
+  var _refLab = null, _refFor = null;
+  function _refs(colors) {
+    if (_refLab && _refFor === colors) return _refLab;
+    _refFor = colors;
+    _refLab = colors.filter(function (c) { return c.hex && !isMetallic(c); })
+      .map(function (c) { return { c: c, lab: rgbToLab(c.r, c.g, c.b) }; });
+    return _refLab;
+  }
+  // 找最接近的 FC 色（預設比對 window.FC_COLORS 的非金屬色）。
+  // rgb: {r,g,b}；opts.n=幾筆（預設1）；opts.colors=自備參考清單。
+  // 回傳 [{ code, name, hex, deltaE, band }]，依 deltaE 升冪。
+  function nearestFC(rgb, opts) {
+    opts = opts || {};
+    var colors = opts.colors || window.FC_COLORS || [];
+    var n = opts.n || 1;
+    var t = rgbToLab(rgb.r, rgb.g, rgb.b);
+    return _refs(colors).map(function (x) {
+      var d = deltaE(t, x.lab);
+      return { code: x.c.code, name: x.c.name, hex: x.c.hex, deltaE: d, band: deltaEBand(d) };
+    }).sort(function (a, b) { return a.deltaE - b.deltaE; }).slice(0, n);
   }
 
   // 色系分群（沿色相環）；'neutral'＝黑/白/灰。移植自 color-palette-lib 的 hueFamily/FAMILY_ORDER。
@@ -202,6 +248,10 @@
     colorFamily: colorFamily,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
+    rgbToLab: rgbToLab,
+    deltaE: deltaE,
+    deltaEBand: deltaEBand,
+    nearestFC: nearestFC,
     relLuminance: relLuminance,
     pickTextColor: pickTextColor,
     isMetallic: isMetallic,
