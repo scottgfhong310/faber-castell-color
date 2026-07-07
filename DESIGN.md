@@ -1,6 +1,6 @@
 # faber-castell-color — 設計決議（DESIGN）
 
-> 版本 v1.0｜最後更新 2026-07-06
+> 版本 v1.1｜最後更新 2026-07-07
 
 「怎麼用」歸 [README](README.md)、家族共同規範歸
 [nodeapp-webapp-family](https://github.com/scottgfhong310/nodeapp-webapp-family)；本檔只記**為什麼長這樣**。
@@ -64,7 +64,7 @@ light/dark；色塊上的**文字**黑白由 `pickTextColor`（WCAG 相對亮度
 ## 6. lib ↔ 控制器邊界（§4.1）
 
 - **lib（`FaberCastellCssLib`）純邏輯**：`filter` / `sortColors` / `colorFamily` / `hexToRgb` / `rgbToHsl` /
-  `relLuminance` / `pickTextColor` / `copyValue` / `buildCss`——「離開這個畫面仍成立」的都在這，零依賴、不碰 DOM。
+  `rgbToLab` / `deltaE` / `nearestFC` / `relLuminance` / `pickTextColor` / `copyValue` / `buildCss`——「離開這個畫面仍成立」的都在這，零依賴、不碰 DOM。
 - **控制器（`faber-castell-color.js`）碰 DOM**：渲染網格與色系分群 sticky 標頭、排序側鍵、Materialize Modal、
   `navigator.clipboard`（含 `execCommand` 回退）、Blob 下載、toast、i18n 重繪、主題/語言切換。
 
@@ -84,3 +84,21 @@ light/dark；色塊上的**文字**黑白由 `pickTextColor`（WCAG 相對亮度
 - **金屬即中性**：6 個金屬色（250/251/252、290/292/294）是近白漸層色票，HSL 在近白處會把微小色差**放大成高飽和度**
   （如 gold `#fffdf4` 算出 s≈1.0），若只看飽和度會被誤分進黃/藍/洋紅。故 `isAchromatic` **明確把金屬色一律當中性**，
   讓它們在色相與分群兩種瀏覽下都跟灰系待在一起（與 §2 「金屬色無單一真值、標近似」一致）。
+
+## 8. 最接近 FC 色比對——這支 lib 對外的第二個身分
+
+本 app 的 lib 不只服務「瀏覽這 141 色」，還是一個**比對器**：給任一顏色（相片、螢幕取色），找出最接近的
+Faber-Castell 色號。這是把一個抽象、握不到的螢幕 hex（`#AA3F1C`），接到「畫桌上買得到、握得到的那支筆」的
+**一座橋**。這座橋的兩端——141 色的參考庫、與感知色距——都在本 app，所以匹配邏輯理所當然長在這支 lib，
+而非各消費端各自重造。
+
+- **理念（與消費端 CONCEPT 對齊）**：`color-palette` 與 `thangka-trace` 從影像萃取/取色得到的是「螢幕上的色」；
+  `nearestFC` 把它翻成「現實中的顏料」。前者的 CONCEPT.md 稱之為「朝外的橋」（色票 ↔ 買得到的筆），
+  後者稱之為臨摹鏈路末端的「該拿哪支筆」。**呈現方式歸消費端**（A 徽章／B 前 3 名替代色／C 取色鏡即時讀值），
+  本 app 只提供**資料 ＋ 比對**。
+- **度量＝CIEDE2000（ΔE00）**：不是 RGB 歐氏、也不是 ΔE76。ΔE76 在藍區明顯高估（會把中藍配成靛藍而非鈷藍）；
+  CIEDE2000 貼近人眼，且對標 Sharma et al. 參考資料集逐筆吻合。`nearestFC` 先 `rgbToLab` 再以 `deltaE`（ΔE00）排序。
+- **排除金屬色**：金屬是漸層近似值（§2/§7），比中它會給出誤導的匹配，故 `nearestFC` 預設只比 135 個非金屬實色。
+- **純函式、以複製件共用**：`nearestFC` / `rgbToLab` / `deltaE` / `deltaEBand` 皆不碰 DOM。比照 `materialize-dark.css`
+  慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進 `color-palette` / `thangka-trace`
+  （各自 CLAUDE.md 登記複製點）；**單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。
