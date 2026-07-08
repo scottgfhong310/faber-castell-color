@@ -1,0 +1,142 @@
+﻿color_code,colour_name,colour_name_zh_tw,colour_name_ja,css_hex,recommended_foreground_hex,recommended_foreground_name,best_contrast_ratio,contrast_with_black,contrast_with_white,relative_luminance,css_variable,css_usage,foreground_css_variable,foreground_css_usage,source_page,wcag_aa_normal_text
+101,white,白色,白,#ffffff,#000000,black,21.00:1,21.00,1.00,1.0000,--fc-101,var(--fc-101),--fc-101-fg,var(--fc-101-fg),1,PASS
+102,cream,奶油色,クリーム,#fff1bc,#000000,black,18.56:1,18.56,1.13,0.8780,--fc-102,var(--fc-102),--fc-102-fg,var(--fc-102-fg),1,PASS
+103,ivory,象牙色,アイボリー,#fff5dd,#000000,black,19.36:1,19.36,1.08,0.9179,--fc-103,var(--fc-103),--fc-103-fg,var(--fc-103-fg),1,PASS
+104,light yellow glaze,淡黃罩染色,ライトイエローグレーズ,#f9ec66,#000000,black,17.22:1,17.22,1.22,0.8109,--fc-104,var(--fc-104),--fc-104-fg,var(--fc-104-fg),1,PASS
+105,light cadmium yellow,淺鎘黃,ライトカドミウムイエロー,#ffe52e,#000000,black,16.50:1,16.50,1.27,0.7750,--fc-105,var(--fc-105),--fc-105-fg,var(--fc-105-fg),1,PASS
+106,light chrome yellow,淺鉻黃,ライトクロームイエロー,#ffde38,#000000,black,15.76:1,15.76,1.33,0.7379,--fc-106,var(--fc-106),--fc-106-fg,var(--fc-106-fg),1,PASS
+107,cadmium yellow,鎘黃,カドミウムイエロー,#ffd518,#000000,black,14.78:1,14.78,1.42,0.6891,--fc-107,var(--fc-107),--fc-107-fg,var(--fc-107-fg),1,PASS
+108,dark cadmium yellow,深鎘黃,ダークカドミウムイエロー,#fcc300,#000000,black,12.95:1,12.95,1.62,0.5973,--fc-108,var(--fc-108),--fc-108-fg,var(--fc-108-fg),1,PASS
+109,dark chrome yellow,深鉻黃,ダーククロームイエロー,#f7a71f,#000000,black,10.50:1,10.50,2.00,0.4751,--fc-109,var(--fc-109),--fc-109-fg,var(--fc-109-fg),1,PASS
+110,phthalo blue,酞菁藍,フタロブルー,#0078be,#ffffff,white,4.74:1,4.43,4.74,0.1715,--fc-110,var(--fc-110),--fc-110-fg,var(--fc-110-fg),1,PASS
+111,cadmium orange,鎘橙,カドミウムオレンジ,#f18b0f,#000000,black,8.44:1,8.44,2.49,0.3720,--fc-111,var(--fc-111),--fc-111-fg,var(--fc-111-fg),1,PASS
+112,leaf green,葉綠,リーフグリーン,#4eaf4d,#000000,black,7.56:1,7.56,2.78,0.3282,--fc-112,var(--fc-112),--fc-112-fg,var(--fc-112-fg),1,PASS
+113,orange glaze,橙色罩染,オレンジグレーズ,#ef7b28,#000000,black,7.53:1,7.53,2.79,0.3267,--fc-113,var(--fc-113),--fc-113-fg,var(--fc-113-fg),1,PASS
+114,pale pink,淡粉紅,ペールピンク,#fef3ec,#000000,black,19.25:1,19.25,1.09,0.9123,--fc-114,var(--fc-114),--fc-114-fg,var(--fc-114-fg),5,PASS
+115,dark cadmium orange,深鎘橙,ダークカドミウムオレンジ,#ed7225,#000000,black,7.03:1,7.03,2.99,0.3017,--fc-115,var(--fc-115),--fc-115-fg,var(--fc-115-fg),1,PASS
+116,apricot,杏色,アプリコット,#fee6c8,#000000,black,17.37:1,17.37,1.21,0.8183,--fc-116,var(--fc-116),--fc-116-fg,var(--fc-116-fg),5,PASS
+117,light cadmium red,淺鎘紅,ライトカドミウムレッド,#e94939,#000000,black,5.48:1,5.48,3.83,0.2238,--fc-117,var(--fc-117),--fc-117-fg,var(--fc-117-fg),1,PASS
+118,scarlet red,鮮紅,スカーレットレッド,#e2413b,#000000,black,5.05:1,5.05,4.16,0.2027,--fc-118,var(--fc-118),--fc-118-fg,var(--fc-118-fg),1,PASS
+119,light magenta,淺洋紅,ライトマゼンタ,#dc89b9,#000000,black,8.32:1,8.32,2.52,0.3661,--fc-119,var(--fc-119),--fc-119-fg,var(--fc-119-fg),1,PASS
+120,ultramarine,群青,ウルトラマリン,#5368af,#ffffff,white,5.29:1,3.97,5.29,0.1483,--fc-120,var(--fc-120),--fc-120-fg,var(--fc-120-fg),1,PASS
+121,pale geranium lake,淡天竺葵紅,ペールゼラニウムレーキ,#e73945,#000000,black,5.07:1,5.07,4.14,0.2034,--fc-121,var(--fc-121),--fc-121-fg,var(--fc-121-fg),1,PASS
+123,fuchsia,紫紅,フューシャ,#e8427f,#000000,black,5.52:1,5.52,3.81,0.2258,--fc-123,var(--fc-123),--fc-123-fg,var(--fc-123-fg),1,PASS
+124,rose carmine,玫瑰胭脂紅,ローズカーマイン,#e4536b,#000000,black,5.75:1,5.75,3.65,0.2374,--fc-124,var(--fc-124),--fc-124-fg,var(--fc-124-fg),1,PASS
+125,middle purple pink,中紫粉紅,ミドルパープルピンク,#c63982,#ffffff,white,4.87:1,4.31,4.87,0.1654,--fc-125,var(--fc-125),--fc-125-fg,var(--fc-125-fg),1,PASS
+126,permanent carmine,永固胭脂紅,パーマネントカーマイン,#d42842,#ffffff,white,5.02:1,4.18,5.02,0.1591,--fc-126,var(--fc-126),--fc-126-fg,var(--fc-126-fg),1,PASS
+127,pink carmine,粉胭脂紅,ピンクカーマイン,#e3486e,#000000,black,5.42:1,5.42,3.88,0.2209,--fc-127,var(--fc-127),--fc-127-fg,var(--fc-127-fg),1,PASS
+128,light purple pink,淺紫粉紅,ライトパープルピンク,#ec6895,#000000,black,6.98:1,6.98,3.01,0.2990,--fc-128,var(--fc-128),--fc-128-fg,var(--fc-128-fg),1,PASS
+129,pink madder lake,粉茜草紅,ピンクマダーレーキ,#ef89b2,#000000,black,8.89:1,8.89,2.36,0.3946,--fc-129,var(--fc-129),--fc-129-fg,var(--fc-129-fg),1,PASS
+130,salmon,鮭肉粉,サーモン,#f39b96,#000000,black,9.94:1,9.94,2.11,0.4470,--fc-130,var(--fc-130),--fc-130-fg,var(--fc-130-fg),1,PASS
+131,coral,珊瑚色,コーラル,#f39f9e,#000000,black,10.26:1,10.26,2.05,0.4632,--fc-131,var(--fc-131),--fc-131-fg,var(--fc-131-fg),1,PASS
+132,beige red,米紅,ベージュレッド,#f9c7a6,#000000,black,13.75:1,13.75,1.53,0.6374,--fc-132,var(--fc-132),--fc-132-fg,var(--fc-132-fg),1,PASS
+133,magenta,洋紅,マゼンタ,#9a5169,#ffffff,white,5.59:1,3.75,5.59,0.1377,--fc-133,var(--fc-133),--fc-133-fg,var(--fc-133-fg),1,PASS
+134,crimson,深紅,クリムゾン,#a74593,#ffffff,white,5.36:1,3.92,5.36,0.1458,--fc-134,var(--fc-134),--fc-134-fg,var(--fc-134-fg),1,PASS
+135,light red violet,淺紅紫,ライトレッドバイオレット,#b1649c,#000000,black,5.17:1,5.17,4.06,0.2086,--fc-135,var(--fc-135),--fc-135-fg,var(--fc-135-fg),1,PASS
+136,purple violet,紫羅蘭紫,パープルバイオレット,#79539a,#ffffff,white,5.97:1,3.52,5.97,0.1258,--fc-136,var(--fc-136),--fc-136-fg,var(--fc-136-fg),1,PASS
+137,blue violet,藍紫,ブルーバイオレット,#5d4a95,#ffffff,white,7.29:1,2.88,7.29,0.0939,--fc-137,var(--fc-137),--fc-137-fg,var(--fc-137-fg),1,PASS
+138,violet,紫羅蘭色,バイオレット,#9169aa,#000000,black,4.81:1,4.81,4.37,0.1903,--fc-138,var(--fc-138),--fc-138-fg,var(--fc-138-fg),1,PASS
+140,light ultramarin,淺群青,ライトウルトラマリン,#6e9dd4,#000000,black,7.44:1,7.44,2.82,0.3218,--fc-140,var(--fc-140),--fc-140-fg,var(--fc-140-fg),1,PASS
+141,Delft blue,台夫特藍,デルフトブルー,#4b4493,#ffffff,white,8.24:1,2.55,8.24,0.0774,--fc-141,var(--fc-141),--fc-141-fg,var(--fc-141-fg),1,PASS
+142,madder,茜草紅,マダー,#cc3756,#ffffff,white,4.94:1,4.25,4.94,0.1624,--fc-142,var(--fc-142),--fc-142-fg,var(--fc-142-fg),1,PASS
+143,cobalt blue,鈷藍,コバルトブルー,#0061ac,#ffffff,white,6.35:1,3.31,6.35,0.1153,--fc-143,var(--fc-143),--fc-143-fg,var(--fc-143-fg),1,PASS
+144,cobalt blue greenish,偏綠鈷藍,コバルトブルーグリーニッシュ,#1d65af,#ffffff,white,5.94:1,3.53,5.94,0.1266,--fc-144,var(--fc-144),--fc-144-fg,var(--fc-144-fg),1,PASS
+145,light phthalo blue,淺酞菁藍,ライトフタロブルー,#52ace1,#000000,black,8.35:1,8.35,2.52,0.3674,--fc-145,var(--fc-145),--fc-145-fg,var(--fc-145-fg),2,PASS
+146,sky blue,天藍,スカイブルー,#94b8e2,#000000,black,10.21:1,10.21,2.06,0.4607,--fc-146,var(--fc-146),--fc-146-fg,var(--fc-146-fg),2,PASS
+147,light blue,淺藍,ライトブルー,#82cff5,#000000,black,12.19:1,12.19,1.72,0.5596,--fc-147,var(--fc-147),--fc-147-fg,var(--fc-147-fg),7,PASS
+148,ice blue,冰藍,アイスブルー,#cce8f3,#000000,black,16.40:1,16.40,1.28,0.7702,--fc-148,var(--fc-148),--fc-148-fg,var(--fc-148-fg),5,PASS
+149,bluish turquoise,偏藍土耳其藍,青みターコイズ,#0073a2,#ffffff,white,5.28:1,3.97,5.28,0.1487,--fc-149,var(--fc-149),--fc-149-fg,var(--fc-149-fg),2,PASS
+151,helioblue reddish,偏紅赫利奧藍,ヘリオブルー赤味,#226ab3,#ffffff,white,5.55:1,3.78,5.55,0.1390,--fc-151,var(--fc-151),--fc-151-fg,var(--fc-151-fg),2,PASS
+152,middle phthalo blue,中酞菁藍,ミドルフタロブルー,#3f9cd6,#000000,black,6.94:1,6.94,3.03,0.2969,--fc-152,var(--fc-152),--fc-152-fg,var(--fc-152-fg),2,PASS
+153,cobalt turquoise,鈷土耳其藍,コバルトターコイズ,#007ea3,#ffffff,white,4.65:1,4.51,4.65,0.1757,--fc-153,var(--fc-153),--fc-153-fg,var(--fc-153-fg),2,PASS
+154,light cobalt turquoise,淺鈷土耳其藍,ライトコバルトターコイズ,#78c9dc,#000000,black,11.19:1,11.19,1.88,0.5093,--fc-154,var(--fc-154),--fc-154-fg,var(--fc-154-fg),2,PASS
+155,helio turquoise,赫利奧土耳其藍,ヘリオターコイズ,#007d92,#ffffff,white,4.83:1,4.35,4.83,0.1674,--fc-155,var(--fc-155),--fc-155-fg,var(--fc-155-fg),2,PASS
+156,cobalt green,鈷綠,コバルトグリーン,#00b2bb,#000000,black,8.09:1,8.09,2.60,0.3543,--fc-156,var(--fc-156),--fc-156-fg,var(--fc-156-fg),2,PASS
+157,dark indigo,深靛藍,ダークインディゴ,#454f5f,#ffffff,white,8.28:1,2.54,8.28,0.0768,--fc-157,var(--fc-157),--fc-157-fg,var(--fc-157-fg),2,PASS
+158,deep cobalt green,深鈷綠,ディープコバルトグリーン,#08675c,#ffffff,white,6.76:1,3.10,6.76,0.1052,--fc-158,var(--fc-158),--fc-158-fg,var(--fc-158-fg),2,PASS
+159,Hooker´s green,胡克綠,フッカーズグリーン,#007561,#ffffff,white,5.65:1,3.72,5.65,0.1359,--fc-159,var(--fc-159),--fc-159-fg,var(--fc-159-fg),2,PASS
+160,manganese violet,錳紫,マンガンバイオレット,#a266a7,#000000,black,4.99:1,4.99,4.20,0.1997,--fc-160,var(--fc-160),--fc-160-fg,var(--fc-160-fg),2,PASS
+161,phthalo green,酞菁綠,フタログリーン,#00a386,#000000,black,6.58:1,6.58,3.19,0.2792,--fc-161,var(--fc-161),--fc-161-fg,var(--fc-161-fg),2,PASS
+162,light phthalo green,淺酞菁綠,ライトフタログリーン,#44b286,#000000,black,7.96:1,7.96,2.64,0.3479,--fc-162,var(--fc-162),--fc-162-fg,var(--fc-162-fg),2,PASS
+163,emerald green,翡翠綠,エメラルドグリーン,#00a367,#000000,black,6.43:1,6.43,3.26,0.2717,--fc-163,var(--fc-163),--fc-163-fg,var(--fc-163-fg),2,PASS
+165,juniper green,杜松綠,ジュニパーグリーン,#4a6b4b,#ffffff,white,6.01:1,3.50,6.01,0.1248,--fc-165,var(--fc-165),--fc-165-fg,var(--fc-165-fg),2,PASS
+166,grass green,草綠,グラスグリーン,#7ebb4e,#000000,black,9.11:1,9.11,2.31,0.4053,--fc-166,var(--fc-166),--fc-166-fg,var(--fc-166-fg),2,PASS
+167,permanent green olive,永固橄欖綠,パーマネントオリーブグリーン,#527b49,#ffffff,white,4.90:1,4.29,4.90,0.1644,--fc-167,var(--fc-167),--fc-167-fg,var(--fc-167-fg),2,PASS
+168,earth green yellowish,偏黃土綠,黄みアースグリーン,#8ea54c,#000000,black,7.64:1,7.64,2.75,0.3318,--fc-168,var(--fc-168),--fc-168-fg,var(--fc-168-fg),2,PASS
+169,caput mortuum,卡普特莫圖姆,カプトモルトゥーム,#a26059,#ffffff,white,4.82:1,4.35,4.82,0.1677,--fc-169,var(--fc-169),--fc-169-fg,var(--fc-169-fg),2,PASS
+170,may green,五月綠,メイグリーン,#a9bb47,#000000,black,9.89:1,9.89,2.12,0.4443,--fc-170,var(--fc-170),--fc-170-fg,var(--fc-170-fg),2,PASS
+171,light green,淺綠,ライトグリーン,#abcf7d,#000000,black,11.95:1,11.95,1.76,0.5476,--fc-171,var(--fc-171),--fc-171-fg,var(--fc-171-fg),2,PASS
+172,earth green,土綠,アースグリーン,#7d9170,#000000,black,6.16:1,6.16,3.41,0.2578,--fc-172,var(--fc-172),--fc-172-fg,var(--fc-172-fg),2,PASS
+173,olive green yellowish,偏黃橄欖綠,黄みオリーブグリーン,#656244,#ffffff,white,6.21:1,3.38,6.21,0.1192,--fc-173,var(--fc-173),--fc-173-fg,var(--fc-173-fg),2,PASS
+174,chromium green opaque,不透明鉻綠,クロミウムグリーンオペーク,#6f764d,#ffffff,white,4.80:1,4.37,4.80,0.1687,--fc-174,var(--fc-174),--fc-174-fg,var(--fc-174-fg),2,PASS
+175,dark sepia,深褐,ダークセピア,#4f4d4a,#ffffff,white,8.42:1,2.49,8.42,0.0746,--fc-175,var(--fc-175),--fc-175-fg,var(--fc-175-fg),2,PASS
+176,Van-Dyck-brown,凡戴克棕,ヴァンダイクブラウン,#755c54,#ffffff,white,6.15:1,3.42,6.15,0.1208,--fc-176,var(--fc-176),--fc-176-fg,var(--fc-176-fg),2,PASS
+177,walnut brown,胡桃棕,ウォルナットブラウン,#675449,#ffffff,white,7.14:1,2.94,7.14,0.0971,--fc-177,var(--fc-177),--fc-177-fg,var(--fc-177-fg),2,PASS
+178,nougat,牛軋糖棕,ヌガー,#9e8470,#000000,black,5.99:1,5.99,3.51,0.2494,--fc-178,var(--fc-178),--fc-178-fg,var(--fc-178-fg),2,PASS
+179,bistre,焦褐,ビスター,#87674e,#ffffff,white,5.15:1,4.08,5.15,0.1540,--fc-179,var(--fc-179),--fc-179-fg,var(--fc-179-fg),2,PASS
+180,raw umber,生赭褐,ローアンバー,#a37a48,#000000,black,5.43:1,5.43,3.86,0.2217,--fc-180,var(--fc-180),--fc-180-fg,var(--fc-180-fg),2,PASS
+181,Payne´s grey,佩恩灰,ペインズグレー,#505358,#ffffff,white,7.72:1,2.72,7.72,0.0860,--fc-181,var(--fc-181),--fc-181-fg,var(--fc-181-fg),2,PASS
+182,brown ochre,棕赭,ブラウンオーカー,#ca985b,#000000,black,8.15:1,8.15,2.58,0.3577,--fc-182,var(--fc-182),--fc-182-fg,var(--fc-182-fg),2,PASS
+183,light yellow ochre,淺黃赭,ライトイエローオーカー,#f3bf57,#000000,black,12.40:1,12.40,1.69,0.5700,--fc-183,var(--fc-183),--fc-183-fg,var(--fc-183-fg),2,PASS
+184,dark Naples ochre,深拿坡里赭,ダークネープルスオーカー,#f5c553,#000000,black,12.99:1,12.99,1.62,0.5997,--fc-184,var(--fc-184),--fc-184-fg,var(--fc-184-fg),2,PASS
+185,Naples yellow,拿坡里黃,ネープルスイエロー,#fad351,#000000,black,14.50:1,14.50,1.45,0.6751,--fc-185,var(--fc-185),--fc-185-fg,var(--fc-185-fg),2,PASS
+186,terracotta,赤陶,テラコッタ,#ea8d52,#000000,black,8.43:1,8.43,2.49,0.3715,--fc-186,var(--fc-186),--fc-186-fg,var(--fc-186-fg),2,PASS
+187,burnt ochre,焦赭,バーントオーカー,#db995d,#000000,black,8.73:1,8.73,2.41,0.3863,--fc-187,var(--fc-187),--fc-187-fg,var(--fc-187-fg),2,PASS
+188,sanguine,血紅赭,サンギン,#d7704f,#000000,black,6.32:1,6.32,3.32,0.2660,--fc-188,var(--fc-188),--fc-188-fg,var(--fc-188-fg),2,PASS
+189,cinnamon,肉桂色,シナモン,#e7ae97,#000000,black,10.90:1,10.90,1.93,0.4950,--fc-189,var(--fc-189),--fc-189-fg,var(--fc-189-fg),3,PASS
+190,Venetian red,威尼斯紅,ベネチアンレッド,#dd7d75,#000000,black,7.26:1,7.26,2.89,0.3132,--fc-190,var(--fc-190),--fc-190-fg,var(--fc-190-fg),3,PASS
+191,Pompeian red,龐貝紅,ポンペイアンレッド,#e57b84,#000000,black,7.50:1,7.50,2.80,0.3249,--fc-191,var(--fc-191),--fc-191-fg,var(--fc-191-fg),3,PASS
+192,India red,印度紅,インディアンレッド,#984849,#ffffff,white,6.25:1,3.36,6.25,0.1179,--fc-192,var(--fc-192),--fc-192-fg,var(--fc-192-fg),3,PASS
+193,burnt carmine,焦胭脂紅,バーントカーマイン,#b05164,#ffffff,white,4.99:1,4.21,4.99,0.1604,--fc-193,var(--fc-193),--fc-193-fg,var(--fc-193-fg),3,PASS
+194,red violet,紅紫,レッドバイオレット,#90496c,#ffffff,white,6.26:1,3.36,6.26,0.1178,--fc-194,var(--fc-194),--fc-194-fg,var(--fc-194-fg),3,PASS
+199,black,黑色,黒,#000000,#ffffff,white,21.00:1,1.00,21.00,0.0000,--fc-199,var(--fc-199),--fc-199-fg,var(--fc-199-fg),3,PASS
+205,cadmium yellow lemon,檸檬鎘黃,カドミウムイエローレモン,#f1e857,#000000,black,16.42:1,16.42,1.28,0.7710,--fc-205,var(--fc-205),--fc-205-fg,var(--fc-205-fg),3,PASS
+217,middle cadmium red,中鎘紅,ミドルカドミウムレッド,#be4049,#ffffff,white,5.23:1,4.02,5.23,0.1509,--fc-217,var(--fc-217),--fc-217-fg,var(--fc-217-fg),3,PASS
+219,deep scarlet red,深鮮紅,ディープスカーレットレッド,#e33e56,#000000,black,5.09:1,5.09,4.13,0.2045,--fc-219,var(--fc-219),--fc-219-fg,var(--fc-219-fg),3,PASS
+220,light indigo,淺靛藍,ライトインディゴ,#e3e7ef,#000000,black,16.94:1,16.94,1.24,0.7971,--fc-220,var(--fc-220),--fc-220-fg,var(--fc-220-fg),5,PASS
+223,deep red,濃紅,ディープレッド,#de2437,#ffffff,white,4.76:1,4.41,4.76,0.1707,--fc-223,var(--fc-223),--fc-223-fg,var(--fc-223-fg),3,PASS
+225,dark red,暗紅,ダークレッド,#aa2e4f,#ffffff,white,6.54:1,3.21,6.54,0.1106,--fc-225,var(--fc-225),--fc-225-fg,var(--fc-225-fg),3,PASS
+226,alizarin crimson,茜素深紅,アリザリンクリムゾン,#da2855,#ffffff,white,4.76:1,4.42,4.76,0.1708,--fc-226,var(--fc-226),--fc-226-fg,var(--fc-226-fg),3,PASS
+230,cold grey I,冷灰 I,コールドグレーI,#d3d8df,#000000,black,14.66:1,14.66,1.43,0.6829,--fc-230,var(--fc-230),--fc-230-fg,var(--fc-230-fg),3,PASS
+231,cold grey II,冷灰 II,コールドグレーII,#c8ccd3,#000000,black,13.03:1,13.03,1.61,0.6017,--fc-231,var(--fc-231),--fc-231-fg,var(--fc-231-fg),3,PASS
+232,cold grey III,冷灰 III,コールドグレーIII,#b7b9bf,#000000,black,10.71:1,10.71,1.96,0.4853,--fc-232,var(--fc-232),--fc-232-fg,var(--fc-232-fg),3,PASS
+233,cold grey IV,冷灰 IV,コールドグレーIV,#989b9e,#000000,black,7.52:1,7.52,2.79,0.3259,--fc-233,var(--fc-233),--fc-233-fg,var(--fc-233-fg),3,PASS
+234,cold grey V,冷灰 V,コールドグレーV,#77787c,#000000,black,4.76:1,4.76,4.41,0.1881,--fc-234,var(--fc-234),--fc-234-fg,var(--fc-234-fg),3,PASS
+235,cold grey VI,冷灰 VI,コールドグレーVI,#5f5c5b,#ffffff,white,6.63:1,3.17,6.63,0.1084,--fc-235,var(--fc-235),--fc-235-fg,var(--fc-235-fg),3,PASS
+239,lilac,淡紫丁香,ライラック,#ecd6ea,#000000,black,15.37:1,15.37,1.37,0.7187,--fc-239,var(--fc-239),--fc-239-fg,var(--fc-239-fg),5,PASS
+246,Prussian blue,普魯士藍,プルシャンブルー,#126295,#ffffff,white,6.55:1,3.21,6.55,0.1103,--fc-246,var(--fc-246),--fc-246-fg,var(--fc-246-fg),3,PASS
+247,indanthrene blue,靛蒽藍,インダンスレンブルー,#475a96,#ffffff,white,6.62:1,3.17,6.62,0.1085,--fc-247,var(--fc-247),--fc-247-fg,var(--fc-247-fg),3,PASS
+249,mauve,淡紫,モーブ,#655199,#ffffff,white,6.58:1,3.19,6.58,0.1095,--fc-249,var(--fc-249),--fc-249-fg,var(--fc-249-fg),3,PASS
+250,gold,金色,ゴールド,#fffdf4,#000000,black,20.61:1,20.61,1.02,0.9804,--fc-250,var(--fc-250),--fc-250-fg,var(--fc-250-fg),3,PASS
+251,silver,銀色,シルバー,#f2f9fe,#000000,black,19.76:1,19.76,1.06,0.9378,--fc-251,var(--fc-251),--fc-251-fg,var(--fc-251-fg),3,PASS
+252,copper,銅色,カッパー,#fdf2f8,#000000,black,19.23:1,19.23,1.09,0.9116,--fc-252,var(--fc-252),--fc-252-fg,var(--fc-252-fg),3,PASS
+263,caput mortuum violet,卡普特莫圖姆紫,カプトモルトゥームバイオレット,#8b5152,#ffffff,white,6.18:1,3.40,6.18,0.1198,--fc-263,var(--fc-263),--fc-263-fg,var(--fc-263-fg),3,PASS
+264,dark phthalo green,深酞菁綠,ダークフタログリーン,#008b71,#000000,black,4.93:1,4.93,4.26,0.1966,--fc-264,var(--fc-264),--fc-264-fg,var(--fc-264-fg),3,PASS
+266,permanent green,永固綠,パーマネントグリーン,#2d863c,#000000,black,4.59:1,4.59,4.58,0.1793,--fc-266,var(--fc-266),--fc-266-fg,var(--fc-266-fg),3,PASS
+267,pine green,松綠,パイングリーン,#385f48,#ffffff,white,7.24:1,2.90,7.24,0.0949,--fc-267,var(--fc-267),--fc-267-fg,var(--fc-267-fg),3,PASS
+268,green gold,綠金,グリーンゴールド,#d09a2e,#000000,black,8.34:1,8.34,2.52,0.3672,--fc-268,var(--fc-268),--fc-268-fg,var(--fc-268-fg),3,PASS
+270,warm grey I,暖灰 I,ウォームグレーI,#e0d8d5,#000000,black,14.95:1,14.95,1.40,0.6976,--fc-270,var(--fc-270),--fc-270-fg,var(--fc-270-fg),3,PASS
+271,warm grey II,暖灰 II,ウォームグレーII,#d0c8c5,#000000,black,12.75:1,12.75,1.65,0.5875,--fc-271,var(--fc-271),--fc-271-fg,var(--fc-271-fg),3,PASS
+272,warm grey III,暖灰 III,ウォームグレーIII,#b2aca6,#000000,black,9.34:1,9.34,2.25,0.4172,--fc-272,var(--fc-272),--fc-272-fg,var(--fc-272-fg),3,PASS
+273,warm grey IV,暖灰 IV,ウォームグレーIV,#858485,#000000,black,5.64:1,5.64,3.73,0.2318,--fc-273,var(--fc-273),--fc-273-fg,var(--fc-273-fg),3,PASS
+274,warm grey V,暖灰 V,ウォームグレーV,#6d6664,#ffffff,white,5.62:1,3.73,5.62,0.1367,--fc-274,var(--fc-274),--fc-274-fg,var(--fc-274-fg),3,PASS
+275,warm grey VI,暖灰 VI,ウォームグレーVI,#615a5b,#ffffff,white,6.73:1,3.12,6.73,0.1061,--fc-275,var(--fc-275),--fc-275-fg,var(--fc-275-fg),3,PASS
+276,chrome oxide green fiery,火焰鉻氧綠,クロームオキサイドグリーン・ファイヤリー,#008f78,#000000,black,5.20:1,5.20,4.04,0.2100,--fc-276,var(--fc-276),--fc-276-fg,var(--fc-276-fg),3,PASS
+278,chrome oxide green,鉻氧綠,クロームオキサイドグリーン,#53654c,#ffffff,white,6.30:1,3.33,6.30,0.1167,--fc-278,var(--fc-278),--fc-278-fg,var(--fc-278-fg),3,PASS
+280,burnt umber,焦赭褐,バーントアンバー,#725b47,#ffffff,white,6.36:1,3.30,6.36,0.1151,--fc-280,var(--fc-280),--fc-280-fg,var(--fc-280-fg),3,PASS
+283,burnt siena,焦赭土,バーントシエナ,#935f47,#ffffff,white,5.29:1,3.97,5.29,0.1484,--fc-283,var(--fc-283),--fc-283-fg,var(--fc-283-fg),3,PASS
+290,ruby metallic,金屬紅寶石色,ルビーメタリック,#dfd1db,#000000,black,14.28:1,14.28,1.47,0.6640,--fc-290,var(--fc-290),--fc-290-fg,var(--fc-290-fg),6,PASS
+292,blue metallic,金屬藍,ブルーメタリック,#d6e0e4,#000000,black,15.64:1,15.64,1.34,0.7321,--fc-292,var(--fc-292),--fc-292-fg,var(--fc-292-fg),6,PASS
+294,green metallic,金屬綠,グリーンメタリック,#d9e1de,#000000,black,15.78:1,15.78,1.33,0.7388,--fc-294,var(--fc-294),--fc-294-fg,var(--fc-294-fg),6,PASS
+406,pastel chrome yellow,粉彩鉻黃,パステルクロームイエロー,#f2e899,#000000,black,16.78:1,16.78,1.25,0.7889,--fc-406,var(--fc-406),--fc-406-fg,var(--fc-406-fg),7,PASS
+409,pastel orange,粉彩橙,パステルオレンジ,#fad76f,#000000,black,15.01:1,15.01,1.40,0.7007,--fc-409,var(--fc-409),--fc-409-fg,var(--fc-409-fg),7,PASS
+418,pastel scarlet red,粉彩鮮紅,パステルスカーレットレッド,#ef8157,#000000,black,7.95:1,7.95,2.64,0.3474,--fc-418,var(--fc-418),--fc-418-fg,var(--fc-418-fg),7,PASS
+419,pastel magenta,粉彩洋紅,パステルマゼンタ,#e9badd,#000000,black,12.53:1,12.53,1.68,0.5766,--fc-419,var(--fc-419),--fc-419-fg,var(--fc-419-fg),7,PASS
+442,pastel madder,粉彩茜草紅,パステルマダー,#e16495,#000000,black,6.46:1,6.46,3.25,0.2729,--fc-442,var(--fc-442),--fc-442-fg,var(--fc-442-fg),7,PASS
+445,pastel phthalo blue,粉彩酞菁藍,パステルフタロブルー,#5cbbed,#000000,black,9.79:1,9.79,2.15,0.4393,--fc-445,var(--fc-445),--fc-445-fg,var(--fc-445-fg),7,PASS
+446,pastel sky blue,粉彩天藍,パステルスカイブルー,#a7d9ff,#000000,black,14.01:1,14.01,1.50,0.6506,--fc-446,var(--fc-446),--fc-446-fg,var(--fc-446-fg),7,PASS
+461,pastel phthalo green,粉彩酞菁綠,パステルフタログリーン,#7bccbb,#000000,black,11.20:1,11.20,1.88,0.5098,--fc-461,var(--fc-461),--fc-461-fg,var(--fc-461-fg),7,PASS
+466,pastel permanent green,粉彩永固綠,パステルパーマネントグリーン,#a7d66b,#000000,black,12.47:1,12.47,1.68,0.5737,--fc-466,var(--fc-466),--fc-466-fg,var(--fc-466-fg),7,PASS
+470,pastel may green,粉彩五月綠,パステルメイグリーン,#d3e869,#000000,black,15.52:1,15.52,1.35,0.7258,--fc-470,var(--fc-470),--fc-470-fg,var(--fc-470-fg),7,PASS
+475,pastel sepia,粉彩褐,パステルセピア,#9c9a93,#000000,black,7.46:1,7.46,2.82,0.3229,--fc-475,var(--fc-475),--fc-475-fg,var(--fc-475-fg),7,PASS
+480,pastel umber,粉彩赭褐,パステルアンバー,#b88a6d,#000000,black,6.89:1,6.89,3.05,0.2947,--fc-480,var(--fc-480),--fc-480-fg,var(--fc-480-fg),7,PASS

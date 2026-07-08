@@ -9,6 +9,10 @@
  *   colours_lightfastness_p1-3.csv       耐光度（120）
  *   set_assortments_p1-3_long.csv        套組（pp.1-3）
  *   goldfaber_p7_long.csv                套組（Goldfaber p.7）
+ *   faber_castell_color_code_css_foreground_zh_ja.csv  色名 zh/ja 在地化（選用）
+ *
+ * 輸出：../fc-colors.js（window.FC_COLORS，英文名為 canonical、不翻譯）
+ *      ＋ ../fc-names-i18n.js（window.FC_NAMES_I18N＝code→{zh,ja}，選用對照，供消費端 app 顯示）
  */
 'use strict';
 const fs = require('fs');
@@ -71,3 +75,21 @@ const OUT = path.join(DIR, '..', '..', 'public', 'apps', 'faber-castell-color', 
 fs.writeFileSync(OUT, out);
 console.log('wrote', colors.length, 'colours ->', path.relative(path.join(DIR, '..', '..'), OUT),
   '| lf:', colors.filter(c => c.lf).length, '| sets:', colors.filter(c => c.sets).length);
+
+// 色名在地化（選用對照）：不動 FC_COLORS 的英文名（色名是資料、不翻譯），另出 code→{zh,ja}
+const i18nNames = {};
+try {
+  readCsv('faber_castell_color_code_css_foreground_zh_ja.csv').slice(1).forEach(r => {
+    const code = (r[0] || '').trim(), zh = (r[2] || '').trim(), ja = (r[3] || '').trim();
+    if (code && (zh || ja)) { const o = {}; if (zh) o.zh = zh; if (ja) o.ja = ja; i18nNames[code] = o; }
+  });
+} catch (e) { /* 對照 CSV 選用，缺檔則略過 */ }
+if (Object.keys(i18nNames).length) {
+  const i18nOut = '/* Faber-Castell colour names, localised (zh-Hant / ja) — generated (do not hand-edit).\n' +
+    ' * Source: faber_castell_color_code_css_foreground_zh_ja.csv (colour_name_zh_tw / colour_name_ja).\n' +
+    ' * Optional companion to fc-colors.js; English name stays canonical in FC_COLORS. code -> {zh,ja}.\n */\n' +
+    'window.FC_NAMES_I18N = ' + JSON.stringify(i18nNames) + ';\n';
+  const OUT2 = path.join(DIR, '..', '..', 'public', 'apps', 'faber-castell-color', 'data', 'fc-names-i18n.js');
+  fs.writeFileSync(OUT2, i18nOut);
+  console.log('wrote', Object.keys(i18nNames).length, 'localised names ->', path.relative(path.join(DIR, '..', '..'), OUT2));
+}
