@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="./faber-castell-color.css" />
   <link rel="stylesheet" href="./side-tool.css" />
+  <link rel="stylesheet" href="./filter-clear.css" />   <!-- 共用 utility：搜尋框「清除」× 鈕 -->
 </head>
 
 <body data-i18n-doctitle="title.page">
@@ -41,7 +42,7 @@
         <div class="search-wrap">
           <i class="material-icons">search</i>
           <input id="search" type="text" autocomplete="off" spellcheck="false"
-                 data-i18n-placeholder="search.placeholder" placeholder="色號或色名…" />
+                 data-i18n-placeholder="search.placeholder" placeholder="色號或色名…" data-filter-clear />
           <span id="count" class="count"></span>
         </div>
       </div>
@@ -126,6 +127,7 @@
   <script src="./locales/en.js"></script>
   <script src="./locales/ja.js"></script>
 
+  <script src="./filter-clear.js"></script>   <!-- 共用 utility：搜尋框清除鈕 -->
   <script src="./faber-castell-color.js"></script>
 </body>
 

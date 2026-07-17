@@ -13,6 +13,7 @@ I18n.register('en', {
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
   'tool.lang': 'Language',
+  'tool.clearFilter': 'Clear',
 
   'sort.code': 'code',
   'sort.hue': 'hue',

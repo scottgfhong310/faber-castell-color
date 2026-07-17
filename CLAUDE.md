@@ -56,6 +56,7 @@ npm install && node app.js              # → http://localhost:3000/apps/faber-c
 |---|---|
 | `materialize-dark.css` | 家族 repo `nodeapp-webapp-family/materialize-dark.css` |
 | `side-tool.css`（正統 flex 版）| 家族 §5.5 正統版（複製自 `color-palette`） |
+| `filter-clear.css`、`filter-clear.js` | 家族 §5.12 篩選框「清除」× 鈕 utility（自 `local-reader` 複製、byte-identical） |
 | `i18n.js` | 家族共用（`markdown-reader` 等同款引擎） |
 | `data/fc-colors.js` | 由 `Faber-Castell/*.csv` 產生器合併（來源 `Farbtabelle-AG-ENG-0214.pdf`）|
 

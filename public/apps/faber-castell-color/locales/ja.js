@@ -13,6 +13,7 @@ I18n.register('ja', {
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
   'tool.lang': '言語',
+  'tool.clearFilter': 'クリア',
 
   'sort.code': '番号',
   'sort.hue': '色相',

@@ -13,6 +13,7 @@ I18n.register('zh-Hant', {
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',
   'tool.lang': '語言',
+  'tool.clearFilter': '清除',
 
   'sort.code': '色號',
   'sort.hue': '色相',
