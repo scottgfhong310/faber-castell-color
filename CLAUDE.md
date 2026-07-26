@@ -15,7 +15,7 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（141 色，由 PDF 產生）
 ├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
-├─ materialize-dark.css · side-tool.css · i18n.js · locales/{zh-Hant,en,ja}.js
+├─ materialize-dark.css · side-tool.css · side-tool.js · i18n.js · locales/{zh-Hant,en,ja}.js   # （樣式＋行為：check 微回饋、矮視窗溢出收納；權威版＝家族 repo，§5.5）
 ```
 
 無 `routes/`、無 `public/upload/`——這是唯讀參考 app，資料是烘進前端的靜態 registry。
