@@ -9,6 +9,7 @@ I18n.register('en', {
   'count.showing': 'Showing {n} of {total}',
 
   'tool.sort': 'Sort: code / hue / lightness / family / hex',
+  'tool.sets': 'Browse by set (set → colours)',
   'tool.css': 'View / copy full CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
@@ -42,6 +43,12 @@ I18n.register('en', {
   'note.pixel': 'Pixel-sampled from the PDF swatch',
   'note.crossValidated': 'Cross-validated by two independent extractions',
   'note.vector': 'Vector fill read from the official colour chart (exact)',
+
+  'sets.title': 'Browse by set',
+  'sets.sub': '{lines} product lines, {combos} sets. Pick a size to see the colours it contains; click a swatch for that colour.',
+  'sets.pick': 'Pick a set above to list the colours it contains.',
+  'sets.none': 'Not in any set',
+  'sets.noneHead': 'Not in any set · {n} colours',
 
   'series.ag': 'Art & Graphic series · source {source}',
   'series.black-edition': 'Black Edition series · source {source}',

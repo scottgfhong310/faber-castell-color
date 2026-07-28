@@ -9,6 +9,7 @@ I18n.register('zh-Hant', {
   'count.showing': '顯示 {n} / {total} 色',
 
   'tool.sort': '排序：色號 / 色相 / 明度 / 色系 / hex',
+  'tool.sets': '依套組瀏覽（套組 → 顏色）',
   'tool.css': '檢視 / 複製整份 CSS',
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',
@@ -42,6 +43,12 @@ I18n.register('zh-Hant', {
   'note.pixel': '像素取樣自 PDF 色票',
   'note.crossValidated': '兩次獨立抽取交叉驗證',
   'note.vector': '取自官方色卡的向量填色（精確值）',
+
+  'sets.title': '依套組瀏覽',
+  'sets.sub': '{lines} 條產品線、{combos} 個套組。點尺寸看它收錄哪些色；點色票看該色明細。',
+  'sets.pick': '選一個套組，這裡會列出它收錄的顏色。',
+  'sets.none': '未收錄於任何套組',
+  'sets.noneHead': '未收錄於任何套組 · {n} 色',
 
   'series.ag': 'Art & Graphic 系列 · 來源 {source}',
   'series.black-edition': 'Black Edition 系列 · 來源 {source}',

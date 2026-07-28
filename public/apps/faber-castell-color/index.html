@@ -58,6 +58,9 @@
     <div id="setting-sort" class="side-tool" data-i18n-title="tool.sort" title="排序：色號 / 色相 / 明度">
       <i class="material-icons">sort</i>
     </div>
+    <div id="setting-sets" class="side-tool" data-i18n-title="tool.sets" title="依套組瀏覽">
+      <i class="material-icons">widgets</i>
+    </div>
     <div id="setting-css" class="side-tool" data-i18n-title="tool.css" title="檢視 / 複製整份 CSS">
       <i class="material-icons">code</i>
     </div>
@@ -96,6 +99,19 @@
           <div id="detail-sets"></div>
         </div>
       </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect btn-flat" data-i18n="detail.close">關閉</a>
+    </div>
+  </div>
+
+  <!-- ===== 套組瀏覽 Modal（套組 → 顏色；明細 Modal 是反方向）===== -->
+  <div id="sets-modal" class="modal sets-modal">
+    <div class="modal-content">
+      <h5 data-i18n="sets.title">依套組瀏覽</h5>
+      <div class="sets-sub" id="sets-sub"></div>
+      <div id="sets-list" class="sets-list"></div>
+      <div id="sets-detail" class="sets-detail"></div>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect btn-flat" data-i18n="detail.close">關閉</a>

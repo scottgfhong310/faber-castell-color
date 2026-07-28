@@ -9,6 +9,7 @@ I18n.register('ja', {
   'count.showing': '{n} / {total} 色を表示',
 
   'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系 / hex',
+  'tool.sets': 'セットから探す（セット → 色）',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
@@ -42,6 +43,12 @@ I18n.register('ja', {
   'note.pixel': 'PDF 色見本からピクセル採取',
   'note.crossValidated': '2 回の独立抽出でクロス検証済み',
   'note.vector': '公式カラーチャートのベクター塗り（正確値）',
+
+  'sets.title': 'セットから探す',
+  'sets.sub': '{lines} 製品ライン・{combos} セット。サイズを選ぶと収録色が一覧され、色見本をクリックすると詳細が開きます。',
+  'sets.pick': 'セットを選ぶと、収録されている色を一覧します。',
+  'sets.none': 'どのセットにも未収録',
+  'sets.noneHead': 'どのセットにも未収録 · {n} 色',
 
   'series.ag': 'Art & Graphic シリーズ · 出典 {source}',
   'series.black-edition': 'Black Edition シリーズ · 出典 {source}',

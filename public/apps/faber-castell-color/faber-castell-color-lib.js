@@ -19,6 +19,9 @@
  *   filter(colors, query) → Color[]              依色號或色名過濾（不改輸入、不分大小寫）
  *   sortColors(colors, mode) → Color[]           依 mode 排序（不改輸入）：色號 / 色相光譜 / 明度 / 色系分群 / hex 原始值
  *   colorFamily(color) → 'red'|…|'neutral'       某色屬哪個色系（金屬色或 s<0.17 → neutral）
+ *   setIndex(colors) → [{line,series,sizes:[{size,count}]}]  套組索引（顏色→套組 的反向）
+ *   colorsInSet(colors, line, size) → Color[]    某套組收錄哪些色（依色號）
+ *   colorsWithoutSet(colors) → Color[]           不屬於任何套組的色（上者的補集）
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   rgbToLab(r,g,b) → [L,a,b] · deltaE(labA,labB) → ΔE00 (CIEDE2000) · deltaEBand(dE) → 'very'|'close'|'noticeable'|'far'
  *   nearestFC({r,g,b}, {n,colors,series}) → [{code,name,hex,deltaE,band}]  最接近的 FC 色
@@ -46,6 +49,47 @@
       return c.code.toLowerCase().indexOf(q) !== -1 ||
              c.name.toLowerCase().indexOf(q) !== -1;
     });
+  }
+
+  // ---- 套組索引（顏色→套組 的反向：套組→顏色） -----------------------------
+  // 資料裡 sets 掛在色上（c.sets = { 產品線: [尺寸…] }），要回答「這個套組收哪些色」
+  // 得整份掃一次。這裡建一次索引給 UI 用；純函式、不改輸入。
+  var SERIES_ORDER = ['ag', 'black-edition'];
+  function setIndex(colors) {
+    var lines = {};
+    colors.forEach(function (c) {
+      if (!c.sets) return;
+      var series = c.series || DEFAULT_SERIES;
+      Object.keys(c.sets).forEach(function (line) {
+        var L = lines[line] || (lines[line] = { line: line, series: series, sizes: {} });
+        c.sets[line].forEach(function (s) { L.sizes[s] = (L.sizes[s] || 0) + 1; });
+      });
+    });
+    return Object.keys(lines).map(function (k) { return lines[k]; })
+      .sort(function (a, b) {
+        var d = SERIES_ORDER.indexOf(a.series) - SERIES_ORDER.indexOf(b.series);
+        return d || (a.line < b.line ? -1 : a.line > b.line ? 1 : 0);
+      })
+      .map(function (L) {
+        return {
+          line: L.line,
+          series: L.series,
+          sizes: Object.keys(L.sizes).map(Number).sort(function (a, b) { return a - b; })
+            .map(function (s) { return { size: s, count: L.sizes[s] }; })
+        };
+      });
+  }
+
+  // 某套組收錄哪些色（依色號排序，與網格預設一致）
+  function colorsInSet(colors, line, size) {
+    return colors.filter(function (c) {
+      return c.sets && c.sets[line] && c.sets[line].indexOf(size) !== -1;
+    }).sort(function (a, b) { return (parseInt(a.code, 10) || 0) - (parseInt(b.code, 10) || 0); });
+  }
+
+  // 不屬於任何套組的色——套組瀏覽的補集，讓「各套組色數」與總數對得起來
+  function colorsWithoutSet(colors) {
+    return colors.filter(function (c) { return !c.sets || !Object.keys(c.sets).length; });
   }
 
   // ---- 顏色運算 ------------------------------------------------------------
@@ -294,6 +338,9 @@
     filter: filter,
     sortColors: sortColors,
     colorFamily: colorFamily,
+    setIndex: setIndex,
+    colorsInSet: colorsInSet,
+    colorsWithoutSet: colorsWithoutSet,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
     rgbToLab: rgbToLab,
