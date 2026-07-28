@@ -44,22 +44,37 @@
   border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
 }
 
-.assort { border-collapse: separate; border-spacing: 0; font-size: .76rem; }
+/* Materialize 的 `table { width: 100% }` 會把表格撐滿容器，多出來的寬度全被
+   第一欄吸走（Black Edition 只有 8 欄，色名欄因此被撐到 385px）。改成依內容決定。 */
+.assort { width: max-content; border-collapse: separate; border-spacing: 0; font-size: .76rem; }
 /* Materialize 的 `table td, table th { padding: 15px 5px }` 會把每一格撐到 47px，
    矩陣就變成 6570px 長。先歸零，需要留白的格子各自再加。 */
 .assort th, .assort td { padding: 0; border-bottom: 1px solid var(--border); }
 
-/* --- 表頭：三列各自 sticky，top 依前面列的高度堆疊 --- */
+/* --- 表頭：三列各自 sticky，top 由前面列的高度推導 ---
+   高度與 top 一定要同源，否則改了高度忘了改 top，表頭就會互相疊住。 */
+.assort { --h-line: 44px; --h-size: 26px; }
 .assort thead th, .assort thead td {
   position: sticky; z-index: 3;
   background: var(--surface-2); color: var(--text);
   font-weight: 500; text-align: center;
 }
-.assort thead .r-line th { top: 0; height: 30px; padding: 0 6px; font-size: .74rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px;
-  border-left: 1px solid var(--border); }
-.assort thead .r-size th { top: 30px; height: 26px; }
-.assort thead .r-add td { top: 56px; height: 26px; }
+/* 產品線名稱允許折到兩行：像 `Gift Set Art & Graphic` 這種只有一個尺寸的線，
+   若維持 nowrap 會把那一欄整個撐寬（實測 ~200px），矩陣其他欄就被擠掉。 */
+.assort thead .r-line th {
+  top: 0; height: var(--h-line); padding: 3px 6px; font-size: .74rem;
+  border-left: 1px solid var(--border);
+}
+/* auto table layout 會忽略 <th> 上的 max-width，欄寬還是照內容的「不折行寬度」算，
+   所以 `Gift Set Art & Graphic` 這種單尺寸的線會把整欄撐寬。把限制放在**內層 block**
+   上才吃得到；上限由 colspan 算出（每個尺寸欄 34px），最多折兩行。 */
+.assort thead .r-line th > span {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden; line-height: 1.2; word-break: break-word;
+  margin: 0 auto;                     /* 寬度由 JS 依 colspan 給，這裡置中 */
+}
+.assort thead .r-size th { top: var(--h-line); height: var(--h-size); }
+.assort thead .r-add td { top: calc(var(--h-line) + var(--h-size)); height: var(--h-size); }
 /* 沒有差額列時，尺寸列就是最後一列 */
 .assort:not(.has-add) thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
 
@@ -71,13 +86,20 @@
 .assort .c-size.is-base, .assort .c-add.is-base { background: var(--accent); color: var(--card-bg); }
 .assort .c-add { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--accent); }
 
-/* --- 第一欄：顏色，sticky 在左 --- */
+/* --- 第一欄：顏色，sticky 在左 ---
+   欄寬用變數，因為限制要同時下在儲存格與內層 flex 上：table 的 auto layout 只把
+   <th> 的 width 當「建議值」，實際欄寬取各列 min-content 的最大值——色名 nowrap
+   時那就是整串名字的寬度，於是 width:186px 被無視（實測還是 195px）。
+   把 max-width 下在內層 .ccell（block/flex，吃 max-width）才真的收得住。 */
+.assort { --w-color: 246px; }
+#matrix-ag .assort { --w-color: 186px; }   /* AG 有 32 欄，第一欄讓 60px 出來給矩陣 */
 .assort .c-color {
   position: sticky; left: 0; z-index: 2;
   background: var(--surface); text-align: left; font-weight: 400;
-  width: 246px; min-width: 246px; padding: 3px 10px 3px 8px;
+  width: var(--w-color); min-width: var(--w-color); padding: 3px 10px 3px 8px;
   display: table-cell; white-space: nowrap;
 }
+.assort tbody .ccell { max-width: calc(var(--w-color) - 18px); }
 .assort thead .c-color { z-index: 4; background: var(--surface-2); vertical-align: bottom; padding-bottom: 6px; }
 .assort tbody .c-color { cursor: pointer; }
 .assort tbody tr:hover .c-color { background: var(--surface-2); }

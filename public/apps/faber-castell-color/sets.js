@@ -84,8 +84,12 @@
     while (i < m.columns.length) {                       // 第 1 列：產品線（跨欄）
       var line = m.columns[i].line, span = 0;
       while (i + span < m.columns.length && m.columns[i + span].line === line) span++;
+      // 上限＝該線佔幾個尺寸欄 × 34px；放在內層 span 上，auto layout 才會照它算欄寬
       lineCells += '<th class="c-line" colspan="' + span + '" title="' + esc(line) + '">' +
-        esc(line) + '</th>';
+        // 用**明確寬度**而非 max-width：max-width 只能收窄、撐不寬，單一尺寸的線
+        // （欄寬 34px）仍會被 line-clamp 截掉。給 block 一個實際寬度，欄寬才會照它算。
+        // 下限 76px＝實測「Gift Set Art & Graphic」折成兩行所需的寬度（60–96px 都是兩行）。
+        '<span style="width:' + Math.max(span * 34 - 12, 76) + 'px">' + esc(line) + '</span></th>';
       i += span;
     }
     m.columns.forEach(function (col, ci) {                // 第 2 列：尺寸（可點設為基準）
