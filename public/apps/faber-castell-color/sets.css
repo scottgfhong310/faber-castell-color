@@ -10,6 +10,25 @@
 .baseline-field { margin: 0; min-width: 268px; }
 .baseline-field.input-field { padding-top: 0; }
 
+/* Materialize select 的下拉預設是 16px 字、每列 min-height 50px——40 個套組排下來
+   會長到 1000px 以上。這裡收成密一點，並放寬寬度（JS 端關掉 constrainWidth）。 */
+.baseline-field .dropdown-content.select-dropdown {
+  width: 360px !important;          /* Materialize 會寫 inline width，只能用 !important 蓋 */
+  max-height: 60vh;
+  border-radius: 10px;
+}
+.baseline-field .dropdown-content li { min-height: 0; }
+.baseline-field .dropdown-content li > span {
+  font-size: .82rem; line-height: 1.35; padding: 5px 14px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.baseline-field .dropdown-content li.optgroup > span {
+  font-size: .72rem; padding: 8px 12px 3px; opacity: .75;
+}
+/* 縮排要認 Materialize 給選項的 .optgroup-option，別用 `li.optgroup ~ li`——
+   那會把**後面的群組標題**也一起縮排（第二個 optgroup 就跟選項對齊了）。 */
+.baseline-field .dropdown-content li.optgroup-option > span { padding-left: 22px; }
+
 /* ===== 圖例 ===== */
 .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 4px 0 16px; font-size: .8rem; color: var(--muted); }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; }

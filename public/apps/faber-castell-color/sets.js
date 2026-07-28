@@ -72,7 +72,13 @@
     });
     var $sel = $('#baseline');
     $sel.html(html).val(baseline ? colKey(baseline.line, baseline.size) : '');
-    if (window.M && M.FormSelect) M.FormSelect.init($sel[0], {});
+    // constrainWidth:false 才不會把下拉鎖成欄位寬（預設 268px）；alignment:'right'
+    // 讓它靠右展開。下拉的 z-index 是 9999，本來就蓋得過 side-tools（1002/1003）。
+    if (window.M && M.FormSelect) {
+      M.FormSelect.init($sel[0], {
+        dropdownOptions: { constrainWidth: false, alignment: 'right', coverTrigger: false }
+      });
+    }
   }
 
   // ---- 矩陣 ----------------------------------------------------------------
