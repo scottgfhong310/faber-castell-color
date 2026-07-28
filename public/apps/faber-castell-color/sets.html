@@ -33,17 +33,16 @@
   <main>
     <div class="sets-page">
 
-      <div class="topbar">
-        <div>
+      <!-- 固定 Header：捲動時系列切換與目前篩選一直看得到 -->
+      <header class="page-head" id="page-head">
+        <div class="head-title">
           <h1 data-i18n="sets.pageTitle">套組收錄對照</h1>
-          <div class="sub" data-i18n="sets.pageSub">哪個套組收了哪些色——形制對齊 Faber-Castell 官方色卡的收錄表</div>
+          <div class="sub" data-i18n="sets.pageSub">選一個套組，只留下它收錄的顏色，再橫向看其他套組有沒有涵蓋</div>
         </div>
-        <div class="owned-wrap" id="owned-wrap"></div>
-      </div>
+        <div class="series-tabs" id="series-tabs"></div>
+        <div class="picked" id="picked"></div>
+      </header>
 
-      <div class="legend" id="legend"></div>
-
-      <!-- 一次只顯示選定的系列（由側鍵面板切換） -->
       <section class="matrix-sec" id="matrix"></section>
 
       <p class="matrix-foot" id="matrix-foot"></p>
@@ -53,9 +52,6 @@
 
   <!-- ===== 右側工具列（多頁 app 每頁都要有主題鍵，§5.5／§6） ===== -->
   <div class="side-tools">
-    <div id="setting-setlist" class="side-tool" data-i18n-title="tool.setlist" title="選擇系列與已擁有的套組">
-      <i class="material-icons">checklist</i>
-    </div>
     <a id="setting-grid" class="side-tool" href="./" data-i18n-title="tool.grid" title="回色票網格">
       <i class="material-icons">grid_view</i>
     </a>
@@ -64,27 +60,6 @@
     </div>
     <div id="setting-lang" class="side-tool" data-i18n-title="tool.lang" title="Language">
       <i class="material-icons">translate</i>
-    </div>
-  </div>
-
-  <!-- ===== 套組清單面板（側鍵開啟）：選系列 + 選「我已經有的」 ===== -->
-  <div id="setlist-modal" class="modal setlist-modal">
-    <div class="modal-content">
-      <h5 data-i18n="setlist.title">選擇系列與套組</h5>
-
-      <div class="setlist-block">
-        <div class="setlist-label" data-i18n="setlist.pickSeries">選擇系列</div>
-        <div class="series-tabs" id="series-tabs"></div>
-      </div>
-
-      <div class="setlist-block">
-        <div class="setlist-label" data-i18n="setlist.pickOwned">我已經有的套組</div>
-        <div class="setlist-hint" data-i18n="setlist.ownedHint">選一組之後，其餘套組會顯示相對它還能多帶來幾色；再點一次取消。</div>
-        <div id="setlist" class="setlist"></div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect btn-flat" data-i18n="detail.close">關閉</a>
     </div>
   </div>
 

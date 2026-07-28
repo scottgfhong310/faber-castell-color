@@ -21,7 +21,7 @@ const PAGES = [
 // 頁面之間用查詢參數溝通：送出的一方 → 解析的一方
 const QUERY_CONTRACTS = [
   { param: 'code', from: 'sets.js', to: 'faber-castell-color.js' },
-  { param: 'base', from: 'faber-castell-color.js', to: 'sets.js' }
+  { param: 'set', from: 'faber-castell-color.js', to: 'sets.js' }
 ];
 
 const fails = [];

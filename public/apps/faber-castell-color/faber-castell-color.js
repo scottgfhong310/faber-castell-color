@@ -234,7 +234,7 @@
 
     // 明細裡的尺寸可點 → 到套組收錄對照頁，並以該套組為基準
     $('#detail-sets').on('click', '.size-link', function () {
-      window.location.href = './sets.html?base=' +
+      window.location.href = './sets.html?set=' +
         encodeURIComponent($(this).data('line') + '|' + $(this).data('size'));
     });
 

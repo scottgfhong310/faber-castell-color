@@ -23,7 +23,6 @@
  *   colorsInSet(colors, line, size) → Color[]    某套組收錄哪些色（依色號）
  *   colorsWithoutSet(colors) → Color[]           不屬於任何套組的色（上者的補集）
  *   assortmentMatrix(colors,{series}) → {columns,rows}  套組收錄矩陣（色 × 套組，對齊色卡 PDF）
- *   columnAdditions(matrix, baseIdx) → (number|null)[]  以某欄為基準，各欄還能多帶來幾個新色
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   rgbToLab(r,g,b) → [L,a,b] · deltaE(labA,labB) → ΔE00 (CIEDE2000) · deltaEBand(dE) → 'very'|'close'|'noticeable'|'far'
  *   nearestFC({r,g,b}, {n,colors,series}) → [{code,name,hex,deltaE,band}]  最接近的 FC 色
@@ -118,20 +117,6 @@
       };
     });
     return { columns: columns, rows: rows };
-  }
-
-  // 以第 baseIdx 欄為「已擁有」的基準，算每一欄還能多帶來幾個新色。
-  // baseIdx 為 null／負值時整列回 null（＝未選基準）。選購用：同一條產品線的尺寸是
-  // 嚴格巢狀的，所以有意義的差額幾乎都出現在跨產品線的欄位上。
-  function columnAdditions(matrix, baseIdx) {
-    if (baseIdx == null || baseIdx < 0 || baseIdx >= matrix.columns.length) {
-      return matrix.columns.map(function () { return null; });
-    }
-    return matrix.columns.map(function (col, ci) {
-      var n = 0;
-      matrix.rows.forEach(function (r) { if (r.cells[ci] && !r.cells[baseIdx]) n++; });
-      return n;
-    });
   }
 
   // ---- 顏色運算 ------------------------------------------------------------
@@ -384,7 +369,6 @@
     colorsInSet: colorsInSet,
     colorsWithoutSet: colorsWithoutSet,
     assortmentMatrix: assortmentMatrix,
-    columnAdditions: columnAdditions,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
     rgbToLab: rgbToLab,

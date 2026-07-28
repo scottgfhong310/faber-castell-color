@@ -1,6 +1,6 @@
 # faber-castell-color — 設計決議（DESIGN）
 
-> 版本 v1.5｜最後更新 2026-07-28
+> 版本 v1.6｜最後更新 2026-07-28
 
 「怎麼用」歸 [README](README.md)、家族共同規範歸
 [nodeapp-webapp-family](https://github.com/scottgfhong310/nodeapp-webapp-family)；本檔只記**為什麼長這樣**。
@@ -162,36 +162,43 @@ Black Edition 的官方色卡把套組列成 12 個 SKU 欄，但其中成對的
 
 資料把 `sets` 掛在**色**上（`c.sets = { 產品線: [尺寸…] }`），所以「這個色在哪些套組」是免費的
 （明細 Modal 直接讀）。反方向「這個套組收哪些色」得整份掃一次——`setIndex` / `colorsInSet` /
-`assortmentMatrix` / `columnAdditions`（lib，純函式）為此存在。
+`assortmentMatrix`（lib，純函式）為此存在。UI 是獨立的一頁 `sets.html`（家族多頁先例＝
+`markdown-library/edit.html`；每頁自帶主題側鍵與 i18n）。
 
-**UI 是獨立的一頁 `sets.html`**，形制對齊官方色卡 PDF 的 assortment 表：
-列＝顏色（色票＋色號＋色名）、欄＝套組（依產品線跨欄分組）、格子＝收錄。
-（2026-07-28 先做成 Modal，同日改為獨立頁——選購時要能同時看到多個套組互相比較，
-Modal 的尺度不夠；家族多頁先例＝`markdown-library/edit.html`。）
+**這一頁的動作只有一個**：選一個套組 → 只留下它收錄的顏色 → 橫向看其他套組有沒有涵蓋。
+兩個使用情境決定了這個形狀（2026-07-28 owner 提供）：
 
-- **依系列拆兩張表**（Art & Graphic 141×32、Black Edition 118×8）。跨系列比較沒有意義：
-  色號範圍不重疊、產品族不同。BE 表的 258 個點與官方 PDF 的 258 個 • 逐一相符。
-- **同一條產品線的尺寸是嚴格巢狀的**（13 條線全部如此：120 涵蓋 72、72 涵蓋 60…），
-  所以有意義的差額**全部**出現在跨產品線的欄位上。這正是選購時要看的東西。
-- **基準（選購對比）**：選一個「已擁有」的套組，其餘每欄顯示「還能多帶來 +N 色」，
-  格子分三態——基準欄／基準已涵蓋（轉淡）／相對基準的新色（綠色放大）。
-  例：以 `Black Edition colour pencils 100` 為基準，`skin tones` **+6**（801–806）、
-  `metallic` **+12**（全部）、`neon + pastel` **0**（789–800 都已在 100 裡）。
-- **基準以「產品線＋尺寸」辨識**，不用欄號——欄號會隨資料增減位移，存進 localStorage
-  或深連結就會指到別的套組。深連結為 `sets.html?base=<產品線>|<尺寸>`。
-- **兩頁互通**：明細裡的尺寸 → `sets.html?base=…`；矩陣左欄的色號 → `./?code=NNN`（主網格開該色明細）。
-  這兩個查詢參數由 `verify-links.js` 當契約檢查，送出端與解析端缺一就 FAIL。
-- **補集要交代**：8 個色不屬於任何套組，在表裡是整列空白，並於表頭上方註明——
-  否則各欄色數永遠加不回 141。
+- **情境 A**：在色彩牆找到需要的色 → 明細看它在哪些套組 → 點尺寸跳來這裡（`?set=產品線|尺寸`），
+  看那個套組的完整色單，順便看到哪些套組互相重疊。
+- **情境 B**：想買 `Black Edition colour pencils 50`，但需要 `skin tones`。
+  選 `skin tones` → 只剩它的 12 色 → 橫看 `50` 那一欄**一格都沒有**（`100` 也只涵蓋 6 格）。
+  結論一眼就出來：買 50 對 skin tones 毫無幫助。
 
-**兩個坑**：
+**設計上的取捨**：
 
-- Materialize 的 `table td, table th { padding: 15px 5px }` 會把每格撐到 47px，
-  141 列就變成 6570px。`.assort th, .assort td { padding: 0 }` 歸零後降到 27px／3863px。
+- **一次只顯示一個系列**，由固定 Header 切換。跨系列比較無意義（色號範圍不重疊、產品族不同），
+  而兩張表上下排要捲過 141 列才看得到第二張。
+- **固定 Header**（sticky）放標題、系列切換、目前選中的套組＋清除鈕。表頭 `thead` 要黏在
+  Header **底下**而非視窗頂端，所以 Header 高度由 JS 量出來寫進 `--head-h`（會隨語言與換行變動，
+  不能寫死），`thead` 的 `top` 用它推導。
+- **不做「我已經有的／差額」**。那是 2026-07-28 稍早的版本：選一個基準套組、其餘欄位顯示
+  `+N`。實際情境不需要「差額數字」，需要的是「把不相干的色收掉，剩下的用眼睛橫掃」——
+  篩選比算術直觀。`columnAdditions` 隨之從 lib 移除。
+- **不包捲動外框**：表格直接接在頁面上往下延展，`sticky` 以視窗為基準、橫向捲動變成整頁捲動。
+
+**版面上的坑**（都實測過）：
+
+- Materialize 的 `table { width: 100% }` 會把表撐滿容器、多餘寬度全被第一欄吸走
+  （Black Edition 只有 8 欄時色名欄被撐到 385px）→ `width: max-content`。
+- Materialize 的 `table td, table th { padding: 15px 5px }` 讓每格 47px、141 列變 6570px
+  → 歸零後 27px。
 - 第一欄若把色票與色名兩個 inline 元素直接放進 `<th>`，列高會被**文字行框**撐高；
-  包一層 flex（`.ccell`）才會等於「最高的子元素＋padding」。
-- `position: sticky` 是掛在 `<th>`/`<td>` 上、不是 `<tr>`——**驗證時量 `tr` 會誤判成沒生效**
-  （`tr` 本來就跟著捲）。要量儲存格本身。
+  包一層 flex 才會等於「最高的子元素＋padding」。
+- auto table layout **只把 `<th>` 的 `width` 當建議值**，實際欄寬取各列 min-content 的最大值
+  ——色名 `nowrap` 時那就是整串名字的寬度。要收窄得把 `max-width` 下在內層 block 上。
+- 產品線標題要能折兩行得給**明確 `width`**：`max-width` 只能收窄、撐不寬，單尺寸欄（34px）
+  仍會被 line-clamp 截斷。
+- `position: sticky` 掛在 `<th>`/`<td>` 而**不是 `<tr>`**——驗證時量 `tr` 會誤判成沒生效。
 
 ## 4. CSS 是由 app 生成的（單一真相）
 

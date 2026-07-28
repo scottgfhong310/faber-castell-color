@@ -2,7 +2,8 @@
 
 Faber-Castell 色號 → CSS（hex / `var(--fc-NNN)` / `rgb()` / `.fc-bg-NNN`）對照的**唯讀參考**單頁 WebApp：
 259 色色票網格、搜尋、點擊看明細（含系列、耐光度與套組收錄）、一鍵複製四種格式、整份 `.css` 匯出／下載，
-外加**獨立的「套組收錄對照」頁**（`sets.html`：色 × 套組矩陣，形制對齊官方色卡；可選一個已擁有的套組看差額）。
+外加**獨立的「套組收錄對照」頁**（`sets.html`：色 × 套組矩陣，形制對齊官方色卡；
+選一個套組就只留下它的顏色，再橫向看其他套組有沒有涵蓋）。
 資料含兩個系列：**Art & Graphic 141 色**（101–480）＋ **Black Edition 118 色**（701–818）。
 
 本 app 屬於 **nodeapp WebApp 家族**；共同規範與流程在
@@ -56,8 +57,8 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
   **`nearestFC` 預設只比 `ag`**——見下。
 - **可嵌入 lib** `faber-castell-color-lib.js`（`window.FaberCastellCssLib`）：`filter` / `sortColors`
   （`code`/`hue`/`lightness`/`family`/`hex`，無彩度殿後）/ `colorFamily`＋`FAMILY_ORDER`（9 色系分群）/
-  `setIndex`／`colorsInSet`／`colorsWithoutSet`／`assortmentMatrix`／`columnAdditions`
-  （**套組↔顏色雙向**與選購差額，見 DESIGN.md §3.3）/
+  `setIndex`／`colorsInSet`／`colorsWithoutSet`／`assortmentMatrix`
+  （**套組↔顏色雙向**，見 DESIGN.md §3.3）/
   `hexToRgb` / `rgbToHsl` / `pickTextColor`（WCAG 對比選黑白字）/ `copyValue` /
   **`buildCss`（產生整份 `:root`＋utility）**，**純邏輯不碰 DOM**；`faber-castell-color.js` 才是碰 DOM 的
   控制器（渲染、排序側鍵、色系分群 sticky 標頭、Modal、clipboard、toast）。

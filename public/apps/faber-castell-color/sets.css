@@ -5,72 +5,45 @@
 
 .sets-page { width: 94%; max-width: 1500px; margin: 0 auto; padding: 22px 0 72px; }
 
-/* ===== topbar 的「我已經有的」摘要（改選在側鍵面板做） ===== */
-.owned-wrap { margin-left: auto; display: flex; align-items: center; gap: 10px; }
-.owned-label { font-size: .82rem; color: var(--muted); white-space: nowrap; }
-.owned-value {
-  display: inline-flex; align-items: center; gap: 4px; cursor: pointer;
-  background: var(--surface); color: var(--muted);
-  border: 1px solid var(--border); border-radius: 10px;
-  padding: 6px 8px 6px 12px; font: inherit; font-size: .82rem;
+/* ===== 固定 Header ===== */
+/* 高度會隨語言與換行變動，由 JS 量出來寫進 --head-h；表頭 thead 要黏在它下面。 */
+.page-head {
+  position: sticky; top: 0; z-index: 6;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 14px 0 12px;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
 }
-.owned-value:hover { border-color: var(--accent); }
-.owned-value.is-set { color: var(--text); border-color: var(--accent); }
-.owned-value .material-icons { font-size: 18px; opacity: .7; }
+.head-title h1 { font-size: 1.18rem; font-weight: 500; margin: 0; color: var(--text); }
+.head-title .sub { font-size: .78rem; color: var(--muted); margin-top: 2px; }
 
-/* ===== 套組清單面板 ===== */
-.setlist-modal { border-radius: 14px; max-width: 620px; }
-.setlist-modal .modal-content h5 { font-size: 1.05rem; font-weight: 500; margin-bottom: 14px; }
-.setlist-block + .setlist-block { margin-top: 20px; }
-.setlist-label { font-size: .78rem; color: var(--muted); margin-bottom: 6px; }
-.setlist-hint { font-size: .74rem; color: var(--muted); opacity: .8; margin-bottom: 10px; }
-
-.series-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.series-tabs { display: flex; gap: 8px; }
 .series-tab {
-  flex: 1 1 0; min-width: 180px; text-align: left; cursor: pointer;
+  cursor: pointer; text-align: left;
   background: var(--surface-2); color: var(--text);
   border: 1px solid var(--border); border-radius: 10px;
-  padding: 9px 12px; font: inherit; font-size: .86rem;
-  display: flex; flex-direction: column; gap: 2px;
+  padding: 6px 12px; font: inherit; font-size: .82rem;
+  display: flex; flex-direction: column; gap: 1px;
 }
 .series-tab:hover { border-color: var(--accent); }
 .series-tab.is-on { background: var(--accent); border-color: var(--accent); color: var(--card-bg); }
-.series-n { font-size: .7rem; font-family: ui-monospace, monospace; opacity: .7; }
+.series-n { font-size: .68rem; font-family: ui-monospace, monospace; opacity: .75; }
 
-.setlist { max-height: 46vh; overflow: auto; padding-right: 4px; }
-.set-none {
-  cursor: pointer; background: none; color: var(--muted);
-  border: 1px dashed var(--border); border-radius: 8px;
-  padding: 5px 12px; font: inherit; font-size: .78rem; margin-bottom: 12px;
+.picked { margin-left: auto; display: flex; align-items: center; }
+.picked-hint { font-size: .78rem; color: var(--muted); }
+.picked-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border: 1px solid var(--accent); border-radius: 999px;
+  padding: 4px 4px 4px 14px; font-size: .82rem; color: var(--text);
 }
-.set-none:hover { border-color: var(--accent); color: var(--text); }
-.set-none.is-on { border-style: solid; border-color: var(--accent); color: var(--text); }
-
-.set-item + .set-item { margin-top: 10px; }
-.set-item-line { font-size: .82rem; color: var(--text); margin-bottom: 4px; }
-.set-item-sizes { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 14px; }
-.size-chip {
-  cursor: pointer; background: var(--surface-2); color: var(--text);
-  border: 1px solid var(--border); border-radius: 999px;
-  padding: 2px 12px; font-family: ui-monospace, monospace; font-size: .78rem;
+.picked-n { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted); }
+.picked-clear {
+  display: inline-flex; cursor: pointer; background: none; border: 0; padding: 2px;
+  color: var(--muted); border-radius: 50%;
 }
-.size-chip:hover { border-color: var(--accent); }
-.size-chip.is-on { background: var(--accent); border-color: var(--accent); color: var(--card-bg); }
-
-/* ===== 圖例 ===== */
-.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 4px 0 16px; font-size: .8rem; color: var(--muted); }
-.legend-item { display: inline-flex; align-items: center; gap: 6px; }
-/* 圖例的樣子必須跟表格裡一模一樣，但點的樣式是掛在 .assort 底下的，
-   所以這裡要把同一組規則再套一次（只列樣子，不含表格排版）。 */
-.legend .cell {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 20px; border-radius: 4px; border: 1px solid var(--border);
-}
-.legend .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--text); }
-.legend .is-owned .dot { background: var(--muted); opacity: .45; }
-.legend .is-basecell { background: color-mix(in srgb, var(--accent) 16%, transparent); }
-.legend .is-basecell .dot { background: var(--accent); }
-.legend .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
+.picked-clear:hover { color: var(--text); background: rgba(128,128,128,.25); }
+.picked-clear .material-icons { font-size: 17px; }
 
 /* ===== 每個系列一張表 ===== */
 .matrix-title {
@@ -103,7 +76,7 @@
 /* 產品線名稱允許折到兩行：像 `Gift Set Art & Graphic` 這種只有一個尺寸的線，
    若維持 nowrap 會把那一欄整個撐寬（實測 ~200px），矩陣其他欄就被擠掉。 */
 .assort thead .r-line th {
-  top: 0; height: var(--h-line); padding: 3px 6px; font-size: .74rem;
+  top: var(--head-h, 0px); height: var(--h-line); padding: 3px 6px; font-size: .74rem;
   border-left: 1px solid var(--border);
 }
 /* auto table layout 會忽略 <th> 上的 max-width，欄寬還是照內容的「不折行寬度」算，
@@ -114,18 +87,16 @@
   overflow: hidden; line-height: 1.2; word-break: break-word;
   margin: 0 auto;                     /* 寬度由 JS 依 colspan 給，這裡置中 */
 }
-.assort thead .r-size th { top: var(--h-line); height: var(--h-size); }
+.assort thead .r-size th { top: calc(var(--head-h, 0px) + var(--h-line)); height: var(--h-size); }
 .assort thead .r-add td { top: calc(var(--h-line) + var(--h-size)); height: var(--h-size); }
-/* 沒有差額列時，尺寸列就是最後一列 */
-.assort:not(.has-add) thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
+.assort thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
 
 .assort .c-size {
   width: 34px; min-width: 34px; cursor: pointer;
   font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted);
 }
 .assort .c-size:hover { color: var(--accent); }
-.assort .c-size.is-base, .assort .c-add.is-base { background: var(--accent); color: var(--card-bg); }
-.assort .c-add { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--accent); }
+.assort .c-size.is-picked { background: var(--accent); color: var(--card-bg); }
 
 /* --- 第一欄：顏色，sticky 在左 ---
    欄寬用變數，因為限制要同時下在儲存格與內層 flex 上：table 的 auto layout 只把
@@ -174,16 +145,15 @@
   background: var(--muted); vertical-align: middle;
 }
 .assort .is-in .dot { background: var(--text); }
-/* 選了基準之後：已被基準涵蓋的轉淡、基準欄本身用強調色、其餘為「新增」 */
-.assort .is-owned .dot { background: var(--muted); opacity: .45; }
-.assort .is-basecell { background: color-mix(in srgb, var(--accent) 16%, transparent); }
-.assort .is-basecell .dot { background: var(--accent); }
-.assort .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
+/* 選中的那一欄整條標起來，方便橫向對照時定位 */
+.assort .is-pickedcell { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.assort .is-pickedcell .dot { background: var(--accent); }
+/* 選了套組之後，沒收錄該色的列直接不顯示 */
+.assort tbody tr.is-hidden { display: none; }
 
 @media (max-width: 780px) {
-  .owned-wrap { margin-left: 0; width: 100%; }
-  .owned-value { flex: 1; }
-  .series-tab { min-width: 0; }
+  .picked { margin-left: 0; width: 100%; }
+  .series-tab { padding: 5px 10px; }
   .assort .c-color { width: 172px; min-width: 172px; }
   .assort .cname { max-width: 104px; }
 }
