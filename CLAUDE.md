@@ -90,6 +90,7 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
 | `data/fc-colors.js` | 由 `data/source/*.csv` 產生器合併（來源 `Farbtabelle-AG-ENG-0214.pdf` ＋ `Colour-assortment-Black-Edition.pdf`）|
 
 > **本 app 是 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` 的權威版**，各有 6 份複製：
-> 本尊、`color-palette`、`thangka-trace`，各含 InProgress 鏡像。改版後 md5 應為單一 hash。
+> 本尊、`color-palette`、`thangka-trace`，各含 InProgress 鏡像。
+> 同步與驗證用 `bash scripts/sync-copies.sh`（會 md5 確認每份都是單一 hash）。
 
 > 為什麼長這樣（唯讀決策、資料來源與驗證、CSS 單一真相、色票不著色）見 [DESIGN.md](DESIGN.md)。
