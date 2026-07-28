@@ -1,6 +1,6 @@
 # faber-castell-color — 設計決議（DESIGN）
 
-> 版本 v1.1｜最後更新 2026-07-07
+> 版本 v1.2｜最後更新 2026-07-28
 
 「怎麼用」歸 [README](README.md)、家族共同規範歸
 [nodeapp-webapp-family](https://github.com/scottgfhong310/nodeapp-webapp-family)；本檔只記**為什麼長這樣**。
@@ -15,6 +15,43 @@
 
 這是家族「薄後端」原則的極限案例：後端薄到只是個靜態檔伺服器。要更新資料時改的是**產生器**（見 §3），
 不是 app。
+
+### 1.1 為什麼也不用資料庫——與重新評估的觸發條件
+
+2026-07-28 覆核（起因：與 `caran-dache-color` 一併評估「色號資料改用 DB 整理」）。
+按 DATABASE_GUIDELINES §0 決策階梯爬完，**結論是維持第 0/1 層**，理由四條、由強到弱：
+
+- **repo 是 public**——判準二直接排除本機 PostgreSQL（層 3）：clone 下來 `npm start` 就要能動，
+  不該依賴一台在你機器上的 DB（`.env` ＋ `DATABASE_URL` ＋ schema）。真要在公開 repo 帶結構化資料，
+  canon 的答案是 **SQLite（層 2）**，不是 PG。
+- **量級與查詢型態不需要**——141 筆、`data/fc-colors.js` 約 50KB；所有操作是記憶體內 filter/sort ＋
+  ΔE00 最近色比對。而 `nearestFC`（§8）被 `color-palette` / `thangka-trace` 逐像素呼叫，
+  **本來就必須跑在前端**——這一段 DB 不但幫不上忙，每次輸入往返一次只會更慢。
+- **沒有寫入端**——資料由來源 PDF 一次性抽取後即凍結（§1 上半、§2），使用者不新增不編輯。
+- **單一真相與單向維護迴路已經有了**——CSV →`generate.js`→ 靜態 JS（§3），與 `db_vkb` V8.0d
+  收斂出的形狀同構。此時進 DB 不是「補上治理」，是**多開一個 System of Record**。
+
+**不是資料庫問題的那一項**：`data/fc-colors.js` 與 `faber-castell-color-lib.js` 各有三份複製
+（本尊＋`color-palette`＋`thangka-trace`，§8）。就算資料進了 DB，消費端逐像素比對仍需本地副本——
+這是**共用件同步**問題（A 類慣例，SHARED_LIBRARY_GUIDELINES），不是資料庫問題，別用 DB 去解。
+
+**觸發條件（滿足任一才重新評估）**：
+
+1. **跨品牌對照升格成第一級資料**——收進第三、第四個品牌，且要的是**人工策劃的對應關係**，
+   而非 ΔE 算出來的最近色。特別是**顏料索引**這條軸（Caran d’Ache 總表已有 `PW6`／`PR101`／
+   `PB15/PBk6`，本 app 未抽；`db_vkb.tb_pigment` 有 `fd_color_index` 可當接點）。
+2. **出現寫入端**——庫存／願望清單／**實際上色掃描樣本**（相對於 PDF 取樣的近似 hex），
+   且要與 `color-palette`／`thangka-trace` 共享 → 判準一直接指向層 3。
+3. **校正需要 audit trail**——目前校正只落在產生檔的 `note` 字串（金屬色近似，§2）；
+   要記「誰在何時把哪個 hex 從什麼改成什麼、依據是什麼」，才輪到 OPERATION_DATA_GUIDELINES 第二層。
+
+**真要做的話形狀長這樣**（先寫在這，免得那天重推一次）：開自己的應用領域庫 **`db_artcolor`**
+（別名 `artcolor`），**不塞進 `db_vkb`**——那邊 `meta_brand` 是相機／鏡頭／底片廠、`tb_color` 是
+CSS4／SEMANTIC／PIGMENT 的攝影視覺知識域，彩色鉛筆的「系列 × 色號 × 耐光度標準 × 套裝尺寸」是
+另一個領域；接點只有顏料，用 `fd_uidx` 跨庫軟連結（DATABASE_GUIDELINES §2.4），不搬資料。
+DB 成為 SoR 之後，**產生器反向成匯出器**（DB → `data/*.js`，進版控當建置產物），
+本 app 的形狀一個字都不用改：照樣零後端、公開、自包含。維護介面放 InProgress 的私有 app，
+公開 app 永不連 DB。開庫照 `db_vkb` 先例（開庫 SOP → 治理文件 → `.env` 別名 → 單向維護迴路）。
 
 ## 2. 資料來源與準確度（hex 是怎麼來的）
 
