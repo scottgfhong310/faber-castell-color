@@ -2,7 +2,7 @@
 I18n.register('en', {
   'title.page': 'Faber-Castell Colour → CSS',
   'app.title': 'Faber-Castell colour → CSS',
-  'app.sub': 'Swatches sampled from Farbtabelle-AG-ENG-0214.pdf — screen approximations, not official RGB specs',
+  'app.sub': 'Swatches read from the official Faber-Castell charts (Art & Graphic + Black Edition) — screen approximations, not official RGB specs',
 
   'search.placeholder': 'code or colour name…',
   'search.empty': 'No matching colours',
@@ -41,9 +41,13 @@ I18n.register('en', {
   'note.metallic': 'Metallic: gradient swatch with no single true hex — value is a rough approximation',
   'note.pixel': 'Pixel-sampled from the PDF swatch',
   'note.crossValidated': 'Cross-validated by two independent extractions',
+  'note.vector': 'Vector fill read from the official colour chart (exact)',
+
+  'series.ag': 'Art & Graphic series · source {source}',
+  'series.black-edition': 'Black Edition series · source {source}',
 
   'css.title': 'CSS variables + utility classes',
-  'css.sub': '141 <code>--fc-NNN</code> variables with matching <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
+  'css.sub': '{n} <code>--fc-NNN</code> variables with matching <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
   'css.copy': 'Copy all',
   'css.download': 'Download .css',
 

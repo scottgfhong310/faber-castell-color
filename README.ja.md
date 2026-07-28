@@ -4,7 +4,7 @@
 
 [繁體中文](README.zh-Hant.md) ｜ [English](README.md) ｜ **日本語**
 
-**Faber-Castell のカラー番号を CSS に対応づける**シングルページ参照 WebApp。141 色を色見本グリッドで
+**Faber-Castell のカラー番号を CSS に対応づける**シングルページ参照 WebApp。259 色を色見本グリッドで
 閲覧し、番号や色名で検索、色見本をクリックするとコピー用の値・耐光性・セット収録が見られ、全体を
 `.css`（変数 + ユーティリティクラス）としてエクスポートできます。
 
@@ -13,13 +13,13 @@ hex 値は `Farbtabelle-AG-ENG-0214.pdf` の**印刷色見本から採取**（�
 
 ## 特長
 
-- **141 色の色見本グリッド** — 実際の色を表示。番号の文字色はコントラストで自動的に黒／白を選択。
+- **259 色の色見本グリッド** — Art & Graphic（141）＋ Black Edition（118）、実際の色を表示。番号の文字色はコントラストで自動的に黒／白を選択。
 - **検索** — 番号または色名で即時フィルタ。
 - **並び替え** — サイドツールで 番号 / 色相スペクトル / 明度 / 色系グループ（9 色系 + 追従見出し、グレー・黒白は末尾）/ hex 生値 を循環切替。選択は保持。
 - **4 形式でコピー** — `var(--fc-264)`、`#008b71`、`rgb(0, 139, 113)`、`.fc-bg-264`。
-- **詳細** — 色ごとの耐光性（製品ラインごとの ★）とセット収録（pp.1–3 + Goldfaber）。
-- **CSS エクスポート** — `faber_castell_colors.css` を表示 / コピー / ダウンロード（141 個の `--fc-NNN` 変数 + `.fc-color-NNN` / `.fc-bg-NNN`）。
-- **読み取り専用** — アップロードなし、バックエンド API なし。データは PDF から生成した静的レジストリ。
+- **詳細** — 色ごとの耐光性（製品ラインごとの ★）、セット収録、および所属シリーズ。
+- **CSS エクスポート** — `faber_castell_colors.css` を表示 / コピー / ダウンロード（259 個の `--fc-NNN` 変数 + `.fc-color-NNN` / `.fc-bg-NNN`）。
+- **読み取り専用** — アップロードなし、バックエンド API なし。データは公式カラーチャートから生成した静的レジストリ。
 - **light / dark テーマ**（既定 dark）と**3 言語**（zh-Hant / en / ja）。どちらのテーマでも**色見本は本来の色を保持**。
 
 ## インストールと実行
@@ -39,7 +39,7 @@ npm start          # → http://localhost:3000/apps/faber-castell-color/
 app.js                                  # Express：static + / → 302 + JSON 404（API・アップロードなし）
 public/apps/faber-castell-color/
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
-├─ data/fc-colors.js                    # window.FC_COLORS — 141 色（PDF から生成）
+├─ data/fc-colors.js                    # window.FC_COLORS — 259 色（2 つの公式カラーチャートから生成）
 ├─ materialize-dark.css · side-tool.css · i18n.js · locales/{zh-Hant,en,ja}.js
 ```
 
@@ -78,9 +78,15 @@ public/apps/faber-castell-color/
 
 ## 出典と精度
 
-データは `Farbtabelle-AG-ENG-0214.pdf` に由来。141 色のうち **135 色**にピクセル採取 hex があり
-（うち 108 色は独立したベクター抽出でクロス検証済み）、**6 色のメタリック**
-（250/251/252/290/292/294）はグラデーション色見本で単一の真値がなく、値は概算です。
+データは 2 つの Faber-Castell 公式カラーチャートに由来し、シリーズ（series）として分けて保持しています：
+
+| series | カラーチャート | 色数 | hex |
+|---|---|---|---|
+| `ag` | `Farbtabelle-AG-ENG-0214.pdf`（Art & Graphic）| 141（101–480）| ピクセル採取。うち 108 色は独立したベクター抽出でクロス検証済み |
+| `black-edition` | `Colour-assortment-Black-Edition.pdf` | 118（701–818）| 106 色は正確なベクター塗り、12 色のメタリックはピクセル採取 |
+
+**18 色のメタリック**（250/251/252/290/292/294 と 807–818）はグラデーション色見本で単一の真値がなく、
+値は概算です（UI に「近似」と表示）。hex はいずれも画面上の近似値であり、公式 RGB 仕様ではありません。
 抽出方法と検証は [DESIGN.md](DESIGN.md) を参照。
 
 ## License

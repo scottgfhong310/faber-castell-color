@@ -37,7 +37,7 @@
       <div class="topbar">
         <div>
           <h1 data-i18n="app.title">Faber-Castell 色號 → CSS</h1>
-          <div class="sub" data-i18n="app.sub">色票取樣自 Farbtabelle-AG-ENG-0214.pdf，為螢幕近似值</div>
+          <div class="sub" data-i18n="app.sub">色票取自 Faber-Castell 官方色卡（Art & Graphic ＋ Black Edition），為螢幕近似值</div>
         </div>
         <div class="search-wrap">
           <i class="material-icons">search</i>
@@ -81,6 +81,7 @@
       </div>
       <div class="detail-body">
         <div class="d-name" id="detail-name"></div>
+        <div class="d-series" id="detail-series"></div>
         <div class="d-note" id="detail-note"></div>
 
         <div class="copy-row" id="detail-copy"></div>
@@ -105,7 +106,8 @@
   <div id="css-modal" class="modal css-modal">
     <div class="modal-content">
       <h5 data-i18n="css.title">CSS 變數 + utility classes</h5>
-      <div class="css-sub" data-i18n="css.sub">141 個 <code>--fc-NNN</code> 變數與對應的 <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code></div>
+      <!-- 內含 <code> 標記且色數隨資料變動，由 JS 填入（data-i18n 會 escape、也代不進 {n}） -->
+      <div class="css-sub" id="css-sub"></div>
       <pre id="css-pre"></pre>
     </div>
     <div class="modal-footer">

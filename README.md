@@ -4,7 +4,7 @@
 
 [繁體中文](README.zh-Hant.md) ｜ **English** ｜ [日本語](README.ja.md)
 
-A single-page reference WebApp mapping **Faber-Castell colour codes → CSS**. Browse 141 colours as a swatch
+A single-page reference WebApp mapping **Faber-Castell colour codes → CSS**. Browse 259 colours as a swatch
 grid, search by code or name, click any swatch to see its copy-ready values, lightfastness and set assortments,
 and export the whole thing as a `.css` file of variables and utility classes.
 
@@ -13,13 +13,13 @@ cross-validated) — screen approximations, **not** official Faber-Castell RGB/H
 
 ## Features
 
-- **141-colour swatch grid** — real Faber-Castell colours; code text auto-picks black/white for contrast.
+- **259-colour swatch grid** — Art & Graphic (141) + Black Edition (118), real Faber-Castell colours; code text auto-picks black/white for contrast.
 - **Search** — filter instantly by colour code or name.
 - **Sort** — a side-tool cycles the swatch order between colour code / hue spectrum / lightness / colour-family groups (nine wheel families with sticky group headers; greys tail the order) / raw hex value; persisted.
 - **Copy in four formats** — `var(--fc-264)`, `#008b71`, `rgb(0, 139, 113)`, `.fc-bg-264`.
-- **Detail view** — per-colour lightfastness (★ per product line) and set-assortment membership (pp. 1–3 + Goldfaber).
-- **CSS export** — view / copy / download `faber_castell_colors.css` (141 `--fc-NNN` vars + `.fc-color-NNN` / `.fc-bg-NNN`).
-- **Read-only** — no upload, no backend API; data is a static registry generated from the PDF.
+- **Detail view** — per-colour lightfastness (★ per product line) and set-assortment membership, plus which of the two series it belongs to.
+- **CSS export** — view / copy / download `faber_castell_colors.css` (259 `--fc-NNN` vars + `.fc-color-NNN` / `.fc-bg-NNN`).
+- **Read-only** — no upload, no backend API; data is a static registry generated from the official colour charts.
 - **light / dark theme** (default dark) and **three languages** (zh-Hant / en / ja). Swatches keep their true colour in both themes.
 
 ## Install & run
@@ -39,7 +39,7 @@ Needs the Node server (front-end uses absolute paths) — **not** GitHub Pages c
 app.js                                  # Express: static + / → 302 + JSON 404 (no API, no upload)
 public/apps/faber-castell-color/
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
-├─ data/fc-colors.js                    # window.FC_COLORS — 141 colours (generated from the PDF)
+├─ data/fc-colors.js                    # window.FC_COLORS — 259 colours (generated from the two official charts)
 ├─ materialize-dark.css · side-tool.css · i18n.js · locales/{zh-Hant,en,ja}.js
 ```
 
@@ -78,10 +78,16 @@ Pure logic, no DOM — embeddable anywhere:
 
 ## Source & accuracy
 
-Data derived from `Farbtabelle-AG-ENG-0214.pdf`. The 141 colours: **135** have pixel-sampled hex
-(108 also cross-validated by an independent vector extraction), and **6 metallics**
-(250/251/252/290/292/294) are gradient swatches with no single true hex — their value is a rough
-approximation. See [DESIGN.md](DESIGN.md) for the extraction method and validation.
+Data comes from two official Faber-Castell colour charts, kept as separate series:
+
+| series | chart | colours | hex |
+|---|---|---|---|
+| `ag` | `Farbtabelle-AG-ENG-0214.pdf` (Art & Graphic) | 141 (101–480) | pixel-sampled; 108 cross-validated by an independent vector extraction |
+| `black-edition` | `Colour-assortment-Black-Edition.pdf` | 118 (701–818) | 106 read as exact vector fills; 12 metallics pixel-sampled |
+
+The **18 metallics** (250/251/252/290/292/294 and 807–818) are gradient swatches with no single true
+hex — their value is a rough approximation, flagged in the UI. Hex values are screen approximations,
+not official RGB specifications. See [DESIGN.md](DESIGN.md) for the extraction method and validation.
 
 ## License
 

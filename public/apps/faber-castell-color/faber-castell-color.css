@@ -127,6 +127,7 @@ main { min-height: 100vh; }
 .detail-head .d-approx { font-size: .78rem; opacity: .9; }
 .detail-body { padding: 16px 20px 6px; }
 .detail-body .d-name { font-size: 1.05rem; font-weight: 500; color: var(--text); }
+.detail-body .d-series { font-size: .76rem; color: var(--muted); margin: 3px 0 0; }
 .detail-body .d-note { font-size: .76rem; color: var(--muted); margin: 2px 0 12px; }
 
 /* 複製鈕列 */

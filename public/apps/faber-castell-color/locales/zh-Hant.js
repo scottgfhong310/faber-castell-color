@@ -2,7 +2,7 @@
 I18n.register('zh-Hant', {
   'title.page': 'Faber-Castell 色號 → CSS',
   'app.title': 'Faber-Castell 色號 → CSS',
-  'app.sub': '色票取樣自 Farbtabelle-AG-ENG-0214.pdf，為螢幕近似值、非官方 RGB 規格',
+  'app.sub': '色票取自 Faber-Castell 官方色卡（Art & Graphic ＋ Black Edition），為螢幕近似值、非官方 RGB 規格',
 
   'search.placeholder': '色號或色名…',
   'search.empty': '找不到符合的顏色',
@@ -41,9 +41,13 @@ I18n.register('zh-Hant', {
   'note.metallic': '金屬色：漸層色票、無單一真值，hex 僅為近似',
   'note.pixel': '像素取樣自 PDF 色票',
   'note.crossValidated': '兩次獨立抽取交叉驗證',
+  'note.vector': '取自官方色卡的向量填色（精確值）',
+
+  'series.ag': 'Art & Graphic 系列 · 來源 {source}',
+  'series.black-edition': 'Black Edition 系列 · 來源 {source}',
 
   'css.title': 'CSS 變數 + utility classes',
-  'css.sub': '141 個 <code>--fc-NNN</code> 變數與對應的 <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
+  'css.sub': '{n} 個 <code>--fc-NNN</code> 變數與對應的 <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
   'css.copy': '複製全部',
   'css.download': '下載 .css',
 

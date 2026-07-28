@@ -2,7 +2,7 @@
 I18n.register('ja', {
   'title.page': 'Faber-Castell カラー → CSS',
   'app.title': 'Faber-Castell カラー → CSS',
-  'app.sub': '色見本は Farbtabelle-AG-ENG-0214.pdf から採取した画面用の近似値（公式 RGB 仕様ではありません）',
+  'app.sub': '色見本は Faber-Castell 公式カラーチャート（Art & Graphic ＋ Black Edition）由来の画面用近似値（公式 RGB 仕様ではありません）',
 
   'search.placeholder': '番号または色名…',
   'search.empty': '該当する色がありません',
@@ -41,9 +41,13 @@ I18n.register('ja', {
   'note.metallic': 'メタリック：グラデーション色見本のため単一の真値なし。hex は概算値',
   'note.pixel': 'PDF 色見本からピクセル採取',
   'note.crossValidated': '2 回の独立抽出でクロス検証済み',
+  'note.vector': '公式カラーチャートのベクター塗り（正確値）',
+
+  'series.ag': 'Art & Graphic シリーズ · 出典 {source}',
+  'series.black-edition': 'Black Edition シリーズ · 出典 {source}',
 
   'css.title': 'CSS 変数 + ユーティリティクラス',
-  'css.sub': '141 個の <code>--fc-NNN</code> 変数と対応する <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
+  'css.sub': '{n} 個の <code>--fc-NNN</code> 変数と対応する <code>.fc-color-NNN</code> / <code>.fc-bg-NNN</code>',
   'css.copy': 'すべてコピー',
   'css.download': '.css をダウンロード',
 

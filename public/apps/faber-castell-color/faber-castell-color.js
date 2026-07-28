@@ -85,6 +85,7 @@
     $('#detail-code').text(c.code);
     $('#detail-approx').text(Lib.isMetallic(c) && window.I18n ? I18n.t('detail.approx') : '');
     $('#detail-name').text(c.name);
+    $('#detail-series').text(seriesLabel(c));
     $('#detail-note').text(noteLabel(c));
 
     // 複製鈕
@@ -118,9 +119,18 @@
   function noteLabel(c) {
     if (!window.I18n) return c.note || '';
     if (Lib.isMetallic(c)) return I18n.t('note.metallic');
+    if (/vector/i.test(c.note)) return I18n.t('note.vector');
     if (/pixel/i.test(c.note)) return I18n.t('note.pixel');
     if (/cross/i.test(c.note)) return I18n.t('note.crossValidated');
     return c.note || '';
+  }
+
+  // 色票屬哪個系列（各有自己的權威色卡）；資料無 series 欄位時視為 'ag'
+  function seriesLabel(c) {
+    var key = c.series || 'ag';
+    var s = (META.series || []).filter(function (x) { return x.key === key; })[0];
+    if (!s) return '';
+    return window.I18n ? I18n.t('series.' + key, { source: s.source }) : s.label;
   }
 
   // ---- 複製 ----------------------------------------------------------------
@@ -179,8 +189,15 @@
   }
 
   // ---- i18n 重繪 -----------------------------------------------------------
+  // CSS modal 的副標：色數由資料決定，含 <code> 標記故走 innerHTML
+  function renderCssSub() {
+    if (!window.I18n) return;
+    $('#css-sub').html(I18n.t('css.sub', { n: COLORS.length }));
+  }
+
   function onI18n() {
     applyFilter();                 // 重繪計數
+    renderCssSub();
     if (current && detailModal && detailModal.isOpen) openDetail(current.code);
   }
 
@@ -194,6 +211,7 @@
     try { var sv = localStorage.getItem(LS_SORT); if (sv && Lib.SORT_MODES.indexOf(sv) !== -1) sortMode = sv; } catch (e) { }
 
     if (window.I18n) { I18n.apply(document); }
+    renderCssSub();
     applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
     applyFilter();
 
