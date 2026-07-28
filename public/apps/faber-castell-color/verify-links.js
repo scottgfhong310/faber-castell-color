@@ -53,13 +53,21 @@ QUERY_CONTRACTS.forEach(c => {
   }
 });
 
-// 3) 控制器產生的 data-* 必須有人讀
+// 3) 控制器產生的 data-* 必須有人讀——JS 讀或 CSS 選它都算
+//    （只給 CSS 用的狀態旗標是正當用法，例如 #matrix[data-series="ag"]）
+const CSS = fs.readdirSync(DIR).filter(f => f.endsWith('.css'))
+  .map(f => read(f)).join('\n');
 PAGES.forEach(p => {
   const js = read(p.js);
-  const emitted = new Set([...js.matchAll(/data-([a-z]+)="/g)].map(m => m[1]));
+  const emitted = new Set([
+    ...[...js.matchAll(/data-([a-z]+)="/g)].map(m => m[1]),
+    ...[...js.matchAll(/attr\('data-([a-z]+)'/g)].map(m => m[1])
+  ]);
   emitted.forEach(a => {
-    if (!js.includes(`data('${a}')`) && !js.includes(`dataset.${a}`) && !js.includes(`attr('data-${a}')`)) {
-      fails.push(`${p.js}: 產生了 data-${a} 但沒有任何地方讀它（死屬性）`);
+    const readInJs = js.includes(`data('${a}')`) || js.includes(`dataset.${a}`) || js.includes(`attr('data-${a}')`);
+    const readInCss = CSS.includes(`[data-${a}`);
+    if (!readInJs && !readInCss) {
+      fails.push(`${p.js}: 產生了 data-${a} 但 JS 與 CSS 都沒有用它（死屬性）`);
     }
   });
 });

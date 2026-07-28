@@ -5,29 +5,57 @@
 
 .sets-page { width: 94%; max-width: 1500px; margin: 0 auto; padding: 22px 0 72px; }
 
-.baseline-wrap { margin-left: auto; display: flex; align-items: center; gap: 10px; }
-.baseline-label { font-size: .82rem; color: var(--muted); white-space: nowrap; }
-.baseline-field { margin: 0; min-width: 268px; }
-.baseline-field.input-field { padding-top: 0; }
+/* ===== topbar 的「我已經有的」摘要（改選在側鍵面板做） ===== */
+.owned-wrap { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.owned-label { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.owned-value {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer;
+  background: var(--surface); color: var(--muted);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 6px 8px 6px 12px; font: inherit; font-size: .82rem;
+}
+.owned-value:hover { border-color: var(--accent); }
+.owned-value.is-set { color: var(--text); border-color: var(--accent); }
+.owned-value .material-icons { font-size: 18px; opacity: .7; }
 
-/* Materialize select 的下拉預設是 16px 字、每列 min-height 50px——40 個套組排下來
-   會長到 1000px 以上。這裡收成密一點，並放寬寬度（JS 端關掉 constrainWidth）。 */
-.baseline-field .dropdown-content.select-dropdown {
-  width: 360px !important;          /* Materialize 會寫 inline width，只能用 !important 蓋 */
-  max-height: 60vh;
-  border-radius: 10px;
+/* ===== 套組清單面板 ===== */
+.setlist-modal { border-radius: 14px; max-width: 620px; }
+.setlist-modal .modal-content h5 { font-size: 1.05rem; font-weight: 500; margin-bottom: 14px; }
+.setlist-block + .setlist-block { margin-top: 20px; }
+.setlist-label { font-size: .78rem; color: var(--muted); margin-bottom: 6px; }
+.setlist-hint { font-size: .74rem; color: var(--muted); opacity: .8; margin-bottom: 10px; }
+
+.series-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.series-tab {
+  flex: 1 1 0; min-width: 180px; text-align: left; cursor: pointer;
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 9px 12px; font: inherit; font-size: .86rem;
+  display: flex; flex-direction: column; gap: 2px;
 }
-.baseline-field .dropdown-content li { min-height: 0; }
-.baseline-field .dropdown-content li > span {
-  font-size: .82rem; line-height: 1.35; padding: 5px 14px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+.series-tab:hover { border-color: var(--accent); }
+.series-tab.is-on { background: var(--accent); border-color: var(--accent); color: var(--card-bg); }
+.series-n { font-size: .7rem; font-family: ui-monospace, monospace; opacity: .7; }
+
+.setlist { max-height: 46vh; overflow: auto; padding-right: 4px; }
+.set-none {
+  cursor: pointer; background: none; color: var(--muted);
+  border: 1px dashed var(--border); border-radius: 8px;
+  padding: 5px 12px; font: inherit; font-size: .78rem; margin-bottom: 12px;
 }
-.baseline-field .dropdown-content li.optgroup > span {
-  font-size: .72rem; padding: 8px 12px 3px; opacity: .75;
+.set-none:hover { border-color: var(--accent); color: var(--text); }
+.set-none.is-on { border-style: solid; border-color: var(--accent); color: var(--text); }
+
+.set-item + .set-item { margin-top: 10px; }
+.set-item-line { font-size: .82rem; color: var(--text); margin-bottom: 4px; }
+.set-item-sizes { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 14px; }
+.size-chip {
+  cursor: pointer; background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 2px 12px; font-family: ui-monospace, monospace; font-size: .78rem;
 }
-/* 縮排要認 Materialize 給選項的 .optgroup-option，別用 `li.optgroup ~ li`——
-   那會把**後面的群組標題**也一起縮排（第二個 optgroup 就跟選項對齊了）。 */
-.baseline-field .dropdown-content li.optgroup-option > span { padding-left: 22px; }
+.size-chip:hover { border-color: var(--accent); }
+.size-chip.is-on { background: var(--accent); border-color: var(--accent); color: var(--card-bg); }
 
 /* ===== 圖例 ===== */
 .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 4px 0 16px; font-size: .8rem; color: var(--muted); }
@@ -45,7 +73,6 @@
 .legend .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
 
 /* ===== 每個系列一張表 ===== */
-.matrix-sec + .matrix-sec { margin-top: 30px; }
 .matrix-title {
   font-size: 1rem; font-weight: 500; color: var(--text);
   margin: 0 0 6px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
@@ -57,11 +84,6 @@
 }
 .matrix-note { font-size: .76rem; color: var(--muted); margin: 0 0 8px; }
 .matrix-foot { font-size: .76rem; color: var(--muted); margin-top: 22px; }
-
-.matrix-scroll {
-  max-height: 74vh; overflow: auto;
-  border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
-}
 
 /* Materialize 的 `table { width: 100% }` 會把表格撐滿容器，多出來的寬度全被
    第一欄吸走（Black Edition 只有 8 欄，色名欄因此被撐到 385px）。改成依內容決定。 */
@@ -111,7 +133,7 @@
    時那就是整串名字的寬度，於是 width:186px 被無視（實測還是 195px）。
    把 max-width 下在內層 .ccell（block/flex，吃 max-width）才真的收得住。 */
 .assort { --w-color: 246px; }
-#matrix-ag .assort { --w-color: 186px; }   /* AG 有 32 欄，第一欄讓 60px 出來給矩陣 */
+#matrix[data-series="ag"] .assort { --w-color: 186px; }   /* AG 有 32 欄，第一欄讓 60px 出來給矩陣 */
 .assort .c-color {
   position: sticky; left: 0; z-index: 2;
   background: var(--surface); text-align: left; font-weight: 400;
@@ -159,8 +181,9 @@
 .assort .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
 
 @media (max-width: 780px) {
-  .baseline-wrap { margin-left: 0; width: 100%; }
-  .baseline-field { min-width: 0; flex: 1; }
+  .owned-wrap { margin-left: 0; width: 100%; }
+  .owned-value { flex: 1; }
+  .series-tab { min-width: 0; }
   .assort .c-color { width: 172px; min-width: 172px; }
   .assort .cname { max-width: 104px; }
 }

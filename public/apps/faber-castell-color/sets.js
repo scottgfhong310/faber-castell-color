@@ -12,12 +12,13 @@
   var LS_THEME = 'faber-castell-color-theme';
   var LS_BASE = 'faber-castell-color-baseline';
 
-  // 兩張表各自獨立（跨系列比較無意義：色號範圍不重疊、產品族不同）
-  var SECTIONS = [
-    { key: 'ag', el: '#matrix-ag' },
-    { key: 'black-edition', el: '#matrix-be' }
-  ];
+  var LS_SERIES = 'faber-castell-color-sets-series';
+
+  // 一次只顯示一個系列（跨系列比較無意義：色號範圍不重疊、產品族不同），
+  // 由側鍵面板切換。
+  var SERIES = ['ag', 'black-edition'];
   var matrices = {};        // series → matrix
+  var series = 'ag';        // 目前顯示的系列
   // 基準以「產品線＋尺寸」辨識，不用欄號——欄號會隨資料增減而位移，
   // 存進 localStorage 或深連結就會指到別的套組。
   var baseline = null;      // { line, size } 或 null
@@ -36,7 +37,7 @@
   }
   function colKey(line, size) { return line + '|' + size; }
 
-  // 基準在某張表裡是第幾欄；不屬於這張表就回 null
+  // 基準在這張表裡是第幾欄；不屬於這張表（例如基準在另一個系列）就回 null
   function baseIndexIn(m) {
     if (!baseline) return null;
     for (var i = 0; i < m.columns.length; i++) {
@@ -50,35 +51,58 @@
     var i = v.lastIndexOf('|');
     if (i < 1) return null;
     var line = v.slice(0, i), size = +v.slice(i + 1);
-    var ok = SECTIONS.some(function (sec) {
-      var m = matrices[sec.key];
-      return m && m.columns.some(function (c) { return c.line === line && c.size === size; });
+    var found = null;
+    SERIES.forEach(function (k) {
+      var m = matrices[k];
+      if (m && m.columns.some(function (c) { return c.line === line && c.size === size; })) found = k;
     });
-    return ok ? { line: line, size: size } : null;
+    return found ? { line: line, size: size, series: found } : null;
   }
 
-  // ---- 基準選單 ------------------------------------------------------------
-  function buildBaselineOptions() {
-    var html = '<option value="">' + esc(t('sets.baselineNone')) + '</option>';
-    SECTIONS.forEach(function (sec) {
-      var m = matrices[sec.key];
-      if (!m || !m.columns.length) return;
-      html += '<optgroup label="' + esc(seriesLabel(sec.key)) + '">';
-      m.columns.forEach(function (col) {
-        html += '<option value="' + esc(colKey(col.line, col.size)) + '">' +
-          esc(col.line + ' · ' + col.size + ct()) + '</option>';
-      });
-      html += '</optgroup>';
+  // ---- 側鍵面板：選系列 + 選「我已經有的」 --------------------------------
+  function renderSeriesTabs() {
+    $('#series-tabs').html(SERIES.map(function (k) {
+      var m = matrices[k];
+      return '<button class="series-tab' + (k === series ? ' is-on' : '') + '" data-series="' + esc(k) + '">' +
+        esc(seriesLabel(k)) +
+        '<span class="series-n">' + t('sets.tableN', { colours: m.rows.length, sets: m.columns.length }) + '</span>' +
+        '</button>';
+    }).join(''));
+  }
+
+  // 套組清單：一條產品線一列，尺寸做成 chip；只列出目前系列的套組
+  function renderSetList() {
+    var m = matrices[series];
+    var lines = [];
+    m.columns.forEach(function (col) {
+      var L = lines[lines.length - 1];
+      if (!L || L.line !== col.line) lines.push({ line: col.line, sizes: [col.size] });
+      else L.sizes.push(col.size);
     });
-    var $sel = $('#baseline');
-    $sel.html(html).val(baseline ? colKey(baseline.line, baseline.size) : '');
-    // constrainWidth:false 才不會把下拉鎖成欄位寬（預設 268px）；alignment:'right'
-    // 讓它靠右展開。下拉的 z-index 是 9999，本來就蓋得過 side-tools（1002/1003）。
-    if (window.M && M.FormSelect) {
-      M.FormSelect.init($sel[0], {
-        dropdownOptions: { constrainWidth: false, alignment: 'right', coverTrigger: false }
-      });
-    }
+    var none = !baseline;
+    var html = '<button class="set-none' + (none ? ' is-on' : '') + '">' +
+      esc(t('setlist.none')) + '</button>';
+    html += lines.map(function (L) {
+      var chips = L.sizes.map(function (sz) {
+        var on = baseline && baseline.line === L.line && baseline.size === sz;
+        return '<button class="size-chip' + (on ? ' is-on' : '') + '"' +
+          ' data-line="' + esc(L.line) + '" data-size="' + sz + '">' + sz + '</button>';
+      }).join('');
+      return '<div class="set-item">' +
+        '<div class="set-item-line">' + esc(L.line) + '</div>' +
+        '<div class="set-item-sizes">' + chips + '</div></div>';
+    }).join('');
+    $('#setlist').html(html);
+  }
+
+  // topbar 只顯示目前選了什麼（改選在面板裡做）
+  function renderOwned() {
+    var txt = baseline
+      ? baseline.line + ' · ' + baseline.size + ct()
+      : t('setlist.none');
+    $('#owned-wrap').html('<span class="owned-label">' + esc(t('sets.baseline')) + '</span>' +
+      '<button class="owned-value' + (baseline ? ' is-set' : '') + '" id="owned-open">' +
+      esc(txt) + '<i class="material-icons">expand_more</i></button>');
   }
 
   // ---- 矩陣 ----------------------------------------------------------------
@@ -138,25 +162,29 @@
     }).join('') + '</tbody>';
   }
 
-  function renderSection(sec) {
-    var m = matrices[sec.key];
-    var $el = $(sec.el);
+  function renderMatrix() {
+    var m = matrices[series];
+    var $el = $('#matrix');
+    // 目前系列也標在容器上：欄寬等樣式要能分系列給（AG 32 欄，第一欄要窄一點）
+    $el.attr('data-series', series);
     if (!m || !m.rows.length) { $el.empty(); return; }
     var baseIdx = baseIndexIn(m);
     var adds = baseIdx != null ? Lib.columnAdditions(m, baseIdx) : null;
     var noSet = m.rows.filter(function (r) { return r.cells.every(function (x) { return !x; }); }).length;
 
-    $el.html('<h2 class="matrix-title">' + esc(seriesLabel(sec.key)) +
+    // 不再包捲動外框：表格直接接在頁面上往下延展，sticky 以視窗為基準
+    $el.html('<h2 class="matrix-title">' + esc(seriesLabel(series)) +
         '<span class="matrix-n">' + t('sets.tableN', { colours: m.rows.length, sets: m.columns.length }) + '</span>' +
         (adds ? '<span class="matrix-base">' + esc(t('sets.baselineOn')) + '</span>' : '') +
       '</h2>' +
       (noSet ? '<p class="matrix-note">' + esc(t('sets.emptyRows', { n: noSet })) + '</p>' : '') +
-      '<div class="matrix-scroll"><table class="assort' + (adds ? ' has-add' : '') + '">' +
-        headerHtml(m, adds, baseIdx) + bodyHtml(m, baseIdx) + '</table></div>');
+      '<table class="assort' + (adds ? ' has-add' : '') + '">' +
+        headerHtml(m, adds, baseIdx) + bodyHtml(m, baseIdx) + '</table>');
   }
 
   function renderLegend() {
-    var items = baseline
+    var active = matrices[series] && baseIndexIn(matrices[series]) != null;
+    var items = active
       ? [['is-basecell', t('sets.legendBase')], ['is-owned', t('sets.legendOwned')], ['is-new', t('sets.legendNew')]]
       : [['is-in', t('sets.legendIn')]];
     $('#legend').html(items.map(function (x) {
@@ -166,8 +194,9 @@
   }
 
   function renderAll() {
-    SECTIONS.forEach(renderSection);
+    renderMatrix();
     renderLegend();
+    renderOwned();
     $('#matrix-foot').text(t('sets.foot'));
   }
 
@@ -182,15 +211,17 @@
   }
 
   function onI18n() {
-    buildBaselineOptions();
+    renderSeriesTabs();
+    renderSetList();
     renderAll();
   }
 
   // ---- 啟動 ----------------------------------------------------------------
   $(function () {
-    SECTIONS.forEach(function (sec) {
-      matrices[sec.key] = Lib.assortmentMatrix(COLORS, { series: sec.key });
+    SERIES.forEach(function (k) {
+      matrices[k] = Lib.assortmentMatrix(COLORS, { series: k });
     });
+    var setlistModal = M.Modal.init(document.getElementById('setlist-modal'), { dismissible: true });
 
     // 還原上次的基準；深連結 ?base=<產品線>|<尺寸> 優先。認不得就當沒選（不報錯）
     var q = /[?&]base=([^&]*)/.exec(window.location.search);
@@ -198,31 +229,60 @@
     if (saved == null) { try { saved = localStorage.getItem(LS_BASE); } catch (e) { } }
     baseline = parseBaseline(saved);
 
+    // 目前系列：深連結帶的基準優先（顯示的就該是它所屬的系列），其次記憶，最後預設
+    var qs = /[?&]series=([^&]*)/.exec(window.location.search);
+    var wanted = qs ? decodeURIComponent(qs[1]) : (baseline ? baseline.series : null);
+    if (!wanted) { try { wanted = localStorage.getItem(LS_SERIES); } catch (e) { } }
+    if (SERIES.indexOf(wanted) !== -1) series = wanted;
+
     if (window.I18n) I18n.apply(document);
     applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
-    buildBaselineOptions();
+    renderSeriesTabs();
+    renderSetList();
     renderAll();
 
     function setBaseline(v) {
       baseline = parseBaseline(v);
       try { localStorage.setItem(LS_BASE, baseline ? colKey(baseline.line, baseline.size) : ''); } catch (e) { }
-      buildBaselineOptions();
+      renderSetList();
+      renderAll();
+    }
+    function setSeries(k) {
+      if (SERIES.indexOf(k) === -1 || k === series) return;
+      series = k;
+      try { localStorage.setItem(LS_SERIES, k); } catch (e) { }
+      // 基準屬於某個系列。換系列後它既不適用，chip 也不在清單裡（＝沒得取消），
+      // 留著會讓 topbar 顯示一個畫面上根本沒作用的套組，所以一併清掉。
+      if (baseline && baseline.series !== k) {
+        baseline = null;
+        try { localStorage.setItem(LS_BASE, ''); } catch (e) { }
+      }
+      renderSeriesTabs();
+      renderSetList();     // 清單只列目前系列的套組
       renderAll();
     }
 
-    $('#baseline').on('change', function () { setBaseline(this.value); });
+    // 側鍵 / topbar 摘要都能開面板
+    $('#setting-setlist').on('click', function () { setlistModal.open(); });
+    $('#owned-wrap').on('click', '#owned-open', function () { setlistModal.open(); });
 
-    // 點欄位的尺寸＝把該套組設為基準（再點一次取消）；比拉選單快
-    $('.matrix-sec').on('click', '.c-size', function () {
-      var sec = $(this).closest('.matrix-sec').attr('id') === 'matrix-ag' ? 'ag' : 'black-edition';
-      var col = matrices[sec].columns[+$(this).data('col')];
+    $('#series-tabs').on('click', '.series-tab', function () { setSeries($(this).data('series') + ''); });
+    $('#setlist').on('click', '.set-none', function () { setBaseline(''); });
+    $('#setlist').on('click', '.size-chip', function () {
+      var key = colKey($(this).data('line') + '', +$(this).data('size'));
+      setBaseline(baseline && colKey(baseline.line, baseline.size) === key ? '' : key);
+    });
+
+    // 表頭的尺寸也能直接設為基準（再點一次取消）
+    $('#matrix').on('click', '.c-size', function () {
+      var col = matrices[series].columns[+$(this).data('col')];
       if (!col) return;
       var key = colKey(col.line, col.size);
       setBaseline(baseline && colKey(baseline.line, baseline.size) === key ? '' : key);
     });
 
     // 點色號回主網格並帶出該色
-    $('.matrix-sec').on('click', 'tbody .c-color', function () {
+    $('#matrix').on('click', 'tbody .c-color', function () {
       window.location.href = './?code=' + encodeURIComponent($(this).closest('tr').data('code'));
     });
 
