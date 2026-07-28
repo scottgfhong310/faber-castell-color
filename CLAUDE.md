@@ -68,8 +68,8 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
   「點了套組尺寸要做什麼」由呼叫端的 `onSetClick` 決定——index 是跳去 `sets.html?set=`，
   sets.html 是就地換篩選（不離開頁面，篩選與捲動位置都保住）。
 - **`buildCss` 是 CSS 單一真相**：現產生 259 個 `--fc-NNN` 變數，標頭的來源／金屬色清單由資料算出。
-  工作區 `Faber-Castell/faber_castell_colors.css` 是加入 Black Edition 前的 141 色快照，
-  其 141 行與 `buildCss` 前 141 行仍逐字相同（見 DESIGN.md §4）。
+  工作區的兩份 `faber_castell_colors.css` 已用它重新產生、三者 byte-identical
+  （`node scripts/export-css.js` 可重跑；見 DESIGN.md §4）。
 - **`nearestFC` 預設 `series:'ag'`**：Black Edition 是另一條產品線（SuperSoft、hobby），
   不能拿來回答「該拿哪支筆」。加入 118 色對 `color-palette`／`thangka-trace` 的比對結果
   **零影響**（4096 點 RGB 網格實測 0 差異）。要比 BE 得明示 `{ series:'black-edition' }`，

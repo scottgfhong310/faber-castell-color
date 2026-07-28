@@ -217,11 +217,13 @@ index 跳去 `sets.html?set=`，sets.html 就地換篩選（跨系列時自動�
 現為 **259 個變數**（141 ag ＋ 118 black-edition）。標頭的來源清單與金屬色清單**由資料算出**，
 不寫死——加系列或改金屬色判定，標頭自動跟上。
 
-工作區的 `Faber-Castell/faber_castell_colors.css` 是 **Black Edition 加入前的 141 色快照**；
-其 141 行變數與 `buildCss` 輸出的前 141 行**仍逐字相同**（2026-07-28 實測 diff 為 0 行差異，
-只有新增的 118 行）。要讓它重新覆蓋全量，重跑 `buildCss` 覆寫即可——但注意工作區另有一份
-`My Files/Colors/Faber Castell/faber_castell_colors.css`，**兩份早已不同步**，
-故本 app 不主動改寫任一份：**單一真相是 `buildCss`，那兩份是各自時點的快照。**
+工作區的兩份 `faber_castell_colors.css`（`Faber-Castell/` 與 `My Files/Colors/Faber Castell/`）
+**已於 2026-07-29 用 `buildCss` 輸出重新產生**，兩份與 `buildCss` 三者 byte-identical（259 色）。
+覆蓋前確認過：兩份當時只差 2 行標頭註解，141 個變數與 class 區塊完全相同——同一個產物的
+兩個註解版本，收斂不會弄丟任何東西；舊檔留在 `*.bak-141`。
+
+要重新產生：把 `buildCss(FC_COLORS)` 的輸出寫進那兩份即可（`scripts/export-css.js`）。
+**單一真相始終是 `buildCss`**，那兩份是它的輸出落地。
 
 ## 5. 色票不隨主題重著色
 
