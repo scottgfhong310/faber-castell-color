@@ -50,6 +50,8 @@ I18n.register('en', {
   'sets.colColour': 'Colour',
   'sets.pickHint': 'Click a size in the header to keep only that set’s colours',
   'sets.showingN': '{n} of {total}',
+  'sets.gapTip': 'This set is missing {n} of the selected set’s colours',
+  'sets.gapSelf': 'The selected set itself',
   'sets.clear': 'Clear selection',
   'sets.tableN': '{colours} colours x {sets} sets',
   'sets.emptyRows': '{n} of them are in no set at all (the chart has a swatch, but its page is not covered by the assortment table)',

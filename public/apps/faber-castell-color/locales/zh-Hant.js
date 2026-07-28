@@ -50,6 +50,8 @@ I18n.register('zh-Hant', {
   'sets.colColour': '顏色',
   'sets.pickHint': '點欄位下方的尺寸，就只留下該套組的顏色',
   'sets.showingN': '{n} / {total} 色',
+  'sets.gapTip': '相對選中的套組，這一欄還缺 {n} 色',
+  'sets.gapSelf': '選中的套組本身',
   'sets.clear': '清除選擇',
   'sets.tableN': '{colours} 色 × {sets} 個套組',
   'sets.emptyRows': '其中 {n} 色不在任何套組裡（色卡有色塊，但收錄表未涵蓋該分頁）',

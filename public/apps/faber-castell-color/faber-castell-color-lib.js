@@ -23,6 +23,7 @@
  *   colorsInSet(colors, line, size) → Color[]    某套組收錄哪些色（依色號）
  *   colorsWithoutSet(colors) → Color[]           不屬於任何套組的色（上者的補集）
  *   assortmentMatrix(colors,{series}) → {columns,rows}  套組收錄矩陣（色 × 套組，對齊色卡 PDF）
+ *   columnGaps(matrix, pickIdx) → (number|null)[]  相對某欄，各欄還缺幾色（0＝完全涵蓋）
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   rgbToLab(r,g,b) → [L,a,b] · deltaE(labA,labB) → ΔE00 (CIEDE2000) · deltaEBand(dE) → 'very'|'close'|'noticeable'|'far'
  *   nearestFC({r,g,b}, {n,colors,series}) → [{code,name,hex,deltaE,band}]  最接近的 FC 色
@@ -117,6 +118,21 @@
       };
     });
     return { columns: columns, rows: rows };
+  }
+
+  // 以第 pickIdx 欄的收錄為基準，算每一欄「還缺幾色」。
+  // 0 ＝ 完全涵蓋該套組；pickIdx 那一欄本身回 null（沒有比較對象）。
+  // 選購用：同一條產品線的尺寸是嚴格巢狀的，所以有意義的缺口幾乎都在跨產品線的欄位上。
+  function columnGaps(matrix, pickIdx) {
+    if (pickIdx == null || pickIdx < 0 || pickIdx >= matrix.columns.length) {
+      return matrix.columns.map(function () { return null; });
+    }
+    return matrix.columns.map(function (col, ci) {
+      if (ci === pickIdx) return null;
+      var miss = 0;
+      matrix.rows.forEach(function (r) { if (r.cells[pickIdx] && !r.cells[ci]) miss++; });
+      return miss;
+    });
   }
 
   // ---- 顏色運算 ------------------------------------------------------------
@@ -369,6 +385,7 @@
     colorsInSet: colorsInSet,
     colorsWithoutSet: colorsWithoutSet,
     assortmentMatrix: assortmentMatrix,
+    columnGaps: columnGaps,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
     rgbToLab: rgbToLab,

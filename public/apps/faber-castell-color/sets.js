@@ -92,8 +92,8 @@
   }
 
   // ---- 矩陣 ----------------------------------------------------------------
-  function headerHtml(m, pickIdx) {
-    var lineCells = '', sizeCells = '';
+  function headerHtml(m, pickIdx, gaps) {
+    var lineCells = '', sizeCells = '', gapCells = '';
     var i = 0;
     while (i < m.columns.length) {                       // 第 1 列：產品線（跨欄）
       var line = m.columns[i].line, span = 0;
@@ -108,11 +108,19 @@
       sizeCells += '<th class="c-size' + (ci === pickIdx ? ' is-picked' : '') + '"' +
         ' data-col="' + ci + '" title="' + esc(col.line + ' · ' + col.size + ct()) + '">' +
         col.size + '</th>';
+      if (gaps) {                                       // 第 3 列：相對選中套組還缺幾色
+        var g = gaps[ci];
+        var cls = ci === pickIdx ? ' is-picked' : (g === 0 ? ' is-full' : '');
+        gapCells += '<td class="c-gap' + cls + '" title="' +
+          esc(ci === pickIdx ? t('sets.gapSelf') : t('sets.gapTip', { n: g })) + '">' +
+          (ci === pickIdx ? '—' : (g === 0 ? '0' : '−' + g)) + '</td>';
+      }
     });
     return '<thead>' +
-      '<tr class="r-line"><th class="c-color" rowspan="2">' + esc(t('sets.colColour')) + '</th>' +
-        lineCells + '</tr>' +
+      '<tr class="r-line"><th class="c-color" rowspan="' + (gaps ? 3 : 2) + '">' +
+        esc(t('sets.colColour')) + '</th>' + lineCells + '</tr>' +
       '<tr class="r-size">' + sizeCells + '</tr>' +
+      (gaps ? '<tr class="r-gap">' + gapCells + '</tr>' : '') +
       '</thead>';
   }
 
@@ -144,13 +152,15 @@
     $el.attr('data-series', series);
     if (!m || !m.rows.length) { $el.empty(); return; }
     var pickIdx = pickedIndexIn(m);
+    var gaps = pickIdx != null ? Lib.columnGaps(m, pickIdx) : null;
     var noSet = m.rows.filter(function (r) { return r.cells.every(function (x) { return !x; }); }).length;
 
     // 不包捲動外框：表格直接接在頁面上往下延展，sticky 以視窗為基準
     $el.html(
       (noSet && pickIdx == null
         ? '<p class="matrix-note">' + esc(t('sets.emptyRows', { n: noSet })) + '</p>' : '') +
-      '<table class="assort">' + headerHtml(m, pickIdx) + bodyHtml(m, pickIdx) + '</table>');
+      '<table class="assort' + (gaps ? ' has-gap' : '') + '">' +
+        headerHtml(m, pickIdx, gaps) + bodyHtml(m, pickIdx) + '</table>');
   }
 
   function renderAll() {

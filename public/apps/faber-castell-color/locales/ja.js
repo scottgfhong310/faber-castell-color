@@ -50,6 +50,8 @@ I18n.register('ja', {
   'sets.colColour': '色',
   'sets.pickHint': '見出しのサイズをクリックすると、そのセットの色だけが残ります',
   'sets.showingN': '{n} / {total} 色',
+  'sets.gapTip': '選択中のセットに対して、この列はあと {n} 色不足',
+  'sets.gapSelf': '選択中のセット自身',
   'sets.clear': '選択を解除',
   'sets.tableN': '{colours} 色 × {sets} セット',
   'sets.emptyRows': 'うち {n} 色はどのセットにも未収録（カラーチャートに色見本はあるが、収録表がそのページを網羅していない）',

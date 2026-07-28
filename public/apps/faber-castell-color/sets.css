@@ -89,7 +89,16 @@
 }
 .assort thead .r-size th { top: calc(var(--head-h, 0px) + var(--h-line)); height: var(--h-size); }
 .assort thead .r-add td { top: calc(var(--h-line) + var(--h-size)); height: var(--h-size); }
-.assort thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
+/* 第 3 列：相對選中套組還缺幾色（只有選了套組才出現） */
+.assort thead .r-gap td {
+  top: calc(var(--head-h, 0px) + var(--h-line) + var(--h-size)); height: var(--h-size);
+  font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted);
+}
+.assort thead .r-gap td.is-full { color: #37b26b; }        /* 0 ＝ 完全涵蓋 */
+.assort thead .r-gap td.is-picked { background: var(--accent); color: var(--card-bg); }
+/* 底線畫在表頭的最後一列 */
+.assort:not(.has-gap) thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
+.assort.has-gap thead .r-gap td { box-shadow: inset 0 -1px 0 var(--border); }
 
 .assort .c-size {
   width: 34px; min-width: 34px; cursor: pointer;

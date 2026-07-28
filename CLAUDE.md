@@ -57,8 +57,8 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
   **`nearestFC` 預設只比 `ag`**——見下。
 - **可嵌入 lib** `faber-castell-color-lib.js`（`window.FaberCastellCssLib`）：`filter` / `sortColors`
   （`code`/`hue`/`lightness`/`family`/`hex`，無彩度殿後）/ `colorFamily`＋`FAMILY_ORDER`（9 色系分群）/
-  `setIndex`／`colorsInSet`／`colorsWithoutSet`／`assortmentMatrix`
-  （**套組↔顏色雙向**，見 DESIGN.md §3.3）/
+  `setIndex`／`colorsInSet`／`colorsWithoutSet`／`assortmentMatrix`／`columnGaps`
+  （**套組↔顏色雙向**與「還缺幾色」，見 DESIGN.md §3.3）/
   `hexToRgb` / `rgbToHsl` / `pickTextColor`（WCAG 對比選黑白字）/ `copyValue` /
   **`buildCss`（產生整份 `:root`＋utility）**，**純邏輯不碰 DOM**；`faber-castell-color.js` 才是碰 DOM 的
   控制器（渲染、排序側鍵、色系分群 sticky 標頭、Modal、clipboard、toast）。
