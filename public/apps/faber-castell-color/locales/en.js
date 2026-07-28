@@ -9,7 +9,7 @@ I18n.register('en', {
   'count.showing': 'Showing {n} of {total}',
 
   'tool.sort': 'Sort: code / hue / lightness / family / hex',
-  'tool.sets': 'Browse by set (set → colours)',
+  'tool.sets': 'Set assortments (opens in a new tab)',
   'tool.css': 'View / copy full CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',

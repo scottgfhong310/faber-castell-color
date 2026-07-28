@@ -9,7 +9,7 @@ I18n.register('zh-Hant', {
   'count.showing': '顯示 {n} / {total} 色',
 
   'tool.sort': '排序：色號 / 色相 / 明度 / 色系 / hex',
-  'tool.sets': '依套組瀏覽（套組 → 顏色）',
+  'tool.sets': '套組收錄對照（另開分頁）',
   'tool.css': '檢視 / 複製整份 CSS',
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',

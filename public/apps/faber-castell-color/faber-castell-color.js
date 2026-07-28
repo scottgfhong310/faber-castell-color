@@ -127,7 +127,11 @@
 
     FCDetail.init({
       onSetClick: function (line, size) {
-        window.location.href = './sets.html?set=' + encodeURIComponent(line + '|' + size);
+        // 另開分頁：色彩牆留在原分頁，方便兩邊對照。
+        // 若被瀏覽器擋掉（window.open 回 null）就退回同分頁開，別讓點擊沒反應。
+        var url = './sets.html?set=' + encodeURIComponent(line + '|' + size);
+        var w = window.open(url, '_blank', 'noopener');
+        if (!w) window.location.href = url;
       }
     });
     cssModal = M.Modal.init(document.getElementById('css-modal'), { dismissible: true });

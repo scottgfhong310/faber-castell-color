@@ -9,7 +9,7 @@ I18n.register('ja', {
   'count.showing': '{n} / {total} 色を表示',
 
   'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系 / hex',
-  'tool.sets': 'セットから探す（セット → 色）',
+  'tool.sets': 'セット収録対照（新しいタブで開く）',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
