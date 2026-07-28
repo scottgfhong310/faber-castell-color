@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faber-Castell 套組收錄對照</title>
+
+  <!-- 防主題閃爍：與 index.html 同一把 localStorage 鑰匙（多頁 app 每頁都要，§5.1 坑） -->
+  <script>
+    try {
+      var t = localStorage.getItem('faber-castell-color-theme') || 'dark';
+      var r = document.documentElement;
+      r.dataset.theme = t;
+      r.classList.toggle('dark-mode', t === 'dark');
+      r.classList.toggle('light-mode', t === 'light');
+    } catch (e) { }
+  </script>
+
+  <!-- Materialize 1.0.0 + Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!-- Materialize 元件深色（家族共用；在 materialize.css 之後、本頁樣式之前） -->
+  <link rel="stylesheet" href="./materialize-dark.css" />
+
+  <link rel="stylesheet" href="./faber-castell-color.css" />
+  <link rel="stylesheet" href="./sets.css" />
+  <link rel="stylesheet" href="./side-tool.css" />
+</head>
+
+<body data-i18n-doctitle="title.sets">
+
+  <main>
+    <div class="sets-page">
+
+      <div class="topbar">
+        <div>
+          <h1 data-i18n="sets.pageTitle">套組收錄對照</h1>
+          <div class="sub" data-i18n="sets.pageSub">哪個套組收了哪些色——形制對齊 Faber-Castell 官方色卡的收錄表</div>
+        </div>
+        <div class="baseline-wrap">
+          <label class="baseline-label" for="baseline" data-i18n="sets.baseline">已擁有的套組</label>
+          <div class="input-field baseline-field">
+            <select id="baseline"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend" id="legend"></div>
+
+      <section class="matrix-sec" id="matrix-ag"></section>
+      <section class="matrix-sec" id="matrix-be"></section>
+
+      <p class="matrix-foot" id="matrix-foot"></p>
+
+    </div>
+  </main>
+
+  <!-- ===== 右側工具列（多頁 app 每頁都要有主題鍵，§5.5／§6） ===== -->
+  <div class="side-tools">
+    <a id="setting-grid" class="side-tool" href="./" data-i18n-title="tool.grid" title="回色票網格">
+      <i class="material-icons">grid_view</i>
+    </a>
+    <div id="setting-mode" class="side-tool" data-i18n-title="tool.mode" title="切換 light / dark">
+      <i class="material-icons">dark_mode</i>
+    </div>
+    <div id="setting-lang" class="side-tool" data-i18n-title="tool.lang" title="Language">
+      <i class="material-icons">translate</i>
+    </div>
+  </div>
+
+  <!-- 依賴：jQuery / Materialize / FaberCastellCssLib + 資料 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./faber-castell-color-lib.js"></script>
+  <script src="./data/fc-colors.js"></script>
+
+  <!-- i18n 引擎 + 語言字典（與 index.html 共用同一組 locales） -->
+  <script src="./i18n.js"></script>
+  <script src="./locales/zh-Hant.js"></script>
+  <script src="./locales/en.js"></script>
+  <script src="./locales/ja.js"></script>
+
+  <script src="./side-tool.js"></script>
+  <script src="./sets.js"></script>
+</body>
+
+</html>

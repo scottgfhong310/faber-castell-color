@@ -22,6 +22,8 @@
  *   setIndex(colors) → [{line,series,sizes:[{size,count}]}]  套組索引（顏色→套組 的反向）
  *   colorsInSet(colors, line, size) → Color[]    某套組收錄哪些色（依色號）
  *   colorsWithoutSet(colors) → Color[]           不屬於任何套組的色（上者的補集）
+ *   assortmentMatrix(colors,{series}) → {columns,rows}  套組收錄矩陣（色 × 套組，對齊色卡 PDF）
+ *   columnAdditions(matrix, baseIdx) → (number|null)[]  以某欄為基準，各欄還能多帶來幾個新色
  *   rgbToHsl(r,g,b) → {h,s,l}
  *   rgbToLab(r,g,b) → [L,a,b] · deltaE(labA,labB) → ΔE00 (CIEDE2000) · deltaEBand(dE) → 'very'|'close'|'noticeable'|'far'
  *   nearestFC({r,g,b}, {n,colors,series}) → [{code,name,hex,deltaE,band}]  最接近的 FC 色
@@ -90,6 +92,46 @@
   // 不屬於任何套組的色——套組瀏覽的補集，讓「各套組色數」與總數對得起來
   function colorsWithoutSet(colors) {
     return colors.filter(function (c) { return !c.sets || !Object.keys(c.sets).length; });
+  }
+
+  // 套組收錄矩陣（色 × 套組），形制對齊官方色卡 PDF 的 assortment 表。
+  // opts.series：只取某系列（預設 '*' 全收）。回傳 { columns, rows }，
+  // rows[i].cells[j] === true 代表第 i 色收錄於第 j 個套組。
+  function assortmentMatrix(colors, opts) {
+    opts = opts || {};
+    var series = opts.series || '*';
+    var pool = colors.filter(function (c) {
+      return series === '*' || seriesOf(c) === series;
+    });
+    var columns = [];
+    setIndex(pool).forEach(function (L) {
+      L.sizes.forEach(function (s) {
+        columns.push({ line: L.line, size: s.size, series: L.series, count: s.count });
+      });
+    });
+    var rows = pool.map(function (c) {
+      return {
+        color: c,
+        cells: columns.map(function (col) {
+          return !!(c.sets && c.sets[col.line] && c.sets[col.line].indexOf(col.size) !== -1);
+        })
+      };
+    });
+    return { columns: columns, rows: rows };
+  }
+
+  // 以第 baseIdx 欄為「已擁有」的基準，算每一欄還能多帶來幾個新色。
+  // baseIdx 為 null／負值時整列回 null（＝未選基準）。選購用：同一條產品線的尺寸是
+  // 嚴格巢狀的，所以有意義的差額幾乎都出現在跨產品線的欄位上。
+  function columnAdditions(matrix, baseIdx) {
+    if (baseIdx == null || baseIdx < 0 || baseIdx >= matrix.columns.length) {
+      return matrix.columns.map(function () { return null; });
+    }
+    return matrix.columns.map(function (col, ci) {
+      var n = 0;
+      matrix.rows.forEach(function (r) { if (r.cells[ci] && !r.cells[baseIdx]) n++; });
+      return n;
+    });
   }
 
   // ---- 顏色運算 ------------------------------------------------------------
@@ -341,6 +383,8 @@
     setIndex: setIndex,
     colorsInSet: colorsInSet,
     colorsWithoutSet: colorsWithoutSet,
+    assortmentMatrix: assortmentMatrix,
+    columnAdditions: columnAdditions,
     hexToRgb: hexToRgb,
     rgbToHsl: rgbToHsl,
     rgbToLab: rgbToLab,

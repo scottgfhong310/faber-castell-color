@@ -1,8 +1,8 @@
 # faber-castell-color — Session context
 
 Faber-Castell 色號 → CSS（hex / `var(--fc-NNN)` / `rgb()` / `.fc-bg-NNN`）對照的**唯讀參考**單頁 WebApp：
-259 色色票網格、搜尋、點擊看明細（含系列、耐光度與套組收錄）、**依套組瀏覽**（套組 → 顏色，明細的反方向）、
-一鍵複製四種格式、整份 `.css` 匯出／下載。
+259 色色票網格、搜尋、點擊看明細（含系列、耐光度與套組收錄）、一鍵複製四種格式、整份 `.css` 匯出／下載，
+外加**獨立的「套組收錄對照」頁**（`sets.html`：色 × 套組矩陣，形制對齊官方色卡；可選一個已擁有的套組看差額）。
 資料含兩個系列：**Art & Graphic 141 色**（101–480）＋ **Black Edition 118 色**（701–818）。
 
 本 app 屬於 **nodeapp WebApp 家族**；共同規範與流程在
@@ -15,6 +15,8 @@ app.js                                  # Express 入口：port 3000；/ → 302
                                         # 唯讀，無 API、無上傳（薄後端只做 static + 轉址 + JSON 404）
 public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell-color/）
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
+├─ sets.html · sets.css · sets.js         # 第二頁：套組收錄對照（共用 lib / i18n / locales / side-tool）
+├─ verify-links.js                        # 契約檢查：側鍵入口、跨頁查詢參數、data-* 都要有人接
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（259 色，由兩份官方色卡 PDF 產生）
 ├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
 ├─ materialize-dark.css · side-tool.css · side-tool.js · i18n.js · locales/{zh-Hant,en,ja}.js   # （樣式＋行為：check 微回饋、矮視窗溢出收納；權威版＝家族 repo，§5.5）
@@ -26,6 +28,7 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 
 ```bash
 npm install && node app.js              # → http://localhost:3000/apps/faber-castell-color/
+node public/apps/faber-castell-color/verify-links.js   # 靜態契約檢查（markup ↔ handler）
 ```
 
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
@@ -39,7 +42,7 @@ npm install && node app.js              # → http://localhost:3000/apps/faber-c
 ## 資料重新產生
 
 ```bash
-node data/source/extract_black_edition.py   # 需 python3 + PyMuPDF；由官方色卡 PDF 抽 Black Edition
+python3 data/source/extract_black_edition.py  # 需 PyMuPDF；由官方色卡 PDF 抽 Black Edition
 node data/source/make_polychromos_120.js    # 由產品頁抓 Polychromos 120 ct 套組
 node data/source/generate.js                # 合併全部 CSV → public/.../data/fc-colors.js
 ```
@@ -53,7 +56,8 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
   **`nearestFC` 預設只比 `ag`**——見下。
 - **可嵌入 lib** `faber-castell-color-lib.js`（`window.FaberCastellCssLib`）：`filter` / `sortColors`
   （`code`/`hue`/`lightness`/`family`/`hex`，無彩度殿後）/ `colorFamily`＋`FAMILY_ORDER`（9 色系分群）/
-  `setIndex`／`colorsInSet`／`colorsWithoutSet`（**套組↔顏色雙向**，見 DESIGN.md §3.3）/
+  `setIndex`／`colorsInSet`／`colorsWithoutSet`／`assortmentMatrix`／`columnAdditions`
+  （**套組↔顏色雙向**與選購差額，見 DESIGN.md §3.3）/
   `hexToRgb` / `rgbToHsl` / `pickTextColor`（WCAG 對比選黑白字）/ `copyValue` /
   **`buildCss`（產生整份 `:root`＋utility）**，**純邏輯不碰 DOM**；`faber-castell-color.js` 才是碰 DOM 的
   控制器（渲染、排序側鍵、色系分群 sticky 標頭、Modal、clipboard、toast）。

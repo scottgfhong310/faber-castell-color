@@ -18,7 +18,7 @@ cross-validated) — screen approximations, **not** official Faber-Castell RGB/H
 - **Sort** — a side-tool cycles the swatch order between colour code / hue spectrum / lightness / colour-family groups (nine wheel families with sticky group headers; greys tail the order) / raw hex value; persisted.
 - **Copy in four formats** — `var(--fc-264)`, `#008b71`, `rgb(0, 139, 113)`, `.fc-bg-264`.
 - **Detail view** — per-colour lightfastness (★ per product line) and set-assortment membership, plus which of the two series it belongs to.
-- **Browse by set** — the reverse direction: pick any of the 40 sets across 13 product lines to see exactly which colours it contains (plus the 8 colours in no set). The two views link to each other.
+- **Set assortment page** (`sets.html`) — the reverse direction, laid out like the official chart: a colour x set matrix, one table per series. Pick a set you already own and every other column shows how many colours it would add — e.g. if you have the Black Edition 100, *skin tones* adds 6 and *metallic* adds 12. The two pages link to each other.
 - **CSS export** — view / copy / download `faber_castell_colors.css` (259 `--fc-NNN` vars + `.fc-color-NNN` / `.fc-bg-NNN`).
 - **Read-only** — no upload, no backend API; data is a static registry generated from the official colour charts.
 - **light / dark theme** (default dark) and **three languages** (zh-Hant / en / ja). Swatches keep their true colour in both themes.

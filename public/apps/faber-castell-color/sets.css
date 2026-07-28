@@ -1,0 +1,125 @@
+/* sets.css — 套組收錄對照頁（sets.html）
+ * 主題 token 沿用 faber-castell-color.css，本檔只加這頁特有的表格樣式。
+ * 注意：色票（.mini）保留 Faber-Castell 真實顏色，不隨主題重著色（§4.7）。
+ */
+
+.sets-page { width: 94%; max-width: 1500px; margin: 0 auto; padding: 22px 0 72px; }
+
+.baseline-wrap { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.baseline-label { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.baseline-field { margin: 0; min-width: 268px; }
+.baseline-field.input-field { padding-top: 0; }
+
+/* ===== 圖例 ===== */
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 4px 0 16px; font-size: .8rem; color: var(--muted); }
+.legend-item { display: inline-flex; align-items: center; gap: 6px; }
+/* 圖例的樣子必須跟表格裡一模一樣，但點的樣式是掛在 .assort 底下的，
+   所以這裡要把同一組規則再套一次（只列樣子，不含表格排版）。 */
+.legend .cell {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 20px; border-radius: 4px; border: 1px solid var(--border);
+}
+.legend .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--text); }
+.legend .is-owned .dot { background: var(--muted); opacity: .45; }
+.legend .is-basecell { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.legend .is-basecell .dot { background: var(--accent); }
+.legend .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
+
+/* ===== 每個系列一張表 ===== */
+.matrix-sec + .matrix-sec { margin-top: 30px; }
+.matrix-title {
+  font-size: 1rem; font-weight: 500; color: var(--text);
+  margin: 0 0 6px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.matrix-n { font-size: .78rem; color: var(--muted); font-family: ui-monospace, monospace; font-weight: 400; }
+.matrix-base {
+  font-size: .72rem; font-weight: 400; color: var(--card-bg);
+  background: var(--accent); border-radius: 999px; padding: 1px 9px;
+}
+.matrix-note { font-size: .76rem; color: var(--muted); margin: 0 0 8px; }
+.matrix-foot { font-size: .76rem; color: var(--muted); margin-top: 22px; }
+
+.matrix-scroll {
+  max-height: 74vh; overflow: auto;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+}
+
+.assort { border-collapse: separate; border-spacing: 0; font-size: .76rem; }
+/* Materialize 的 `table td, table th { padding: 15px 5px }` 會把每一格撐到 47px，
+   矩陣就變成 6570px 長。先歸零，需要留白的格子各自再加。 */
+.assort th, .assort td { padding: 0; border-bottom: 1px solid var(--border); }
+
+/* --- 表頭：三列各自 sticky，top 依前面列的高度堆疊 --- */
+.assort thead th, .assort thead td {
+  position: sticky; z-index: 3;
+  background: var(--surface-2); color: var(--text);
+  font-weight: 500; text-align: center;
+}
+.assort thead .r-line th { top: 0; height: 30px; padding: 0 6px; font-size: .74rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px;
+  border-left: 1px solid var(--border); }
+.assort thead .r-size th { top: 30px; height: 26px; }
+.assort thead .r-add td { top: 56px; height: 26px; }
+/* 沒有差額列時，尺寸列就是最後一列 */
+.assort:not(.has-add) thead .r-size th { box-shadow: inset 0 -1px 0 var(--border); }
+
+.assort .c-size {
+  width: 34px; min-width: 34px; cursor: pointer;
+  font-family: ui-monospace, monospace; font-size: .72rem; color: var(--muted);
+}
+.assort .c-size:hover { color: var(--accent); }
+.assort .c-size.is-base, .assort .c-add.is-base { background: var(--accent); color: var(--card-bg); }
+.assort .c-add { font-family: ui-monospace, monospace; font-size: .72rem; color: var(--accent); }
+
+/* --- 第一欄：顏色，sticky 在左 --- */
+.assort .c-color {
+  position: sticky; left: 0; z-index: 2;
+  background: var(--surface); text-align: left; font-weight: 400;
+  width: 246px; min-width: 246px; padding: 3px 10px 3px 8px;
+  display: table-cell; white-space: nowrap;
+}
+.assort thead .c-color { z-index: 4; background: var(--surface-2); vertical-align: bottom; padding-bottom: 6px; }
+.assort tbody .c-color { cursor: pointer; }
+.assort tbody tr:hover .c-color { background: var(--surface-2); }
+.assort tbody tr:hover td.cell { background: rgba(128,128,128,.10); }
+
+/* 色票保留真實顏色、不隨主題重著色；前景由 pickTextColor 決定，
+   以較高特異度蓋過 materialize-dark.css 對裸 <span> 的 color（§5.1 坑） */
+/* 用 flex 包住色票與色名，列高才會等於「最高的子元素＋padding」。
+   直接把兩個 inline 元素放進 <th> 會被文字行框的行高／descender 撐高（實測 47px）。 */
+.assort .ccell { display: flex; align-items: center; gap: 8px; line-height: 1.15; }
+.assort .mini {
+  display: inline-flex; align-items: center; justify-content: center; gap: 1px; flex: 0 0 auto;
+  width: 42px; height: 20px; border-radius: 4px;
+  font-family: ui-monospace, monospace; font-size: .68rem;
+  box-shadow: inset 0 0 0 1px rgba(128,128,128,.28);
+}
+.assort .mini, .assort .mini .badge { color: inherit; }
+.assort .mini .badge { font-size: .6rem; opacity: .85; }
+.assort .cname {
+  color: var(--text); font-size: .76rem;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+}
+
+/* --- 資料格 --- */
+.assort td.cell {
+  width: 34px; min-width: 34px; height: 24px; text-align: center;
+  border-left: 1px solid var(--border);
+}
+.assort .dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--muted); vertical-align: middle;
+}
+.assort .is-in .dot { background: var(--text); }
+/* 選了基準之後：已被基準涵蓋的轉淡、基準欄本身用強調色、其餘為「新增」 */
+.assort .is-owned .dot { background: var(--muted); opacity: .45; }
+.assort .is-basecell { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.assort .is-basecell .dot { background: var(--accent); }
+.assort .is-new .dot { width: 9px; height: 9px; background: #37b26b; box-shadow: 0 0 0 2px rgba(55,178,107,.22); }
+
+@media (max-width: 780px) {
+  .baseline-wrap { margin-left: 0; width: 100%; }
+  .baseline-field { min-width: 0; flex: 1; }
+  .assort .c-color { width: 172px; min-width: 172px; }
+  .assort .cname { max-width: 104px; }
+}
