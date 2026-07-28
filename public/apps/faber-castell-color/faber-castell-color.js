@@ -12,7 +12,7 @@
   var LS_THEME = 'faber-castell-color-theme';
   var LS_SORT = 'faber-castell-color-sort';
 
-  var $grid, $noResult, $count, $search, detailModal, cssModal, current = null;
+  var $grid, $noResult, $count, $search, cssModal;
   var sortMode = 'code';
 
   function esc(s) {
@@ -73,92 +73,9 @@
   }
 
   // ---- 明細 Modal ----------------------------------------------------------
-  var COPY_FORMATS = ['var', 'hex', 'rgb', 'class'];
-
-  function openDetail(code) {
-    var c = COLORS.filter(function (x) { return x.code === code; })[0];
-    if (!c) return;
-    current = c;
-    var fg = Lib.pickTextColor(c);
-
-    $('#detail-head').attr('style', 'background:' + c.hex + ';color:' + fg);
-    $('#detail-code').text(c.code);
-    $('#detail-approx').text(Lib.isMetallic(c) && window.I18n ? I18n.t('detail.approx') : '');
-    $('#detail-name').text(c.name);
-    $('#detail-series').text(seriesLabel(c));
-    $('#detail-note').text(noteLabel(c));
-
-    // 複製鈕
-    $('#detail-copy').html(COPY_FORMATS.map(function (fmt) {
-      return '<button class="copy-btn" data-fmt="' + fmt + '">' +
-        '<i class="material-icons">content_copy</i>' + esc(Lib.copyValue(c, fmt)) + '</button>';
-    }).join(''));
-
-    // 耐光度
-    var lfRows = (META.lfLines || []).filter(function (l) { return c.lf && c.lf[l.key]; });
-    if (lfRows.length) {
-      $('#detail-lf').html(lfRows.map(function (l) {
-        return '<tr><td>' + esc(l.label) + '</td><td class="lf-val">' + esc(c.lf[l.key]) + '</td></tr>';
-      }).join(''));
-      $('#detail-lf-sec').show();
-    } else { $('#detail-lf-sec').hide(); }
-
-    // 套組（每個尺寸都可點 → 反方向開套組瀏覽）
-    if (c.sets && Object.keys(c.sets).length) {
-      $('#detail-sets').html(Object.keys(c.sets).map(function (line) {
-        var sizes = c.sets[line].map(function (s) {
-          return '<button class="size-link" data-line="' + esc(line) + '" data-size="' + s + '">' +
-            s + (window.I18n ? I18n.t('sets.ct') : ' ct') + '</button>';
-        }).join(' · ');
-        return '<div class="set-line"><span class="line-name">' + esc(line) + '：</span>' +
-               '<span class="sizes">' + sizes + '</span></div>';
-      }).join(''));
-      $('#detail-sets-sec').show();
-    } else { $('#detail-sets-sec').hide(); }
-
-    detailModal.open();
-  }
-
-  function noteLabel(c) {
-    if (!window.I18n) return c.note || '';
-    if (Lib.isMetallic(c)) return I18n.t('note.metallic');
-    if (/vector/i.test(c.note)) return I18n.t('note.vector');
-    if (/pixel/i.test(c.note)) return I18n.t('note.pixel');
-    if (/cross/i.test(c.note)) return I18n.t('note.crossValidated');
-    return c.note || '';
-  }
-
-  // 色票屬哪個系列（各有自己的權威色卡）；資料無 series 欄位時視為 'ag'
-  function seriesLabel(c) {
-    var key = c.series || 'ag';
-    var s = (META.series || []).filter(function (x) { return x.key === key; })[0];
-    if (!s) return '';
-    return window.I18n ? I18n.t('series.' + key, { source: s.source }) : s.label;
-  }
-
-  // ---- 複製 ----------------------------------------------------------------
-  function copyText(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
-    return new Promise(function (resolve, reject) {
-      try {
-        var ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        var ok = document.execCommand('copy'); document.body.removeChild(ta);
-        ok ? resolve() : reject(new Error('execCommand'));
-      } catch (e) { reject(e); }
-    });
-  }
-
-  function flashCopied($btn, text) {
-    copyText(text).then(function () {
-      $btn.addClass('copied');
-      setTimeout(function () { $btn.removeClass('copied'); }, 1200);
-      M.toast({ html: I18n.t('toast.copied', { v: esc(text) }), classes: 'teal' });
-    }).catch(function () {
-      M.toast({ html: I18n.t('toast.copyFail'), classes: 'red' });
-    });
-  }
+  // 渲染與複製都在共用模組 colour-detail.js（sets.html 也用同一支）。
+  // 這裡只決定「點了套組尺寸要做什麼」：跳去對照頁並篩出該套組。
+  function openDetail(code) { return window.FCDetail && FCDetail.open(code); }
 
   // ---- CSS 匯出 ------------------------------------------------------------
   function cssText() { return Lib.buildCss(COLORS); }
@@ -201,14 +118,18 @@
   function onI18n() {
     applyFilter();                 // 重繪計數
     renderCssSub();
-    if (current && detailModal && detailModal.isOpen) openDetail(current.code);
+    if (window.FCDetail) FCDetail.refresh();
   }
 
   // ---- 啟動 ----------------------------------------------------------------
   $(function () {
     $grid = $('#grid'); $noResult = $('#no-result'); $count = $('#count'); $search = $('#search');
 
-    detailModal = M.Modal.init(document.getElementById('detail-modal'), { dismissible: true });
+    FCDetail.init({
+      onSetClick: function (line, size) {
+        window.location.href = './sets.html?set=' + encodeURIComponent(line + '|' + size);
+      }
+    });
     cssModal = M.Modal.init(document.getElementById('css-modal'), { dismissible: true });
 
     try { var sv = localStorage.getItem(LS_SORT); if (sv && Lib.SORT_MODES.indexOf(sv) !== -1) sortMode = sv; } catch (e) { }
@@ -228,9 +149,6 @@
     $search.on('input', applyFilter);
     $('#setting-sort').on('click', cycleSort);
     $grid.on('click', '.fc-cell', function () { openDetail($(this).data('code') + ''); });
-    $('#detail-copy').on('click', '.copy-btn', function () {
-      if (current) flashCopied($(this), Lib.copyValue(current, $(this).data('fmt')));
-    });
 
     // 明細裡的尺寸可點 → 到套組收錄對照頁，並以該套組為基準
     $('#detail-sets').on('click', '.size-link', function () {

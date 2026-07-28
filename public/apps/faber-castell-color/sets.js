@@ -190,6 +190,7 @@
     renderSeriesTabs();
     renderAll();
     syncHeadHeight();
+    if (window.FCDetail) FCDetail.refresh();
   }
 
   // ---- 啟動 ----------------------------------------------------------------
@@ -248,9 +249,20 @@
       setPick(picked && setKey(picked.line, picked.size) === key ? '' : key);
     });
 
-    // 點色號回主網格並帶出該色（情境 A 的回程）
+    // 明細就地開在本頁——之前是跳回色彩牆，篩選與捲動位置都會沒了。
+    // 明細裡點套組尺寸＝直接在這頁換篩選，不必來回跳。
+    FCDetail.init({
+      onSetClick: function (line, size) {
+        var owner = null;
+        SERIES.forEach(function (k) {
+          if (matrices[k].columns.some(function (c) { return c.line === line && c.size === size; })) owner = k;
+        });
+        if (owner && owner !== series) setSeries(owner);   // 跨系列時先切過去
+        setPick(setKey(line, size));
+      }
+    });
     $('#matrix').on('click', 'tbody .c-color', function () {
-      window.location.href = './?code=' + encodeURIComponent($(this).closest('tr').data('code'));
+      FCDetail.open($(this).closest('tr').data('code') + '');
     });
 
     $('#setting-mode').on('click', function () {

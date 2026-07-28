@@ -17,6 +17,7 @@ app.js                                  # Express 入口：port 3000；/ → 302
 public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell-color/）
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
 ├─ sets.html · sets.css · sets.js         # 第二頁：套組收錄對照（共用 lib / i18n / locales / side-tool）
+├─ colour-detail.js                       # 兩頁共用的色票明細 Modal（碰 DOM，故不在 lib）
 ├─ verify-links.js                        # 契約檢查：側鍵入口、跨頁查詢參數、data-* 都要有人接
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（259 色，由兩份官方色卡 PDF 產生）
 ├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
@@ -61,7 +62,11 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
   （**套組↔顏色雙向**與「還缺幾色」，見 DESIGN.md §3.3）/
   `hexToRgb` / `rgbToHsl` / `pickTextColor`（WCAG 對比選黑白字）/ `copyValue` /
   **`buildCss`（產生整份 `:root`＋utility）**，**純邏輯不碰 DOM**；`faber-castell-color.js` 才是碰 DOM 的
-  控制器（渲染、排序側鍵、色系分群 sticky 標頭、Modal、clipboard、toast）。
+  控制器（渲染、排序側鍵、色系分群 sticky 標頭、CSS 匯出、toast）。
+- **明細 Modal 是兩頁共用模組** `colour-detail.js`（`window.FCDetail`）：注入 markup、
+  渲染一個色、四格式複製。**碰 DOM 所以不進 lib**，但兩頁都要用所以也不留在任一控制器裡。
+  「點了套組尺寸要做什麼」由呼叫端的 `onSetClick` 決定——index 是跳去 `sets.html?set=`，
+  sets.html 是就地換篩選（不離開頁面，篩選與捲動位置都保住）。
 - **`buildCss` 是 CSS 單一真相**：現產生 259 個 `--fc-NNN` 變數，標頭的來源／金屬色清單由資料算出。
   工作區 `Faber-Castell/faber_castell_colors.css` 是加入 Black Edition 前的 141 色快照，
   其 141 行與 `buildCss` 前 141 行仍逐字相同（見 DESIGN.md §4）。

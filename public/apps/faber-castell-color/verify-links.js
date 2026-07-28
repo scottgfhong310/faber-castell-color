@@ -18,6 +18,9 @@ const PAGES = [
   { html: 'sets.html', js: 'sets.js' }
 ];
 
+// 兩頁共用的 UI 模組：它自己產生的 data-* 也要有人讀
+const SHARED_JS = ['colour-detail.js'];
+
 // 頁面之間用查詢參數溝通：送出的一方 → 解析的一方
 const QUERY_CONTRACTS = [
   { param: 'code', from: 'sets.js', to: 'faber-castell-color.js' },
@@ -57,8 +60,8 @@ QUERY_CONTRACTS.forEach(c => {
 //    （只給 CSS 用的狀態旗標是正當用法，例如 #matrix[data-series="ag"]）
 const CSS = fs.readdirSync(DIR).filter(f => f.endsWith('.css'))
   .map(f => read(f)).join('\n');
-PAGES.forEach(p => {
-  const js = read(p.js);
+[...PAGES.map(p => p.js), ...SHARED_JS].forEach(name => {
+  const js = read(name);
   const emitted = new Set([
     ...[...js.matchAll(/data-([a-z]+)="/g)].map(m => m[1]),
     ...[...js.matchAll(/attr\('data-([a-z]+)'/g)].map(m => m[1])
@@ -67,7 +70,7 @@ PAGES.forEach(p => {
     const readInJs = js.includes(`data('${a}')`) || js.includes(`dataset.${a}`) || js.includes(`attr('data-${a}')`);
     const readInCss = CSS.includes(`[data-${a}`);
     if (!readInJs && !readInCss) {
-      fails.push(`${p.js}: 產生了 data-${a} 但 JS 與 CSS 都沒有用它（死屬性）`);
+      fails.push(`${name}: 產生了 data-${a} 但 JS 與 CSS 都沒有用它（死屬性）`);
     }
   });
 });

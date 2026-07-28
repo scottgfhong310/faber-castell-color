@@ -75,36 +75,6 @@
     </div>
   </div>
 
-  <!-- ===== 色票明細 Modal（點色票開啟；內容由 JS 填入） ===== -->
-  <div id="detail-modal" class="modal detail-modal">
-    <div class="modal-content">
-      <div id="detail-head" class="detail-head">
-        <span class="d-code" id="detail-code"></span>
-        <span class="d-approx" id="detail-approx"></span>
-      </div>
-      <div class="detail-body">
-        <div class="d-name" id="detail-name"></div>
-        <div class="d-series" id="detail-series"></div>
-        <div class="d-note" id="detail-note"></div>
-
-        <div class="copy-row" id="detail-copy"></div>
-
-        <div class="d-section" id="detail-lf-sec">
-          <h6 data-i18n="detail.lightfastness">耐光度</h6>
-          <table class="lf-table"><tbody id="detail-lf"></tbody></table>
-        </div>
-
-        <div class="d-section" id="detail-sets-sec">
-          <h6 data-i18n="detail.sets">套組收錄</h6>
-          <div id="detail-sets"></div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect btn-flat" data-i18n="detail.close">關閉</a>
-    </div>
-  </div>
-
   <!-- ===== CSS 匯出 Modal ===== -->
   <div id="css-modal" class="modal css-modal">
     <div class="modal-content">
@@ -134,6 +104,7 @@
 
   <script src="./filter-clear.js"></script>   <!-- 共用 utility：搜尋框清除鈕 -->
   <script src="./side-tool.js"></script>   <!-- 共用 utility：側鍵行為（check 微回饋＋溢出收納） -->
+  <script src="./colour-detail.js"></script>   <!-- 兩頁共用：色票明細 Modal -->
   <script src="./faber-castell-color.js"></script>
 </body>
 
