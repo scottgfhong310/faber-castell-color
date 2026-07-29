@@ -22,6 +22,11 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（259 色，由兩份官方色卡 PDF 產生）
 ├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
 ├─ materialize-dark.css · side-tool.css · side-tool.js · i18n.js · locales/{zh-Hant,en,ja}.js   # （樣式＋行為：check 微回饋、矮視窗溢出收納；權威版＝家族 repo，§5.5）
+└─ icons/                                 # 中性「色卡（五條色帶）」標記，非 FC 品牌 logo
+   ├─ faber-castell-color-icon(-light).svg  # 母版 tile（深/淺）
+   ├─ favicon(.ico/.svg/-light.svg) · icon-{16..512}.png · manifest.json
+scripts/make-icons.py                     # 由母版重出整套 icon（PNG/.ico/manifest），可重跑
+scripts/sync-copies.sh · scripts/export-css.js
 ```
 
 無 `routes/`、無 `public/upload/`——這是唯讀參考 app，資料是烘進前端的靜態 registry。
@@ -31,7 +36,13 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 ```bash
 npm install && node app.js              # → http://localhost:3000/apps/faber-castell-color/
 node public/apps/faber-castell-color/verify-links.js   # 靜態契約檢查（markup ↔ handler）
+python3 scripts/make-icons.py                         # 重產整套 App icon（改母版參數後跑）
 ```
+
+> **`make-icons.py` 用 PyMuPDF 光柵化，有兩個限制**（`copic-color` 也踩過）：
+> ① **不渲染 `linearGradient`**，會整片退成黑色 → 母版一律純色底；
+> ② **以 SVG 宣告的 `width`/`height` 為基準、不是 `viewBox`** → 倍率要用
+> 「目標 ÷ 實際 page 寬」反推。詳見 DESIGN.md §9.1。
 
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
 搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、CSS 匯出/下載、i18n 三語、主題切換

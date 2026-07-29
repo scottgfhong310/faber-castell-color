@@ -313,3 +313,36 @@ Faber-Castell 色號。這是把一個抽象、握不到的螢幕 hex（`#AA3F1C
   慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進 `color-palette` / `thangka-trace`
   （各自 CLAUDE.md 登記複製點）；**單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。
   兩支各 **6 份複製**（本尊＋2 消費端，各含 InProgress 鏡像），改版後以 md5 確認為單一 hash。
+
+## 9. App icon（中性色卡標記、非品牌 logo）
+
+自訂 icon 是**一張色卡（Farbtabelle）**——五條橫向色帶。那正是本 app 的**來源文件形制**
+（§2 的兩份 colour assortment PDF），也與 `caran-dache-color`（色卡扇）、
+`copic-color`（三軸矩陣）、`color-palette`（金環＋玫瑰放大鏡）清楚區隔。
+**刻意不用 Faber-Castell 品牌 logo**（避免冒用商標，§5.5／DESIGN_GUIDELINES）。
+
+- **五條色帶全是真實 FC 色**，不自己配色：上 4 條取自 `ag`
+  （109 dark chrome yellow／118 scarlet red／112 leaf green／110 phthalo blue），
+  下 1 條取自 `black-edition`（800 Neon Purple——該線的招牌霓虹色，且與上列四色都不撞）。
+- **4 ＋ 1 分群、群間距大於帶間距**：一眼看得出是**兩個系列**，那正是本 app 與另兩支色彩 app
+  的差異點（§2：兩個系列、色號範圍不重疊、各有自己的權威色卡）。
+- **兩張母版 SVG**（深／淺 tile）＋ favicon 深淺兩版（跟 OS `prefers-color-scheme`）
+  ＋ `.ico`（16/32/48）／PNG（16–512）＋ apple-touch 180 ＋ PWA manifest（192/512＋maskable）
+  ＋ `theme-color`。全照 §5.5 checklist。
+- **favicon 母版只留 3 ＋ 1 條、色帶加粗**：母版的五條縮到 16px 會糊成一片。
+
+### 9.1 產生器 `scripts/make-icons.py`（整套可重跑）
+
+icon 不手工維護：改母版參數 → 重跑 `python3 scripts/make-icons.py` → SVG／PNG／`.ico`／
+`manifest.json` 全部重出。用 **PyMuPDF（`fitz`）**光柵化，整條管線留在本機。
+
+**它的兩個限制必須知道**（`copic-color` 也踩過，見其 DESIGN.md §8.1）：
+
+1. **不渲染 SVG 的 `linearGradient`，會整片退成黑色**。故母版一律**純色底**
+   （深 `#151a24`／淺 `#f6f8fa`）。在 16–512px 尺度下漸層本就幾乎看不出來，
+   換來的是可重跑的本機管線——這個取捨是刻意的。
+2. **以 SVG 宣告的 `width`/`height` 為渲染基準、不是 `viewBox`**。
+   倍率要用「目標尺寸 ÷ 實際 page 寬」反推；寫死 `size/100` 會得到完全錯誤的尺寸。
+
+> `caran-dache-color` 當年因本機無 cairo 而繞**瀏覽器 canvas** 光柵化（其 DESIGN.md §8）。
+> PyMuPDF 這條路更省事，但**只對純色圖案成立**——要漸層仍得走 canvas。
