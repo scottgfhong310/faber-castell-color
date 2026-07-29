@@ -43,16 +43,24 @@ node public/apps/faber-castell-color/verify-links.js   # 靜態契約檢查（ma
 
 ## 資料重新產生
 
+**2026-07-29 起改由 `db_artcolor` 匯出**（見 DESIGN.md §3.1）：
+
 ```bash
-python3 data/source/extract_black_edition.py  # 需 PyMuPDF；由官方色卡 PDF 抽 Black Edition
-node data/source/make_polychromos_120.js    # 由產品頁抓 Polychromos 120 ct 套組
-node data/source/generate.js                # 合併全部 CSV → public/.../data/fc-colors.js
+# 在家族工作區（未納版控）：My Projects/Art Colour/export/
+node a3-export.js --check    # 逐位元組比對本 repo 的 data/fc-colors.js 與 DB 重建結果
+node a3-export.js --write    # 由 DB 重新產生
+bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
 ```
+
+> **⚠️ 不要再跑 `data/source/generate.js`**——它會用凍結的 CSV 覆蓋掉 DB 側的任何修正。
+> 下列抽取器保留為**沿革**（記錄資料當初怎麼來），不再是輸入端：
+> `extract_black_edition.py`／`make_polychromos_120.js`／`generate.js`。
 
 ## 本 app 的 canon 重點
 
 - **唯讀參考、無後端 API**：259 色資料是靜態 `data/fc-colors.js`（`window.FC_COLORS`），
-  由 `data/source/*.csv` 產生（見 DESIGN.md §2/§3）；不需上傳/編輯，故 `app.js` 極簡。
+  **由 `db_artcolor` 匯出**（見 DESIGN.md §3.1）；不需上傳/編輯，故 `app.js` 極簡。
+  **app 本身不連任何資料庫**——資料檔進版控，clone 下來 `npm start` 就能跑。
 - **兩個系列（`series` 欄位）**：`ag`（Art & Graphic，141 色）與 `black-edition`（118 色），
   各有自己的權威色卡、各自的抽取難度；色號範圍不重疊故 `--fc-NNN` 不撞名。
   **`nearestFC` 預設只比 `ag`**——見下。
@@ -93,7 +101,7 @@ node data/source/generate.js                # 合併全部 CSV → public/.../da
 | `side-tool.css`（正統 flex 版）| 家族 §5.5 正統版（複製自 `color-palette`） |
 | `filter-clear.css`、`filter-clear.js` | 家族 §5.12 篩選框「清除」× 鈕 utility（自 `local-reader` 複製、byte-identical） |
 | `i18n.js` | 家族 repo `nodeapp-webapp-family/i18n.js`（權威版，byte-identical；`locales/*.js` 各 app 自維護） |
-| `data/fc-colors.js` | 由 `data/source/*.csv` 產生器合併（來源 `Farbtabelle-AG-ENG-0214.pdf` ＋ `Colour-assortment-Black-Edition.pdf`）|
+| `data/fc-colors.js` | **由 `db_artcolor` 匯出**（2026-07-29 起；家族美術色材領域庫＝ System of Record）。`data/source/*.csv` 已凍結為來源沿革，見 DESIGN.md §3.1 |
 
 > **本 app 是 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` 的權威版**，各有 6 份複製：
 > 本尊、`color-palette`、`thangka-trace`，各含 InProgress 鏡像。

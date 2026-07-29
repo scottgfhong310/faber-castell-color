@@ -109,9 +109,13 @@ y 座標相同。任何「同一列」的比對（色塊↔色號、• ↔ 色�
 （`black-edition` 的 106 個向量值雖是廠方定義的精確數字，但那是**印刷色表的設定值**，
 仍不等於筆芯實際上色的顏色，故一樣不宣稱為官方 RGB 規格。）
 
-## 3. 資料產生管線（單一真相在 CSV）
+## 3. 資料產生管線
 
-`data/fc-colors.js` 由 `data/source/*.csv` 合併產生（`node data/source/generate.js`）：
+> **2026-07-29 起，單一真相是 `db_artcolor`（家族美術色材領域庫），不再是 CSV。**
+> 本檔的 `data/fc-colors.js` 是**建置產物**，由該庫的匯出器產生（見 §3.1）。
+> 下表的 CSV 管線改為**凍結的來源沿革**——它記錄了資料當初怎麼來的，但已不是輸入端。
+
+（沿革）`data/fc-colors.js` 原由 `data/source/*.csv` 合併產生（`node data/source/generate.js`）：
 
 | 來源 CSV | series | 併入欄位 |
 |---|---|---|
@@ -210,6 +214,25 @@ index 跳去 `sets.html?set=`，sets.html 就地換篩選（跨系列時自動�
 - 產品線標題要能折兩行得給**明確 `width`**：`max-width` 只能收窄、撐不寬，單尺寸欄（34px）
   仍會被 line-clamp 截斷。
 - `position: sticky` 掛在 `<th>`/`<td>` 而**不是 `<tr>`**——驗證時量 `tr` 會誤判成沒生效。
+
+### 3.1 現行管線（DB → 匯出產物）
+
+```
+官方色卡 PDF（凍結）→ data/source/*.csv（凍結沿革）→ db_artcolor ← System of Record
+                                                        │ 匯出（唯讀）
+                                                        ▼
+                                              data/fc-colors.js（進版控）
+```
+
+- **本 app 的形狀一個字都沒改**：照樣零後端、公開、`npm start` 就能跑；資料檔進版控，
+  clone 下來不需要任何資料庫。DB 坐在 build 的後面，不坐在 app 的下面。
+- **匯出器**在家族工作區（未納版控）：`My Projects/Art Colour/export/a3-export.js`；
+  `--check` 會逐位元組比對本檔與 DB 重建結果，不一致回非 0。
+- **要更新資料**：改 DB、重跑匯出器。**不要手改 `data/fc-colors.js`**，也不要再跑 `generate.js`
+  ——它會用凍結的 CSV 覆蓋掉 DB 側的任何修正。
+- **權責**：DB 擁有資料；匯出器擁有版式（檔頭註解與欄位順序）。
+- 治理文件：`My Projects/Art Colour/ARTCOLOR_DOMAIN_GOVERNANCE.md`（未納版控）。
+  為什麼當初決定「不進 DB」、以及是哪一條觸發條件讓它進了 DB，見 §1.1。
 
 ## 4. CSS 是由 app 生成的（單一真相）
 

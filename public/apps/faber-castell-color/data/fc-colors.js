@@ -1,4 +1,6 @@
-/* Faber-Castell colour data — generated from data/source/*.csv (do not hand-edit).
+/* Faber-Castell colour data — build artefact, do not hand-edit.
+ * Exported from the family colour database (db_artcolor), the System of Record since 2026-07-29.
+ * data/source/ is kept as frozen provenance; it is no longer the input to this file.
  * Two series, each with its own authoritative chart:
  *   ag            Art & Graphic — Farbtabelle-AG-ENG-0214.pdf; hex = pixel-sampled swatch.
  *   black-edition Black Edition — Colour-assortment-Black-Edition.pdf; hex = vector fill
