@@ -1,7 +1,8 @@
 # faber-castell-color — Session context
 
 Faber-Castell 色號 → CSS（hex / `var(--fc-NNN)` / `rgb()` / `.fc-bg-NNN`）對照的**唯讀參考**單頁 WebApp：
-259 色色票網格、搜尋、點擊看明細（含系列、耐光度與套組收錄）、一鍵複製四種格式、整份 `.css` 匯出／下載，
+259 色色票網格、搜尋、點擊看明細（含系列、耐光度與套組收錄）、**最接近色側欄**（給任一 hex 找最接近的筆）、
+一鍵複製四種格式、整份 `.css` 匯出／下載，
 外加**獨立的「套組收錄對照」頁**（`sets.html`：色 × 套組矩陣，形制對齊官方色卡；
 選一個套組就只留下它的顏色，再橫向看其他套組有沒有涵蓋）。
 資料含兩個系列：**Art & Graphic 141 色**（101–480）＋ **Black Edition 118 色**（701–818）。
@@ -45,7 +46,9 @@ python3 scripts/make-icons.py                         # 重產整套 App icon（
 > 「目標 ÷ 實際 page 寬」反推。詳見 DESIGN.md §9.1。
 
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
-搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、CSS 匯出/下載、i18n 三語、主題切換
+搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、
+**最接近色側欄**（`#setting-nearest`：12 筆、ΔE 分級標示、系列選單〔預設 Art & Graphic〕、
+點結果開明細而側欄不關）、CSS 匯出/下載、i18n 三語、主題切換
 （**色票保留真實顏色、只有外殼跟主題**）。
 
 > **⚠️ 別用 `file://` 驗證**：這支 app 零後端、看似能直接開檔案跑，但 preview pane 的
@@ -93,6 +96,12 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
   不能拿來回答「該拿哪支筆」。加入 118 色對 `color-palette`／`thangka-trace` 的比對結果
   **零影響**（4096 點 RGB 網格實測 0 差異）。要比 BE 得明示 `{ series:'black-edition' }`，
   `'*'` 為全收；**無 `series` 欄位的色一律當 `'ag'`**，故自備清單行為不變。
+- **最接近色側欄（2026-07-30 新增）**：比對器一直只有 lib、本 app 沒有入口——色彩牆自己反而
+  查不了「這個顏色最接近哪支筆」。側鍵 `#setting-nearest` 開右緣 sidenav（形制同 markdown-reader
+  的檔案清單側欄，與 `caran-dache-color`／`copic-color` 三支一致）：color picker ＋ hex 雙向同步、
+  **系列選單**（預設 `ag`，可切 `black-edition` 或全部）、top-12、ΔE 分級 pill。
+  **選單上的數字是實際比對池**（135／106／241），不是 `FC_META.series[].total` 的 141／118——
+  `nearestFC` 排除金屬色，印總數會與結果對不上。點結果開明細而**側欄不關**。
 - **色票不隨主題重著色**（§4.7「內容本身即設計」）：色塊恆為 Faber-Castell 真實色，
   只有外殼（bg/文字/工具列）跟 light/dark；色塊上文字黑白由 `pickTextColor` 依對比自動選。
 - **色名是資料、永不翻譯**（Faber-Castell 英文色名保留於 `FC_COLORS`）；UI 字串才三語。

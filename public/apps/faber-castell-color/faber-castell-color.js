@@ -12,7 +12,7 @@
   var LS_THEME = 'faber-castell-color-theme';
   var LS_SORT = 'faber-castell-color-sort';
 
-  var $grid, $noResult, $count, $search, cssModal;
+  var $grid, $noResult, $count, $search, cssModal, nearestPanel;
   var sortMode = 'code';
 
   function esc(s) {
@@ -115,10 +115,78 @@
     $('#css-sub').html(I18n.t('css.sub', { n: COLORS.length }));
   }
 
+  // ---- 最接近色側欄（nearestFC） --------------------------------------------
+  //
+  // 比對器一直在 lib 裡但沒有入口；做成側欄而不是 Modal，是因為比對是
+  // 「查一次、逐一讀」的動作：Modal 一次只能站一個，點結果就得把查詢條件關掉。
+  // 側欄常駐，明細 Modal 疊在它上面開，關掉即回到同一份清單並保留高亮。
+
+  var NEAR_N = 12;
+  var ALL_SERIES = '*';
+  // ΔE 級距的說法（lib 的 deltaEBand 只回代號）；文案與 caran-dache-color／copic-color
+  // 的 band.* 逐字相同——三支用同一把尺、同一組級距，讀法也該一樣。
+  var BAND_FB = { very: '極接近', close: '接近', noticeable: '可辨差異', far: '差異大' };
+
+  function T(key, fb) {
+    if (!window.I18n || !I18n.t) return fb;
+    var v = I18n.t(key);
+    return (v && v !== key) ? v : fb;
+  }
+
+  // 選單上的數字要是**真的會被比到的色數**：nearestFC 排除金屬色（其 hex 是像素取樣的
+  // 近似值），所以直接印 FC_META.series[].total（141／118）會與結果對不上。
+  function poolCount(series) {
+    return COLORS.filter(function (c) {
+      return c.hex && !Lib.isMetallic(c) &&
+             (series === ALL_SERIES || (c.series || 'ag') === series);
+    }).length;
+  }
+
+  function fillSeriesSelect() {
+    var $sel = $('#nearest-series');
+    var keep = $sel.val();
+    var html = (META.series || []).map(function (s) {
+      return '<option value="' + esc(s.key) + '">' + esc(s.label) +
+             '（' + poolCount(s.key) + '）</option>';
+    }).join('');
+    html += '<option value="' + ALL_SERIES + '">' +
+            esc(T('nearest.allSeries', '全部系列')) + '（' + poolCount(ALL_SERIES) + '）</option>';
+    $sel.html(html);
+    if (keep) $sel.val(keep);      // 換語言重建選項時保住當下選擇
+  }
+
+  function renderNearest() {
+    var rgb = Lib.hexToRgb($('#nearest-hex').val().trim());
+    $('#nearest-hex').toggleClass('invalid', !rgb);
+    if (!rgb) {
+      $('#nearest-results').html('<div class="nearest-empty">' +
+        esc(T('nearest.invalid', '請輸入有效的 #rrggbb')) + '</div>');
+      return;
+    }
+    var rows = Lib.nearestFC(rgb, { n: NEAR_N, series: $('#nearest-series').val() || undefined, colors: COLORS });
+    $('#nearest-results').html(rows.map(function (m) {
+      var c = COLORS.filter(function (x) { return x.code === m.code; })[0] || m;
+      var fg = Lib.pickTextColor(c);
+      return '<div class="nearest-row" data-code="' + esc(m.code) + '">' +
+        '<span class="nr-swatch" style="background:' + esc(m.hex) + ';color:' + fg + '">' +
+          '<span class="nr-code">' + esc(m.code) + '</span></span>' +
+        '<span class="nr-meta">' +
+          '<span class="nr-name">' + esc(m.name) + '</span>' +
+          '<span class="nr-sub"><span class="nr-hex">' + esc(m.hex) + '</span>' +
+          '<span class="nr-de band-' + m.band + '">ΔE ' + m.deltaE.toFixed(1) + ' · ' +
+          esc(T('band.' + m.band, BAND_FB[m.band])) + '</span></span>' +
+        '</span>' +
+      '</div>';
+    }).join(''));
+  }
+
   function onI18n() {
     applyFilter();                 // 重繪計數
     renderCssSub();
     if (window.FCDetail) FCDetail.refresh();
+    // 側欄常駐、可能正開著：選單與分級標示都要跟著重建
+    fillSeriesSelect();
+    renderNearest();
   }
 
   // ---- 啟動 ----------------------------------------------------------------
@@ -155,6 +223,31 @@
     $search.on('input', applyFilter);
     $('#setting-sort').on('click', cycleSort);
     $grid.on('click', '.fc-cell', function () { openDetail($(this).data('code') + ''); });
+
+    // 最接近色側欄
+    nearestPanel = M.Sidenav.init(document.getElementById('nearest-panel'), {
+      edge: 'right',
+      // 側欄開啟時把整排側鍵淡出（共用 side-tool.css 的 body.sidenav-open）
+      onOpenStart: function () { document.body.classList.add('sidenav-open'); },
+      onCloseEnd: function () { document.body.classList.remove('sidenav-open'); }
+    });
+    fillSeriesSelect();
+    $('#setting-nearest').on('click', function () { renderNearest(); nearestPanel.open(); });
+    $('#nearest-picker').on('input', function () { $('#nearest-hex').val(this.value); renderNearest(); });
+    $('#nearest-hex').on('input', function () {
+      var rgb = Lib.hexToRgb(this.value.trim());
+      if (rgb) $('#nearest-picker').val('#' +
+        ((1 << 24) + (rgb.r << 16) + (rgb.g << 8) + rgb.b).toString(16).slice(1));
+      renderNearest();
+    });
+    $('#nearest-series').on('change', renderNearest);
+    // 側欄不關：明細看完退回來還在同一份結果上，並留著剛才點過那列的高亮
+    $('#nearest-results').on('click', '.nearest-row', function () {
+      var $row = $(this);
+      $('#nearest-results .nearest-row').removeClass('active');
+      $row.addClass('active');
+      openDetail($row.attr('data-code'));
+    });
 
     // 明細裡的尺寸可點 → 到套組收錄對照頁，並以該套組為基準
     $('#detail-sets').on('click', '.size-link', function () {

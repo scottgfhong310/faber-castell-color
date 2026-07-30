@@ -9,12 +9,24 @@ I18n.register('en', {
   'count.showing': 'Showing {n} of {total}',
 
   'tool.sort': 'Sort: code / hue / lightness / family / hex',
+  'tool.nearest': 'Find the nearest Faber-Castell colour',
   'tool.sets': 'Set assortments (opens in a new tab)',
   'tool.css': 'View / copy full CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
   'tool.lang': 'Language',
   'tool.clearFilter': 'Clear',
+
+  'nearest.title': 'Find the nearest Faber-Castell colour',
+  'nearest.sub': 'Matched with CIEDE2000 (\u0394E00). Art & Graphic only by default \u2014 Black Edition is a separate hobby line, not the answer to "which pencil should I buy". Metallics are excluded: their hex values are approximations sampled from pixels.',
+  'nearest.allSeries': 'All series',
+  'nearest.invalid': 'Enter a valid #rrggbb',
+  'nearest.placeholder': '#RRGGBB',
+
+  'band.very': 'excellent match',
+  'band.close': 'close',
+  'band.noticeable': 'noticeable',
+  'band.far': 'far',
 
   'sort.code': 'code',
   'sort.hue': 'hue',

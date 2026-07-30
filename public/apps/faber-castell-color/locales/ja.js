@@ -9,12 +9,24 @@ I18n.register('ja', {
   'count.showing': '{n} / {total} 色を表示',
 
   'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系 / hex',
+  'tool.nearest': '最も近い Faber-Castell 色を探す',
   'tool.sets': 'セット収録対照（新しいタブで開く）',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
   'tool.lang': '言語',
   'tool.clearFilter': 'クリア',
+
+  'nearest.title': '最も近い Faber-Castell 色を探す',
+  'nearest.sub': 'CIEDE2000（\u0394E00）で比較します。既定では Art & Graphic のみ——Black Edition は別のホビー向けラインで、「どの色鉛筆を買うか」の答えではありません。メタリック色は対象外：hex がピクセルサンプリングによる近似値のためです。',
+  'nearest.allSeries': '全シリーズ',
+  'nearest.invalid': '有効な #rrggbb を入力してください',
+  'nearest.placeholder': '#RRGGBB',
+
+  'band.very': 'ごく近い',
+  'band.close': '近い',
+  'band.noticeable': '差が分かる',
+  'band.far': '遠い',
 
   'sort.code': '番号',
   'sort.hue': '色相',

@@ -9,12 +9,24 @@ I18n.register('zh-Hant', {
   'count.showing': '顯示 {n} / {total} 色',
 
   'tool.sort': '排序：色號 / 色相 / 明度 / 色系 / hex',
+  'tool.nearest': '找最接近的 Faber-Castell 色',
   'tool.sets': '套組收錄對照（另開分頁）',
   'tool.css': '檢視 / 複製整份 CSS',
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',
   'tool.lang': '語言',
   'tool.clearFilter': '清除',
+
+  'nearest.title': '找最接近的 Faber-Castell 色',
+  'nearest.sub': '以 CIEDE2000（ΔE00）比對。預設只比 Art & Graphic——Black Edition 是另一條 hobby 線，不是「該拿哪支筆」的答案。金屬色不列入：它們的 hex 是像素取樣的近似值。',
+  'nearest.allSeries': '全部系列',
+  'nearest.invalid': '請輸入有效的 #rrggbb',
+  'nearest.placeholder': '#RRGGBB',
+
+  'band.very': '極接近',
+  'band.close': '接近',
+  'band.noticeable': '可辨差異',
+  'band.far': '差異大',
 
   'sort.code': '色號',
   'sort.hue': '色相',

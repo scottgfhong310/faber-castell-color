@@ -42,6 +42,35 @@
 
 <body data-i18n-doctitle="title.page">
 
+  <!-- ===== 最接近色側欄（結果由 JS 填入；形制同 markdown-reader 的檔案清單側欄） =====
+       `nearestFC` 一直在 lib 裡（color-palette／thangka-trace 都在用），但本 app 從沒把它
+       接出來——色彩牆自己反而查不了「這個顏色最接近哪支筆」。比對是「查一次 → 讀一張色票
+       → 再回來看第二名」的動作，故一開始就做成側欄而不是 Modal：查詢條件常駐，
+       明細 Modal 疊在它上面開，關掉就回到同一份清單。 -->
+  <ul id="nearest-panel" class="sidenav nearest-panel" style="width: 360px;">
+    <li>
+      <a class="subheader">
+        <i class="material-icons">colorize</i>
+        <span data-i18n="nearest.title">找最接近的 Faber-Castell 色</span>
+      </a>
+    </li>
+    <li><div class="divider"></div></li>
+    <li>
+      <div class="nearest-input-row">
+        <input type="color" id="nearest-picker" value="#95bb52" />
+        <input type="text" id="nearest-hex" value="#95bb52" maxlength="7" spellcheck="false" autocomplete="off"
+               data-i18n-placeholder="nearest.placeholder" placeholder="#RRGGBB" />
+        <select id="nearest-series" class="browser-default"></select>
+      </div>
+      <div class="nearest-sub" data-i18n="nearest.sub">
+        以 CIEDE2000（ΔE00）比對。預設只比 Art &amp; Graphic——Black Edition 是另一條 hobby 線，
+        不是「該拿哪支筆」的答案。金屬色不列入：它們的 hex 是像素取樣的近似值。
+      </div>
+    </li>
+    <li><div class="divider"></div></li>
+    <div id="nearest-results" class="nearest-results"></div>
+  </ul>
+
   <main>
     <div class="app-container">
 
@@ -68,6 +97,9 @@
   <div class="side-tools">
     <div id="setting-sort" class="side-tool" data-i18n-title="tool.sort" title="排序：色號 / 色相 / 明度">
       <i class="material-icons">sort</i>
+    </div>
+    <div id="setting-nearest" class="side-tool" data-i18n-title="tool.nearest" title="找最接近的 Faber-Castell 色">
+      <i class="material-icons">colorize</i>
     </div>
     <a id="setting-sets" class="side-tool" href="./sets.html" target="_blank"
        data-i18n-title="tool.sets" title="套組收錄對照（另開分頁）">

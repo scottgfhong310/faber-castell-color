@@ -309,6 +309,15 @@ Faber-Castell 色號。這是把一個抽象、握不到的螢幕 hex（`#AA3F1C
     與「259 色資料 ＋ 新 lib」在消費端實際用的呼叫形狀 `nearestFC(rgb,{n:3})` 下的結果，
     **0 筆差異**（含 ΔE 到小數 6 位）。拿掉 series 過濾則 4096 點中 3646 點改變——反向驗證過，不是空跑。
   - 要對 Black Edition 比色是**明示才給**：`nearestFC(rgb, { series: 'black-edition' })`。
+- **本 app 自己的入口（2026-07-30 才補上）**：這座橋做出來是給消費端用的，**本 app 一直沒有 UI**
+  ——色彩牆自己反而回答不了「這個顏色最接近哪支筆」。補的形式是**右緣側欄**而不是 Modal：
+  比對是「查一次、逐一讀」的動作，Modal 一次只能站一個，點結果就得把查詢條件關掉。
+  側欄常駐、明細 Modal 疊在它上面開，關掉即回到同一份清單並保留高亮
+  （形制與 `caran-dache-color`／`copic-color` 三支對齊，同 `.detail-modal` 的做法）。
+  - **系列選單上的數字是實際比對池**（`ag` 135／`black-edition` 106／全部 241），
+    不是 `FC_META.series[].total` 的 141／118。上面那條「排除金屬色」讓兩者差 6／12——
+    **印總數會與結果對不上**，而使用者數得出來。
+  - 預設仍是 `ag`：理由同上，切到 BE 或全部是**明示**的動作。
 - **純函式、以複製件共用**：`nearestFC` / `rgbToLab` / `deltaE` / `deltaEBand` 皆不碰 DOM。比照 `materialize-dark.css`
   慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進 `color-palette` / `thangka-trace`
   （各自 CLAUDE.md 登記複製點）；**單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。
