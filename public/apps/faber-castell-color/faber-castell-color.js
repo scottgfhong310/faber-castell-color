@@ -129,8 +129,10 @@
       onSetClick: function (line, size) {
         // 另開分頁：色彩牆留在原分頁，方便兩邊對照。
         // 若被瀏覽器擋掉（window.open 回 null）就退回同分頁開，別讓點擊沒反應。
+        // ⚠️ 不加 'noopener'：這是同源的自家頁，留著 opener，sets.html 的「回色票網格」
+        // 才關得掉自己並回到**開啟它的那一個**色票牆（篩選與捲動位置都還在）。
         var url = './sets.html?set=' + encodeURIComponent(line + '|' + size);
-        var w = window.open(url, '_blank', 'noopener');
+        var w = window.open(url, '_blank');
         if (!w) window.location.href = url;
       }
     });
@@ -158,6 +160,15 @@
     $('#detail-sets').on('click', '.size-link', function () {
       window.location.href = './sets.html?set=' +
         encodeURIComponent($(this).data('line') + '|' + $(this).data('size'));
+    });
+
+    // 「套組收錄對照」另開分頁：用 window.open 而不是讓 anchor 自己開——anchor 的
+    // target="_blank" 自 Chrome 88 起隱含 noopener，子頁拿不到 opener、關不掉自己，
+    // 而 sets.html 的「回色票網格」要能回到**開啟它的這一個**分頁。
+    $('#setting-sets').on('click', function (e) {
+      e.preventDefault();
+      var url = $(this).attr('href');
+      if (!window.open(url, '_blank')) window.location.href = url;
     });
 
     $('#setting-css').on('click', openCss);
