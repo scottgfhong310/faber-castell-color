@@ -18,7 +18,7 @@ I18n.register('en', {
   'tool.clearFilter': 'Clear',
 
   'nearest.title': 'Find the nearest Faber-Castell colour',
-  'nearest.sub': 'Matched with CIEDE2000 (\u0394E00). Art & Graphic only by default \u2014 Black Edition is a separate hobby line, not the answer to "which pencil should I buy". Metallics are excluded: their hex values are approximations sampled from pixels.',
+  'nearest.sub': 'Matched with CIEDE2000 (\u0394E00) across all series by default. Black Edition is a separate hobby line (SuperSoft) \u2014 switch the selector above to search Art & Graphic only. Metallics are excluded: their hex values are approximations sampled from pixels.',
   'nearest.allSeries': 'All series',
   'nearest.invalid': 'Enter a valid #rrggbb',
   'nearest.placeholder': '#RRGGBB',

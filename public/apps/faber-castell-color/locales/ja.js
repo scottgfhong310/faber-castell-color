@@ -18,7 +18,7 @@ I18n.register('ja', {
   'tool.clearFilter': 'クリア',
 
   'nearest.title': '最も近い Faber-Castell 色を探す',
-  'nearest.sub': 'CIEDE2000（\u0394E00）で比較します。既定では Art & Graphic のみ——Black Edition は別のホビー向けラインで、「どの色鉛筆を買うか」の答えではありません。メタリック色は対象外：hex がピクセルサンプリングによる近似値のためです。',
+  'nearest.sub': 'CIEDE2000（\u0394E00）で全シリーズと比較します。Black Edition は別のホビー向けライン（SuperSoft）です——Art & Graphic だけで探すには上のセレクターを切り替えてください。メタリック色は対象外：hex がピクセルサンプリングによる近似値のためです。',
   'nearest.allSeries': '全シリーズ',
   'nearest.invalid': '有効な #rrggbb を入力してください',
   'nearest.placeholder': '#RRGGBB',

@@ -49,7 +49,8 @@ python3 scripts/make-icons.py                         # 重產整套 App icon（
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
 搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、
 **最接近色側欄**（`#setting-nearest`：12 筆、ΔE 分級標示、系列選單〔預設 Art & Graphic〕、
-點結果開明細而側欄不關；**`sets.html` 同樣有**，且明細點尺寸會就地換篩選）、
+點結果開明細而側欄不關；**`sets.html` 同樣有**，且明細點尺寸會就地換篩選；
+**輸入 `#194e8a` 首名應為 707 Cerulean ΔE 0.0**——查得到 Black Edition 才是對的）、
 CSS 匯出/下載、i18n 三語、主題切換
 （**色票保留真實顏色、只有外殼跟主題**）。
 
@@ -101,7 +102,10 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
 - **最接近色側欄（2026-07-30 新增）**：比對器一直只有 lib、本 app 沒有入口——色彩牆自己反而
   查不了「這個顏色最接近哪支筆」。側鍵 `#setting-nearest` 開右緣 sidenav（形制同 markdown-reader
   的檔案清單側欄，與 `caran-dache-color`／`copic-color` 三支一致）：color picker ＋ hex 雙向同步、
-  **系列選單**（預設 `ag`，可切 `black-edition` 或全部）、top-12、ΔE 分級 pill。
+  **系列選單**（**預設「全部系列」**，可限定 `ag` 或 `black-edition`）、top-12、ΔE 分級 pill。
+  ⚠️ **UI 預設與 lib 預設刻意不同**：`nearestFC` 預設 `ag` 是為了消費端（見上一條），
+  但在本 app 自己的側欄裡 259 色全都攤在色彩牆上——輸入 707 的 hex `#194e8a` 卻查不到 707
+  只會讓人以為比對器壞了。`caran-dache-color`／`copic-color` 兩支也都是「全部」起手。
   **選單上的數字是實際比對池**（135／106／241），不是 `FC_META.series[].total` 的 141／118——
   `nearestFC` 排除金屬色，印總數會與結果對不上。點結果開明細而**側欄不關**。
   **兩頁共用模組** `nearest-panel.js`（`window.FCNearest`），比照 `colour-detail.js`：

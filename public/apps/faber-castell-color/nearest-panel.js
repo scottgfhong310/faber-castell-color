@@ -67,17 +67,24 @@
     }).length;
   }
 
+  // ⚠️ **UI 預設是全部系列，不是 lib 的 `ag`**——兩者的脈絡不同，別把它們對齊：
+  //   - `nearestFC` 預設 `ag` 是為了**消費端**（color-palette／thangka-trace 問的是
+  //     「該拿哪支筆」，不該推薦另一條 hobby 線的筆）。那個預設不動，見 DESIGN.md §8。
+  //   - 但**在本 app 自己的側欄裡**，259 色全都攤在色彩牆上。輸入 707 的 hex `#194e8a`
+  //     卻查不到 707（它是 Black Edition），只會讓人以為比對器壞了——它其實是被過濾掉的。
+  //     照這個預設，`caran-dache-color`／`copic-color` 兩支也都是「全部」起手。
+  // 故「全部系列」排在第一個並成為預設；要限定系列是**明示**的動作。
   function fillSeriesSelect() {
     var $sel = $('#nearest-series');
     if (!$sel.length) return;
     var keep = $sel.val();
     var meta = global.FC_META || {};
-    var html = (meta.series || []).map(function (s) {
+    var html = '<option value="' + ALL_SERIES + '">' +
+               esc(t('nearest.allSeries', '全部系列')) + '（' + poolCount(ALL_SERIES) + '）</option>';
+    html += (meta.series || []).map(function (s) {
       return '<option value="' + esc(s.key) + '">' + esc(s.label) +
              '（' + poolCount(s.key) + '）</option>';
     }).join('');
-    html += '<option value="' + ALL_SERIES + '">' +
-            esc(t('nearest.allSeries', '全部系列')) + '（' + poolCount(ALL_SERIES) + '）</option>';
     $sel.html(html);
     if (keep) $sel.val(keep);      // 換語言重建選項時保住當下選擇
   }

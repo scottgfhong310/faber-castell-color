@@ -18,7 +18,7 @@ I18n.register('zh-Hant', {
   'tool.clearFilter': '清除',
 
   'nearest.title': '找最接近的 Faber-Castell 色',
-  'nearest.sub': '以 CIEDE2000（ΔE00）比對。預設只比 Art & Graphic——Black Edition 是另一條 hobby 線，不是「該拿哪支筆」的答案。金屬色不列入：它們的 hex 是像素取樣的近似值。',
+  'nearest.sub': '以 CIEDE2000（ΔE00）比對，預設比全部系列。Black Edition 是另一條 hobby 線（SuperSoft），只想在 Art & Graphic 裡挑就切上面的選單。金屬色不列入：它們的 hex 是像素取樣的近似值。',
   'nearest.allSeries': '全部系列',
   'nearest.invalid': '請輸入有效的 #rrggbb',
   'nearest.placeholder': '#RRGGBB',
