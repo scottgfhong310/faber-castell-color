@@ -27,6 +27,14 @@
   }
   function t(key, params) { return window.I18n ? I18n.t(key, params) : key; }
 
+  // 依目前語言取在地色名（en 為主色名、已另處顯示；此處回 zh/ja 輔助名）
+  function locName(c) {
+    var lang = window.I18n ? I18n.lang : 'zh-Hant';
+    if (lang === 'ja') return c.nameJa || '';
+    if (lang === 'en') return '';
+    return c.nameZh || '';   // zh-Hant 及其他
+  }
+
   var MARKUP =
     '<div id="detail-modal" class="modal detail-modal">' +
       '<div class="modal-content">' +
@@ -36,6 +44,7 @@
         '</div>' +
         '<div class="detail-body">' +
           '<div class="d-name" id="detail-name"></div>' +
+          '<div class="d-name-loc" id="detail-name-loc"></div>' +
           '<div class="d-series" id="detail-series"></div>' +
           '<div class="d-note" id="detail-note"></div>' +
           '<div class="copy-row" id="detail-copy"></div>' +
@@ -104,6 +113,9 @@
     $('#detail-code').text(c.code);
     $('#detail-approx').text(Lib.isMetallic(c) && window.I18n ? t('detail.approx') : '');
     $('#detail-name').text(c.name);
+    // 在地色名：英文官方名恆為主名（是跟賣家溝通的識別憑據），譯名只作輔助。
+    // en 模式不重複顯示；沒有譯名時整行隱藏——缺席是狀態不是錯誤。形制同 caran-dache-color。
+    var loc = locName(c); $('#detail-name-loc').text(loc).toggle(!!loc);
     $('#detail-series').text(seriesLabel(c));
     $('#detail-note').text(noteLabel(c));
 

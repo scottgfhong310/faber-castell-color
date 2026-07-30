@@ -128,6 +128,7 @@ main { min-height: 100vh; }
 .detail-body { padding: 16px 20px 6px; }
 .detail-body .d-name { font-size: 1.05rem; font-weight: 500; color: var(--text); }
 .detail-body .d-series { font-size: .76rem; color: var(--muted); margin: 3px 0 0; }
+.detail-body .d-name-loc { font-size: .86rem; color: var(--muted); margin-top: 1px; }
 .detail-body .d-note { font-size: .76rem; color: var(--muted); margin: 2px 0 12px; }
 
 /* 複製鈕列 */
