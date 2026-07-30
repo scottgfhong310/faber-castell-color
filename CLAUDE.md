@@ -19,6 +19,7 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 ├─ index.html · faber-castell-color.css · faber-castell-color.js · faber-castell-color-lib.js
 ├─ sets.html · sets.css · sets.js         # 第二頁：套組收錄對照（共用 lib / i18n / locales / side-tool）
 ├─ colour-detail.js                       # 兩頁共用的色票明細 Modal（碰 DOM，故不在 lib）
+├─ nearest-panel.js                       # 兩頁共用的最接近色側欄（同上，第三種模組）
 ├─ verify-links.js                        # 契約檢查：側鍵入口、跨頁查詢參數、data-* 都要有人接
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（259 色，由兩份官方色卡 PDF 產生）
 ├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
@@ -48,7 +49,8 @@ python3 scripts/make-icons.py                         # 重產整套 App icon（
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
 搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、
 **最接近色側欄**（`#setting-nearest`：12 筆、ΔE 分級標示、系列選單〔預設 Art & Graphic〕、
-點結果開明細而側欄不關）、CSS 匯出/下載、i18n 三語、主題切換
+點結果開明細而側欄不關；**`sets.html` 同樣有**，且明細點尺寸會就地換篩選）、
+CSS 匯出/下載、i18n 三語、主題切換
 （**色票保留真實顏色、只有外殼跟主題**）。
 
 > **⚠️ 別用 `file://` 驗證**：這支 app 零後端、看似能直接開檔案跑，但 preview pane 的
@@ -102,6 +104,10 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
   **系列選單**（預設 `ag`，可切 `black-edition` 或全部）、top-12、ΔE 分級 pill。
   **選單上的數字是實際比對池**（135／106／241），不是 `FC_META.series[].total` 的 141／118——
   `nearestFC` 排除金屬色，印總數會與結果對不上。點結果開明細而**側欄不關**。
+  **兩頁共用模組** `nearest-panel.js`（`window.FCNearest`），比照 `colour-detail.js`：
+  markup 由模組注入、差異行為用 `onPick` callback 交呼叫端。**在 `sets.html` 上更有用**——
+  找到最接近的筆 → 明細裡的尺寸是可點的 → 就地換那個套組的篩選，
+  「該拿哪支筆 → 那支筆收在哪一盒」一條路走完。
 - **色票不隨主題重著色**（§4.7「內容本身即設計」）：色塊恆為 Faber-Castell 真實色，
   只有外殼（bg/文字/工具列）跟 light/dark；色塊上文字黑白由 `pickTextColor` 依對比自動選。
 - **色名是資料、永不翻譯**（Faber-Castell 英文色名保留於 `FC_COLORS`）；UI 字串才三語。

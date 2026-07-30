@@ -19,7 +19,7 @@ const PAGES = [
 ];
 
 // 兩頁共用的 UI 模組：它自己產生的 data-* 也要有人讀
-const SHARED_JS = ['colour-detail.js'];
+const SHARED_JS = ['colour-detail.js', 'nearest-panel.js'];
 
 // 頁面之間用查詢參數溝通：送出的一方 → 解析的一方
 const QUERY_CONTRACTS = [

@@ -318,6 +318,11 @@ Faber-Castell 色號。這是把一個抽象、握不到的螢幕 hex（`#AA3F1C
     不是 `FC_META.series[].total` 的 141／118。上面那條「排除金屬色」讓兩者差 6／12——
     **印總數會與結果對不上**，而使用者數得出來。
   - 預設仍是 `ag`：理由同上，切到 BE 或全部是**明示**的動作。
+  - **兩頁共用**：`sets.html` 也要，於是比照 `colour-detail.js` 抽成 `nearest-panel.js`
+    （`window.FCNearest`）——碰 DOM 所以不進 lib，但兩頁都要用所以也不留在任一控制器裡
+    （§4.1 的第三種模組）。差異行為用 `onPick` callback 交呼叫端。
+    **在套組頁它比在色彩牆更有用**：找到最接近的筆 → 明細裡的尺寸是可點的 → 就地換篩選，
+    「該拿哪支筆 → 那支筆收在哪一盒」一條路走完，不必跳頁。
 - **純函式、以複製件共用**：`nearestFC` / `rgbToLab` / `deltaE` / `deltaEBand` 皆不碰 DOM。比照 `materialize-dark.css`
   慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進 `color-palette` / `thangka-trace`
   （各自 CLAUDE.md 登記複製點）；**單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。

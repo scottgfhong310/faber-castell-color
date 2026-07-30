@@ -191,6 +191,7 @@
     renderAll();
     syncHeadHeight();
     if (window.FCDetail) FCDetail.refresh();
+    if (window.FCNearest) FCNearest.refresh();   // 側欄常駐、可能正開著
   }
 
   // 「回色票頁」＝回到**開啟本頁的那一個**色票頁，不是另外開一個新的。
@@ -280,6 +281,12 @@
     $('#matrix').on('click', 'tbody .c-color', function () {
       FCDetail.open($(this).closest('tr').data('code') + '');
     });
+
+    // 最接近色側欄（與色彩牆同一支模組）。在這頁特別有用：找到最接近的筆之後，
+    // 明細裡的套組尺寸是可點的 → 直接就地換成那個套組的篩選，
+    // 「這個顏色該拿哪支筆 → 那支筆收在哪一盒」一條路走完，不必跳頁。
+    FCNearest.init({ onPick: function (code) { FCDetail.open(code); } });
+    $('#setting-nearest').on('click', function () { FCNearest.open(); });
 
     $('#setting-grid').on('click', backToGrid);
 
