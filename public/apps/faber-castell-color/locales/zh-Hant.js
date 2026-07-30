@@ -69,6 +69,6 @@ I18n.register('zh-Hant', {
   'toast.copied': '已複製：{v}',
   'toast.copyFail': '複製失敗（需 localhost 或 HTTPS）',
   'toast.cssCopied': '已複製整份 CSS',
-  'toast.downloaded': '已下載 {n}',
+  'toast.downloaded': '已下載：{n}',
   'toast.lang': '已切換為 {name}'
 }, '繁體中文');

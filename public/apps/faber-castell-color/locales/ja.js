@@ -69,6 +69,6 @@ I18n.register('ja', {
   'toast.copied': 'コピーしました：{v}',
   'toast.copyFail': 'コピー失敗（localhost または HTTPS が必要）',
   'toast.cssCopied': 'CSS 全体をコピーしました',
-  'toast.downloaded': '{n} をダウンロードしました',
+  'toast.downloaded': 'ダウンロード：{n}',
   'toast.lang': '{name} に切り替えました'
 }, '日本語');
