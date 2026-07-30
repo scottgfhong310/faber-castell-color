@@ -212,7 +212,11 @@ main { min-height: 100vh; }
 #nearest-hex {
   background: var(--surface-2); color: var(--text);
   border: 1px solid var(--border); border-radius: 10px;
-  height: 48px; padding: 0 12px; flex: 1 1 auto; min-width: 0; width: auto; font-size: .9rem;
+  height: 48px; padding: 0 12px; flex: 1 1 0; min-width: 0; width: auto; font-size: .9rem;
+  /* ⚠️ flex-basis 必須是 0 不是 auto：換行是**先分行再收縮**——auto 讓輸入框以
+   * 「內容寬」（原生 input 預設 size=20，約 200px）參與分行計算，
+   * 64 ＋ 200 ＋ 48 ＋ gap 就超過側欄可用的 324px，貼上鈕於是被擠到第二行。
+   * basis 0 讓它不佔分行預算、只吃剩餘空間，三個元素才留在同一行。 */
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   outline: none; transition: border-color .15s; box-sizing: border-box; margin: 0;
 }
