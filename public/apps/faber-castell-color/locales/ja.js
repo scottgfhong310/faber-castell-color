@@ -22,6 +22,7 @@ I18n.register('ja', {
   'nearest.allSeries': '全シリーズ',
   'nearest.invalid': '有効な #rrggbb を入力してください',
   'nearest.placeholder': '#RRGGBB',
+  'nearest.paste': 'クリップボードから貼り付け',
 
   'band.very': 'ごく近い',
   'band.close': '近い',
@@ -80,6 +81,9 @@ I18n.register('ja', {
 
   'toast.copied': 'コピーしました：{v}',
   'toast.copyFail': 'コピー失敗（localhost または HTTPS が必要）',
+  'toast.pasted': '貼り付けました：{v}',
+  'toast.pasteFail': 'クリップボードを読み取れません（許可されていません）——フィールドに \u2318V で直接貼り付けてください',
+  'toast.pasteNoColor': 'クリップボードに色が見つかりません',
   'toast.cssCopied': 'CSS 全体をコピーしました',
   'toast.downloaded': 'ダウンロード：{n}',
   'toast.lang': '{name} に切り替えました'

@@ -40,7 +40,54 @@
     });
   }
 
+  function tp(key, params, fb) {
+    if (global.I18n && global.I18n.t) {
+      var v = global.I18n.t(key, params);
+      if (v && v !== key) return v;
+    }
+    return fb;
+  }
+
   function colors() { return global.FC_COLORS || []; }
+
+  // 從一段文字裡認出顏色。**認得本 app 自己複製出去的格式**——明細的四顆複製鈕給的是
+  // `var(--fc-166)` / `#7ebb4e` / `rgb(126, 187, 78)` / `.fc-bg-166`，其中 hex 與 rgb()
+  // 都在這裡吃得下；也認得夾在一整行 CSS 裡的 hex（`--fc-166: #7ebb4e;`）。
+  // 認不出來就回 null，由呼叫端說明，**不猜、也不默默套一個顏色**。
+  function parseColorText(text) {
+    var s = String(text || '').trim();
+    if (!s) return null;
+    var m = /rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})/i.exec(s);
+    if (m) {
+      var v = [+m[1], +m[2], +m[3]];
+      if (v.every(function (n) { return n <= 255; })) {
+        return '#' + v.map(function (n) { return ('0' + n.toString(16)).slice(-2); }).join('');
+      }
+    }
+    m = /(?:^|[^0-9a-z])#?([0-9a-f]{6})(?![0-9a-z])/i.exec(s);
+    if (m) return '#' + m[1].toLowerCase();
+    m = /(?:^|[^0-9a-z])#([0-9a-f]{3})(?![0-9a-z])/i.exec(s);   // 三碼一律要 #，否則 141／118 這種數字也會中
+    if (m) return '#' + m[1].toLowerCase().split('').map(function (c) { return c + c; }).join('');
+    return null;
+  }
+
+  function pasteFromClipboard() {
+    var fail = function () {
+      M.toast({ html: t('toast.pasteFail', '無法讀取剪貼簿（瀏覽器未授權）'), classes: 'red' });
+    };
+    if (!navigator.clipboard || !navigator.clipboard.readText) return fail();
+    navigator.clipboard.readText().then(function (txt) {
+      var hex = parseColorText(txt);
+      if (!hex) {
+        M.toast({ html: t('toast.pasteNoColor', '剪貼簿裡沒有可辨識的顏色'), classes: 'orange' });
+        return;
+      }
+      $('#nearest-hex').val(hex);
+      $('#nearest-picker').val(hex);
+      render();
+      M.toast({ html: tp('toast.pasted', { v: hex }, '已貼上：' + hex), classes: 'teal' });
+    }).catch(fail);
+  }
 
   var MARKUP =
     '<li><a class="subheader"><i class="material-icons">colorize</i>' +
@@ -51,6 +98,9 @@
         '<input type="color" id="nearest-picker" value="#95bb52" />' +
         '<input type="text" id="nearest-hex" value="#95bb52" maxlength="7" spellcheck="false" ' +
                'autocomplete="false" data-i18n-placeholder="nearest.placeholder" placeholder="#RRGGBB" />' +
+        '<button id="nearest-paste" class="nearest-paste" type="button" ' +
+                'data-i18n-title="nearest.paste" title="從剪貼簿貼上">' +
+          '<i class="material-icons">content_paste</i></button>' +
         '<select id="nearest-series" class="browser-default"></select>' +
       '</div>' +
       '<div class="nearest-sub" data-i18n="nearest.sub"></div>' +
@@ -141,6 +191,7 @@
       render();
     });
     $('#nearest-series').on('change', render);
+    $('#nearest-paste').on('click', pasteFromClipboard);
     // 側欄不關：明細看完退回來還在同一份結果上，並留著剛才點過那列的高亮
     $('#nearest-results').on('click', '.nearest-row', function () {
       var $row = $(this);

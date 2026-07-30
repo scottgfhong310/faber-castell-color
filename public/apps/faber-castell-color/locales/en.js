@@ -22,6 +22,7 @@ I18n.register('en', {
   'nearest.allSeries': 'All series',
   'nearest.invalid': 'Enter a valid #rrggbb',
   'nearest.placeholder': '#RRGGBB',
+  'nearest.paste': 'Paste from clipboard',
 
   'band.very': 'excellent match',
   'band.close': 'close',
@@ -80,6 +81,9 @@ I18n.register('en', {
 
   'toast.copied': 'Copied: {v}',
   'toast.copyFail': 'Copy failed (needs localhost or HTTPS)',
+  'toast.pasted': 'Pasted: {v}',
+  'toast.pasteFail': "Can't read the clipboard (permission denied) — paste into the field with \u2318V instead",
+  'toast.pasteNoColor': 'No colour found in the clipboard',
   'toast.cssCopied': 'Full CSS copied',
   'toast.downloaded': 'Downloaded: {n}',
   'toast.lang': 'Switched to {name}'

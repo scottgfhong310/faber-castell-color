@@ -48,7 +48,7 @@ python3 scripts/make-icons.py                         # 重產整套 App icon（
 
 驗證（preview 實跑）：`/` 302、資產 200、`fc-colors.js` 200、API 404 回 JSON、259 色票渲染、
 搜尋過濾、點色票開明細（4 種複製格式 + 系列 + 耐光度 + 套組）、
-**最接近色側欄**（`#setting-nearest`：12 筆、ΔE 分級標示、系列選單〔預設 Art & Graphic〕、
+**最接近色側欄**（`#setting-nearest`：12 筆、ΔE 分級標示、系列選單〔**預設全部系列**〕、**貼上鈕**、
 點結果開明細而側欄不關；**`sets.html` 同樣有**，且明細點尺寸會就地換篩選；
 **輸入 `#194e8a` 首名應為 707 Cerulean ΔE 0.0**——查得到 Black Edition 才是對的）、
 CSS 匯出/下載、i18n 三語、主題切換
