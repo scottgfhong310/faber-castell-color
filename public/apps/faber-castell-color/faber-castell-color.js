@@ -161,11 +161,11 @@
     FCNearest.init({ onPick: function (code) { openDetail(code); } });
     $('#setting-nearest').on('click', function () { FCNearest.open(); });
 
-    // 明細裡的尺寸可點 → 到套組收錄對照頁，並以該套組為基準
-    $('#detail-sets').on('click', '.size-link', function () {
-      window.location.href = './sets.html?set=' +
-        encodeURIComponent($(this).data('line') + '|' + $(this).data('size'));
-    });
+    // ⚠️ 明細裡的尺寸**不要在這裡再綁一次**。`colour-detail.js` 的 init() 已經對
+    // `#detail-sets` 的 `.size-link` 掛了委派，並透過上面的 `onSetClick` 另開分頁。
+    // 這裡原本又掛了第二個委派（`window.location.href = './sets.html?set=…'`），
+    // 於是點一次尺寸會**同時**開新分頁**並且**把色彩牆這一頁也導走——
+    // 兩個 handler 都對、合在一起就錯了。（2026-08-01 修）
 
     // 「套組收錄對照」另開分頁：用 window.open 而不是讓 anchor 自己開——anchor 的
     // target="_blank" 自 Chrome 88 起隱含 noopener，子頁拿不到 opener、關不掉自己，
