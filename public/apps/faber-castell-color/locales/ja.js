@@ -48,7 +48,7 @@ I18n.register('ja', {
 
   'detail.approx': '近似',
   'detail.lightfastness': '耐光性',
-  'detail.sets': 'セット収録',
+  'detail.sets': '収録セット',
   'detail.close': '閉じる',
   'sets.ct': ' 色',
 

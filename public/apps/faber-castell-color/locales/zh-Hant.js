@@ -48,7 +48,7 @@ I18n.register('zh-Hant', {
 
   'detail.approx': '近似',
   'detail.lightfastness': '耐光度',
-  'detail.sets': '套組收錄',
+  'detail.sets': '收錄於套組',
   'detail.close': '關閉',
   'sets.ct': ' 色',
 

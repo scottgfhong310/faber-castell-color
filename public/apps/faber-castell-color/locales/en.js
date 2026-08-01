@@ -5,13 +5,13 @@ I18n.register('en', {
   'app.sub': 'Swatches read from the official Faber-Castell charts (Art & Graphic + Black Edition) — screen approximations, not official RGB specs',
 
   'search.placeholder': 'code or colour name…',
-  'search.empty': 'No matching colours',
+  'search.empty': 'No matching colour',
   'count.showing': 'Showing {n} of {total}',
 
   'tool.sort': 'Sort: code / hue / lightness / family / hex',
   'tool.nearest': 'Find the nearest Faber-Castell colour',
   'tool.sets': 'Set assortments (opens in a new tab)',
-  'tool.css': 'View / copy full CSS',
+  'tool.css': 'View / copy the whole CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
   'tool.lang': 'Language',
@@ -48,7 +48,7 @@ I18n.register('en', {
 
   'detail.approx': 'approx.',
   'detail.lightfastness': 'Lightfastness',
-  'detail.sets': 'Set assortments',
+  'detail.sets': 'Included in sets',
   'detail.close': 'Close',
   'sets.ct': ' ct',
 
