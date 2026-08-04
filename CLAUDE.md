@@ -22,7 +22,6 @@ public/apps/faber-castell-color/        # 前端（服務於 /apps/faber-castell
 ├─ nearest-panel.js                       # 兩頁共用的最接近色側欄（同上，第三種模組）
 ├─ verify-links.js                        # 契約檢查：側鍵入口、跨頁查詢參數、data-* 都要有人接
 ├─ data/fc-colors.js                    # 靜態資料 window.FC_COLORS（259 色，由兩份官方色卡 PDF 產生）
-├─ data/fc-names-i18n.js                # 選用：FC 色名 zh/ja 在地化對照（generate.js 一併產生；供他 app 共用）
 ├─ materialize-dark.css · side-tool.css · side-tool.js · i18n.js · locales/{zh-Hant,en,ja}.js   # （樣式＋行為：check 微回饋、矮視窗溢出收納；權威版＝家族 repo，§5.5）
 └─ icons/                                 # 中性「色卡（五條色帶）」標記，非 FC 品牌 logo
    ├─ faber-castell-color-icon(-light).svg  # 母版 tile（深/淺）
@@ -115,7 +114,13 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
 - **色票不隨主題重著色**（§4.7「內容本身即設計」）：色塊恆為 Faber-Castell 真實色，
   只有外殼（bg/文字/工具列）跟 light/dark；色塊上文字黑白由 `pickTextColor` 依對比自動選。
 - **色名是資料、永不翻譯**（Faber-Castell 英文色名保留於 `FC_COLORS`）；UI 字串才三語。
-  **但**產生器另出**選用**的 `data/fc-names-i18n.js`（`window.FC_NAMES_I18N`＝code→{zh,ja}，來源 `faber_castell_color_code_css_foreground_zh_ja.csv` 的 `colour_name_zh_tw`／`colour_name_ja`）——這是**給消費端 app 的共用對照**（如 `color-palette` 的色彩肖像依語言顯示焦點色名），不改動 `FC_COLORS` 的英文 canonical 名，本 app UI 也仍不翻譯色名。
+  **但** `FC_COLORS` 每筆帶 `nameZh`／`nameJa`（隨 `db_artcolor` 匯出走，259 色三語齊備），
+  供消費端 app 依語言顯示色名（如 `color-palette` 的色彩肖像）；英文 canonical 名不變，本 app UI 也仍不翻譯色名。
+  ⚠️ 舊的 `data/fc-names-i18n.js`（`window.FC_NAMES_I18N`，由已凍結的 `generate.js` 從 CSV 產生）
+  **已於 2026-08-04 移除**——它是建庫前的產物，與 SoR 現值有 47 筆 zh／19 筆 ja 出入
+  （`color-palette` 因此顯示了過期譯名），而本 repo 早就沒有它、匯出器也不產它。
+  它另外只涵蓋 ag 141 色；不過消費端走 `nearestFC` 的預設 `series:'ag'`，Black Edition 取不到，
+  故涵蓋範圍那一段是潛在問題而非已發生的問題。**沒有權威版的複製件就是過期資料。**
 - **主題**：CSS 變數 light/dark，預設 dark；切換時同步 toggle `dark-mode`/`light-mode` class（§5.1 坑）。
 - **i18n**：`i18n.js` 引擎 + `locales/*.js`，`data-i18n` 屬性，預設 `zh-Hant`。
 - **hex 是螢幕近似值**：非官方 RGB 規格。`ag` 為像素取樣自 PDF 色票；`black-edition` 的
