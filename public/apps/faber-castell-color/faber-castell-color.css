@@ -54,19 +54,19 @@ main { min-height: 100vh; }
   font-size: 1.28rem; font-weight: 500; margin: 0; color: var(--text);
 }
 .topbar .sub { font-size: .82rem; color: var(--muted); margin-top: 2px; }
-.search-wrap {
-  margin-left: auto; display: flex; align-items: center; gap: 8px;
-  position: relative;
-}
-.search-wrap i.material-icons { color: var(--muted); font-size: 20px; }
-#search {
-  background: var(--surface); color: var(--text);
-  border: 1px solid var(--border); border-radius: 10px;
-  height: 38px; padding: 0 12px; width: 240px; font-size: .9rem;
-  outline: none; transition: border-color .15s;
-}
-#search:focus { border-color: var(--accent); }
-.count { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+/* 搜尋框走 Materialize 原生下底線（§5.7 表單元素不手刻外框/底色）。
+ * ⚠️ 這裡只能用 #search（1,0,0）——Materialize 的 `input[type="text"]:not(.browser-default)`
+ * 是 (0,2,1)，贏過 `.search-wrap input` (0,1,1)，所以那條選擇器寫什麼都不會生效。
+ * 它是 content-box、height:3rem、padding:0、margin-bottom:.8rem，文字於是浮在 42px 盒子的
+ * 正中央、離底線很遠。壓低內容盒＋補上方內距把文字推向底線（16+26+1 = 43，總高不變），
+ * 並把放大鏡與計數改成靠下對齊，三者才落在同一條線上。 */
+.search-wrap { margin-left: auto; display: flex; align-items: flex-end; gap: 8px; position: relative; }
+.search-wrap .material-icons { color: var(--muted); font-size: 20px; margin-bottom: 5px; }
+#search { height: 26px; padding-top: 16px; margin-bottom: 0; }
+.count { font-size: .8rem; color: var(--muted); white-space: nowrap; margin-bottom: 7px; }
+/* filter-clear（§5.12 共用件）的 × 是 top:50% 對整個框置中；文字既然往下移了，
+ * 它也要跟著下來。共用件不能改，故在 app 這側補 translate（保留它的 -50%）。 */
+.search-wrap .filter-clear { transform: translateY(-50%) translateY(8px); }
 
 /* ===== 色票網格 ===== */
 .fc-list { display: block; }        /* #grid 外層：容納單一 .fc-grid 或多個色系分群 */
@@ -276,6 +276,7 @@ main { min-height: 100vh; }
 .nearest-empty { color: var(--muted); font-size: .84rem; padding: 12px 6px; }
 
 @media (max-width: 600px) {
-  #search { width: 150px; }
+  .search-wrap { margin-left: 0; width: 100%; }
+  .search-wrap input { width: 100%; }
   .topbar { gap: 10px; }
 }
