@@ -131,6 +131,7 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
 | `side-tool.css`（正統 flex 版）| 家族 §5.5 正統版（複製自 `color-palette`） |
 | `filter-clear.css`、`filter-clear.js` | 家族 §5.12 篩選框「清除」× 鈕 utility（自 `local-reader` 複製、byte-identical） |
 | `i18n.js` | 家族 repo `nodeapp-webapp-family/i18n.js`（權威版，byte-identical；`locales/*.js` 各 app 自維護） |
+| `color-family.js` | 家族 repo `nodeapp-webapp-family/color-family.js`（§4 A 類權威版，byte-identical）。**色系分群的單一權威規則**；本 app 的 lib 只包一層薄的 `colorFamily()` 把無彩度門檻寫在那裡。⚠️ `<script>` 必須早於用到它的 lib |
 | `data/fc-colors.js` | **由 `db_artcolor` 匯出**（2026-07-29 起；家族美術色材領域庫＝ System of Record）。`data/source/*.csv` 已凍結為來源沿革，見 DESIGN.md §3.1 |
 
 > **本 app 是 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` 的權威版**，各有 6 份複製：
