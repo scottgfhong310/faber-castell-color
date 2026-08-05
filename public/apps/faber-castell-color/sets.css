@@ -88,7 +88,6 @@
   margin: 0 auto;                     /* 寬度由 JS 依 colspan 給，這裡置中 */
 }
 .assort thead .r-size th { top: calc(var(--head-h, 0px) + var(--h-line)); height: var(--h-size); }
-.assort thead .r-add td { top: calc(var(--h-line) + var(--h-size)); height: var(--h-size); }
 /* 第 3 列：相對選中套組還缺幾色（只有選了套組才出現） */
 .assort thead .r-gap td {
   top: calc(var(--head-h, 0px) + var(--h-line) + var(--h-size)); height: var(--h-size);
