@@ -15,6 +15,7 @@ I18n.register('zh-Hant', {
   'tool.download': '下載 faber_castell_colors.css',
   'tool.mode': '切換 light / dark',
   'tool.lang': '語言',
+  'tool.more': '更多工具',
   'tool.clearFilter': '清除',
 
   'nearest.title': '找最接近的 Faber-Castell 色',
@@ -60,7 +61,7 @@ I18n.register('zh-Hant', {
   'title.sets': 'Faber-Castell 套組收錄對照',
   'sets.pageTitle': '套組收錄對照',
   'sets.pageSub': '選一個套組，只留下它收錄的顏色，再橫向看其他套組有沒有涵蓋',
-  'sets.colColour': '顏色',
+  'sets.colColour': '色',
   'sets.pickHint': '點欄位下方的尺寸，就只留下該套組的顏色',
   'sets.showingN': '{n} / {total} 色',
   'sets.gapTip': '相對選中的套組，這一欄還缺 {n} 色',

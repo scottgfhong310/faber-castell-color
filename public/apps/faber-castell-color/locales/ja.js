@@ -15,6 +15,7 @@ I18n.register('ja', {
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
   'tool.lang': '言語',
+  'tool.more': 'その他のツール',
   'tool.clearFilter': 'クリア',
 
   'nearest.title': '最も近い Faber-Castell 色を探す',

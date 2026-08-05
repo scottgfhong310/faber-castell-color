@@ -15,6 +15,7 @@ I18n.register('en', {
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
   'tool.lang': 'Language',
+  'tool.more': 'More tools',
   'tool.clearFilter': 'Clear',
 
   'nearest.title': 'Find the nearest Faber-Castell colour',
