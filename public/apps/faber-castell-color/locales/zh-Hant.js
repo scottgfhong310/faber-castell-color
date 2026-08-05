@@ -62,7 +62,7 @@ I18n.register('zh-Hant', {
   'sets.pageTitle': '套組收錄對照',
   'sets.pageSub': '選一個套組，只留下它收錄的顏色，再橫向看其他套組有沒有涵蓋',
   'sets.colColour': '色',
-  'sets.pickHint': '點欄位下方的尺寸，就只留下該套組的顏色',
+  'sets.pickHint': '點欄位下方的尺寸，就只留下該套組的色',
   'sets.showingN': '{n} / {total} 色',
   'sets.gapTip': '相對選中的套組，這一欄還缺 {n} 色',
   'sets.gapSelf': '選中的套組本身',

@@ -10,7 +10,7 @@ I18n.register('en', {
 
   'tool.sort': 'Sort: code / hue / lightness / family / hex',
   'tool.nearest': 'Find the nearest Faber-Castell colour',
-  'tool.sets': 'Set assortments (opens in a new tab)',
+  'tool.sets': 'Assortment coverage (new tab)',
   'tool.css': 'View / copy the whole CSS',
   'tool.download': 'Download faber_castell_colors.css',
   'tool.mode': 'Toggle light / dark',
