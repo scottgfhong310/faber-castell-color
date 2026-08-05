@@ -62,7 +62,7 @@ I18n.register('ja', {
   'sets.pageTitle': 'セット収録対照',
   'sets.pageSub': 'セットを選ぶと収録色だけが残り、他のセットが網羅しているかを横に見比べられます',
   'sets.colColour': '色',
-  'sets.pickHint': '見出しのサイズをクリックすると、そのセットの色だけが残ります',
+  'sets.pickHint': 'ヘッダーのサイズをクリックすると、そのセットの色だけが残ります',
   'sets.showingN': '{n} / {total} 色',
   'sets.gapTip': '選択中のセットに対して、この列はあと {n} 色不足',
   'sets.gapSelf': '選択中のセット自身',
