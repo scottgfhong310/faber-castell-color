@@ -60,7 +60,7 @@ I18n.register('zh-Hant', {
 
   'title.sets': 'Faber-Castell 套組收錄對照',
   'sets.pageTitle': '套組收錄對照',
-  'sets.pageSub': '選一個套組，只留下它收錄的顏色，再橫向看其他套組有沒有涵蓋',
+  'sets.pageSub': '選一個套組，只留下它收錄的色，再橫向看其他套組有沒有涵蓋',
   'sets.colColour': '色',
   'sets.pickHint': '點欄位下方的尺寸，就只留下該套組的色',
   'sets.showingN': '{n} / {total} 色',
