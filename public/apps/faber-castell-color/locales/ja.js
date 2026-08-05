@@ -10,7 +10,7 @@ I18n.register('ja', {
 
   'tool.sort': '並び替え：番号 / 色相 / 明度 / 色系 / hex',
   'tool.nearest': '最も近い Faber-Castell 色を探す',
-  'tool.sets': 'セット収録対照（新しいタブで開く）',
+  'tool.sets': 'セット収録対照（別タブ）',
   'tool.css': 'CSS 全体を表示 / コピー',
   'tool.download': 'faber_castell_colors.css をダウンロード',
   'tool.mode': 'ライト / ダーク切替',
