@@ -2,7 +2,7 @@
 # sync-copies.sh — 把本 repo 的權威版同步到所有登記的複製點，並以 md5 驗證。
 #
 # 權威版＝ GitHub/faber-castell-color。複製點見 CLAUDE.md 的「複製件登記」：
-#   faber-castell-color-lib.js ＋ data/fc-colors.js → color-palette / thangka-trace
+#   faber-castell-color-lib.js ＋ data/fc-colors.js → color-palette / thangka-trace / color-mixer
 #   整包前端 → InProgress 鏡像（回灌只同步程式碼，不碰資料夾）
 #
 # 之前這支放在暫存區，結果清掉之後就漏同步了一次；收進 repo 才不會再弄丟。
@@ -17,7 +17,7 @@ echo "=== 1) 整包前端 → InProgress 鏡像（只同步程式碼）==="
 mkdir -p "$I/public/apps/faber-castell-color/"
 cp -R "$SRC/." "$I/public/apps/faber-castell-color/"
 
-echo "=== 2) 共用 lib + 資料 → color-palette / thangka-trace（含各自的 InProgress 鏡像）==="
+echo "=== 2) 共用 lib + 資料 → color-palette / thangka-trace / color-mixer（含各自的 InProgress 鏡像）==="
 # ⚠️ 這裡曾有第三個複製對象 `data/fc-names-i18n.js`（FC 色名 zh/ja 對照，只有 color-palette 用），
 # 於 2026-08-04 連同該檔本身一起移除。經過值得記下來：
 #   ① 那行的守衛檢查的是**目的端**有沒有，但缺的是**來源端**——本 repo 根本沒有這個檔。
@@ -30,7 +30,7 @@ echo "=== 2) 共用 lib + 資料 → color-palette / thangka-trace（含各自�
 #      的預設 series:'ag'、Black Edition 取不到，那一段是潛在問題而非已發生的問題。）
 #   ③ 正解是消費端改讀 `fc-colors.js` 的 `nameZh`／`nameJa`（259 色三語齊備，隨匯出走），
 #      那也是同檔 CDA／COPIC 早就在用的做法。**修守衛只會讓錯誤安靜下來，不會讓它變對。**
-for app in color-palette thangka-trace; do
+for app in color-palette thangka-trace color-mixer; do
   for dst in "$G/$app/public/apps/$app" "$I/public/apps/$app"; do
     [ -d "$dst" ] || { echo "  MISSING $dst"; FAIL=1; continue; }
     cp "$SRC/faber-castell-color-lib.js" "$dst/faber-castell-color-lib.js"
@@ -54,7 +54,9 @@ verify "faber-castell-color-lib.js" \
   "$G/thangka-trace/public/apps/thangka-trace/faber-castell-color-lib.js" \
   "$I/public/apps/faber-castell-color/faber-castell-color-lib.js" \
   "$I/public/apps/color-palette/faber-castell-color-lib.js" \
-  "$I/public/apps/thangka-trace/faber-castell-color-lib.js"
+  "$I/public/apps/thangka-trace/faber-castell-color-lib.js" \
+  "$G/color-mixer/public/apps/color-mixer/faber-castell-color-lib.js" \
+  "$I/public/apps/color-mixer/faber-castell-color-lib.js"
 
 verify "data/fc-colors.js" \
   "$SRC/data/fc-colors.js" \
@@ -62,7 +64,9 @@ verify "data/fc-colors.js" \
   "$G/thangka-trace/public/apps/thangka-trace/data/fc-colors.js" \
   "$I/public/apps/faber-castell-color/data/fc-colors.js" \
   "$I/public/apps/color-palette/data/fc-colors.js" \
-  "$I/public/apps/thangka-trace/data/fc-colors.js"
+  "$I/public/apps/thangka-trace/data/fc-colors.js" \
+  "$G/color-mixer/public/apps/color-mixer/data/fc-colors.js" \
+  "$I/public/apps/color-mixer/data/fc-colors.js"
 
 echo "=== InProgress 前端整包逐檔比對 ==="
 if diff -rq "$SRC" "$I/public/apps/faber-castell-color" > /dev/null; then

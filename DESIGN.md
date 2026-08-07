@@ -33,6 +33,8 @@
 
 **不是資料庫問題的那一項**：`data/fc-colors.js` 與 `faber-castell-color-lib.js` 各有三份複製
 （本尊＋`color-palette`＋`thangka-trace`，§8）。就算資料進了 DB，消費端逐像素比對仍需本地副本——
+〔**「三份」是 2026-07-28 覆核當時的數字，刻意不改**——它是這次推理的前提，不是現行登記。
+現況為四份（`color-mixer` 於 2026-08-07 接上），§8 有現行數字。〕
 這是**共用件同步**問題（A 類慣例，SHARED_LIBRARY_GUIDELINES），不是資料庫問題，別用 DB 去解。
 
 > **2026-07-28 二度覆核（加入 Black Edition 之後）**：結論不變，維持第 0/1 層。
@@ -334,9 +336,12 @@ Faber-Castell 色號。這是把一個抽象、握不到的螢幕 hex（`#AA3F1C
     **在套組頁它比在色彩牆更有用**：找到最接近的筆 → 明細裡的尺寸是可點的 → 就地換篩選，
     「該拿哪支筆 → 那支筆收在哪一盒」一條路走完，不必跳頁。
 - **純函式、以複製件共用**：`nearestFC` / `rgbToLab` / `deltaE` / `deltaEBand` 皆不碰 DOM。比照 `materialize-dark.css`
-  慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進 `color-palette` / `thangka-trace`
-  （各自 CLAUDE.md 登記複製點）；**單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。
-  兩支各 **6 份複製**（本尊＋2 消費端，各含 InProgress 鏡像），改版後以 md5 確認為單一 hash。
+  慣例，把整支 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` **複製**進
+  `color-palette` / `thangka-trace` / `color-mixer`（各自 CLAUDE.md 登記複製點）；
+  **單一真相在此**，度量或資料改版後重新複製、重跑產生器即可。
+  兩支各 **8 份複製**（本尊＋3 消費端，各含 InProgress 鏡像），改版後以 md5 確認為單一 hash
+  ——跑 `bash scripts/sync-copies.sh` 即可，別手動 `cp`。
+  （`color-mixer` 於 2026-08-07 接上，複製點由 6 增為 8。）
 
 ## 9. App icon（中性色卡標記、非品牌 logo）
 

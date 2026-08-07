@@ -65,7 +65,7 @@ CSS 匯出/下載、i18n 三語、主題切換
 # 在家族工作區（未納版控）：My Projects/Art Colour/export/
 node a3-export.js --check    # 逐位元組比對本 repo 的 data/fc-colors.js 與 DB 重建結果
 node a3-export.js --write    # 由 DB 重新產生
-bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
+bash scripts/sync-copies.sh  # 匯出後務必同步 8 份複製（md5 驗證）
 ```
 
 > **⚠️ 不要再跑 `data/source/generate.js`**——它會用凍結的 CSV 覆蓋掉 DB 側的任何修正。
@@ -139,8 +139,9 @@ bash scripts/sync-copies.sh  # 匯出後務必同步 6 份複製（md5 驗證）
 | `color-family.js` | 家族 repo `nodeapp-webapp-family/color-family.js`（§4 A 類權威版，byte-identical）。**色系分群的單一權威規則**；本 app 的 lib 只包一層薄的 `colorFamily()` 把無彩度門檻寫在那裡。⚠️ `<script>` 必須早於用到它的 lib |
 | `data/fc-colors.js` | **由 `db_artcolor` 匯出**（2026-07-29 起；家族美術色材領域庫＝ System of Record）。`data/source/*.csv` 已凍結為來源沿革，見 DESIGN.md §3.1 |
 
-> **本 app 是 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` 的權威版**，各有 6 份複製：
-> 本尊、`color-palette`、`thangka-trace`，各含 InProgress 鏡像。
+> **本 app 是 `faber-castell-color-lib.js` ＋ `data/fc-colors.js` 的權威版**，各有 8 份複製：
+> 本尊、`color-palette`、`thangka-trace`、`color-mixer`，各含 InProgress 鏡像。
+> （`color-mixer` 是 2026-08-07 接上的第三個消費端——它同時借五個品牌的 lib＋資料做跨品牌比對。）
 > 同步與驗證用 `bash scripts/sync-copies.sh`（會 md5 確認每份都是單一 hash）。
 
 > 為什麼長這樣（唯讀決策、資料來源與驗證、CSS 單一真相、色票不著色）見 [DESIGN.md](DESIGN.md)。
