@@ -259,7 +259,7 @@ light/dark；色塊上的**文字**黑白由 `pickTextColor`（WCAG 相對亮度
 > **坑（materialize-dark 覆蓋）**：`materialize-dark.css` 有一條
 > `body, p, span, li, … { color: var(--mz-text) }` 會命中**裸 `<span>`**，把號碼的 inline 前景蓋掉、
 > 改成跟著主題的 `--mz-text`——結果 dark 模式下淺色塊上的號碼變淺、看不見。修法：以較高特異度
-> `.fc-swatch .code, .fc-swatch .badge { color: inherit }` 讓它繼承色塊自身的 `pickTextColor` 前景
+> `.fc-swatch .code, .fc-swatch .fc-badge { color: inherit }` 讓它繼承色塊自身的 `pickTextColor` 前景
 > （不需 `!important`）。任何「在彩色底上放裸 span 文字」的家族 app 都會踩到，值得回補 DESIGN_GUIDELINES §5.1。
 
 ## 6. lib ↔ 控制器邊界（§4.1）

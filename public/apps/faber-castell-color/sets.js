@@ -138,7 +138,7 @@
       return '<tr data-code="' + esc(c.code) + '"' + (hidden ? ' class="is-hidden"' : '') + '>' +
         '<th class="c-color"><span class="ccell">' +
           '<span class="mini" style="background:' + esc(c.hex) + ';color:' + fg + '">' +
-            esc(c.code) + (Lib.isMetallic(c) ? '<span class="badge">&#8776;</span>' : '') +
+            esc(c.code) + (Lib.isMetallic(c) ? '<span class="fc-badge">&#8776;</span>' : '') +
           '</span>' +
           '<span class="cname" title="' + esc(c.name) + '">' + esc(c.name) + '</span>' +
         '</span></th>' + cells + '</tr>';

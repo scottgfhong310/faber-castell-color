@@ -24,7 +24,7 @@
   // ---- 網格 ----------------------------------------------------------------
   function cellHtml(c) {
     var fg = Lib.pickTextColor(c);
-    var badge = Lib.isMetallic(c) ? '<span class="badge" style="color:' + fg + '">&#8776;</span>' : '';
+    var badge = Lib.isMetallic(c) ? '<span class="fc-badge" style="color:' + fg + '">&#8776;</span>' : '';
     return '<div class="fc-cell" data-code="' + esc(c.code) + '">' +
       '<div class="fc-swatch" style="background:' + esc(c.hex) + ';color:' + fg + '">' +
         '<span class="code">' + esc(c.code) + '</span>' + badge +

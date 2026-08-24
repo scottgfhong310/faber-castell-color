@@ -136,8 +136,8 @@
   font-family: ui-monospace, monospace; font-size: .68rem;
   box-shadow: inset 0 0 0 1px rgba(128,128,128,.28);
 }
-.assort .mini, .assort .mini .badge { color: inherit; }
-.assort .mini .badge { font-size: .6rem; opacity: .85; }
+.assort .mini, .assort .mini .fc-badge { color: inherit; }
+.assort .mini .fc-badge { font-size: .6rem; opacity: .85; }
 .assort .cname {
   color: var(--text); font-size: .76rem;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
