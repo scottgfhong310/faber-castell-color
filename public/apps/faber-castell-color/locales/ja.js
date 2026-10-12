@@ -81,7 +81,7 @@ I18n.register('ja', {
   'css.download': '.css をダウンロード',
 
   'toast.copied': 'コピーしました：{v}',
-  'toast.copyFail': 'コピー失敗（localhost または HTTPS が必要）',
+  'toast.copyFail': 'コピーに失敗しました',
   'toast.pasted': '貼り付けました：{v}',
   'toast.pasteFail': 'クリップボードを読み取れません（許可されていません）——フィールドに \u2318V で直接貼り付けてください',
   'toast.pasteNoColor': 'クリップボードに色が見つかりません',

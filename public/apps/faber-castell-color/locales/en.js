@@ -81,7 +81,7 @@ I18n.register('en', {
   'css.download': 'Download .css',
 
   'toast.copied': 'Copied: {v}',
-  'toast.copyFail': 'Copy failed (needs localhost or HTTPS)',
+  'toast.copyFail': 'Copy failed',
   'toast.pasted': 'Pasted: {v}',
   'toast.pasteFail': "Can't read the clipboard (permission denied) — paste into the field with \u2318V instead",
   'toast.pasteNoColor': 'No colour found in the clipboard',
