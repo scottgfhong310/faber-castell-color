@@ -83,7 +83,7 @@ I18n.register('zh-Hant', {
   'toast.copied': '已複製：{v}',
   'toast.copyFail': '複製失敗',
   'toast.pasted': '已貼上：{v}',
-  'toast.pasteFail': '無法讀取剪貼簿（瀏覽器未授權）——可直接在欄位按 ⌘V 貼上',
+  'toast.pasteSelected': '瀏覽器不讓程式讀剪貼簿，已幫你選起來——按 ⌘V／Ctrl+V 即可覆蓋',
   'toast.pasteNoColor': '剪貼簿裡沒有可辨識的顏色',
   'toast.cssCopied': '已複製整份 CSS',
   'toast.downloaded': '已下載：{n}',

@@ -83,7 +83,7 @@ I18n.register('en', {
   'toast.copied': 'Copied: {v}',
   'toast.copyFail': 'Copy failed',
   'toast.pasted': 'Pasted: {v}',
-  'toast.pasteFail': "Can't read the clipboard (permission denied) — paste into the field with \u2318V instead",
+  'toast.pasteSelected': 'The browser blocked clipboard reads — the value is selected, press ⌘V / Ctrl+V to replace it',
   'toast.pasteNoColor': 'No colour found in the clipboard',
   'toast.cssCopied': 'Full CSS copied',
   'toast.downloaded': 'Downloaded: {n}',
